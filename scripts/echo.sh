@@ -1,1 +1,1 @@
-echo("this was run through a script");
+#do nothing
