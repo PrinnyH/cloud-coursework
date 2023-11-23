@@ -1,11 +1,10 @@
 <?php
-if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
-    echo 'We don\'t have mysqli!!!';
-} else {
-    echo 'Phew we have it!';
-}
 
-
+// if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
+//     echo 'We don\'t have mysqli!!!';
+// } else {
+//     echo 'Phew we have it!';
+// }
 
 // Attempt to connect to the database
 $mysqli = new mysqli($host, $username, $password, $database);
