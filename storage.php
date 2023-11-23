@@ -8,7 +8,7 @@ if ($_GET['run']) {
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="/js/login.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
     <title>Database Access</title>
 </head>
 <body>
@@ -18,6 +18,6 @@ if ($_GET['run']) {
     <input id="file" name="file" type="file" />
     <button id="upload_file" href="?run=true"> echo me </button>
 
-    <?php include("/test_connection.php");?>
+    <?php include("test_connection.php");?>
 </body>
 </html>
