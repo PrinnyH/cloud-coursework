@@ -1,3 +1,10 @@
+<?php
+if ($_GET['run']) {
+  # This code will run if ?run=true is set.
+  exec("shell/echo.sh");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +16,7 @@
     <button id="logout_button" onclick="logout()"> logout </button>
 
     <input id="file" name="file" type="file" />
-    <button id="upload_file" onclick="uploadFile()"> read name </button>
+    <button id="upload_file" href="?run=true"> echo me </button>
 
     <?php include("/test_connection.php");?>
 </body>

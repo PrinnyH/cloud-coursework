@@ -1,0 +1,1 @@
+echo("this was run through a script");
