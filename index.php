@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>You need to log in</h1>
-    <button id="login_button" onclick="login()"> login </button>
+    <button id="login_button" onclick="login()"> login (fake) </button>
     <?php include("/test_connection.php");?>
 </body>
 <footer>
