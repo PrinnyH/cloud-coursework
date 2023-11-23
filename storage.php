@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="/js/login.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
     <title>Database Access</title>
 </head>
 <body>
@@ -11,6 +11,6 @@
     <input id="file" name="file" type="file" />
     <button id="upload_file" onclick="uploadFile()"> read name </button>
 
-    <?php include("/test_connection.php");?>
+    <?php include("test_connection.php");?>
 </body>
 </html>
