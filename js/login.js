@@ -12,5 +12,5 @@ function logout(){
 function uploadFile(){
     window.location.href = "create_bucket.php";
     alert("Bucket created");
-    window.location.href = "storage.php";
+    //window.location.href = "storage.php";
 }
