@@ -1,10 +1,18 @@
 <?php
-// Specify the path to your bash script
-$bashScriptPath = 'scripts/createBucket.sh';
+require_once "vendor/autoload.php";
 
-// Use shell_exec to run the bash script
-$output = shell_exec("./$bashScriptPath");
+use Google\Cloud\Storage\StorageClient;
 
-// Display the output (if any)
-echo $output;
+try {
+    $storage = new StorageClient([
+        'keyFilePath' => 'JSON_KEY_FILE_PATH',
+    ]);
+
+    $bucketName = '123123123123my-bucket';
+    $bucket = $storage->bucket($bucketName);
+    $response = $storage->createBucket($bucketName);
+    echo "Your Bucket $bucketName is created successfully.";
+} catch(Exception $e) {
+    echo $e->getMessage();
+}
 ?>
