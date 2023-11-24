@@ -10,13 +10,16 @@ function logout(){
 }
 
 function uploadFile(){
-    let file = document.getElementById("file").files[0];
-    //let formData = new FormData();
-    //formData.append("file", file);
+    window.location.href = "create_bucket.php";
+    alert("Bucket created");
+    window.location.href = "storage.php";
+    // let file = document.getElementById("file").files[0];
+    // //let formData = new FormData();
+    // //formData.append("file", file);
 
-    if (file == null){
-        alert("no file uploaded")
-        return
-    }
-    alert(file.name);
+    // if (file == null){
+    //     alert("no file uploaded")
+    //     return
+    // }
+    // alert(file.name);
 }
