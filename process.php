@@ -17,3 +17,5 @@ $storage = new StorageClient([
 $bucket = $storage->createBucket($bucketName);
 
 echo 'Bucket ' . $bucket->name() . ' created.';
+
+?>

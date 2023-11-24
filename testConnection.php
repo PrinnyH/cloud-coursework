@@ -19,3 +19,4 @@ echo "Connected successfully to the database.";
 // Close the connection
 $mysqli->close();
 
+?>
