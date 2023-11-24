@@ -11,6 +11,7 @@
 
     <input id="file" name="file" type="file" />
     <button id="upload_file" onclick="uploadFile()"> read name </button>
+    <a id ="output"></a>
     <?php include("testConnection.php"); ?>
 </body>
 </html>
