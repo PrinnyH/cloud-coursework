@@ -10,7 +10,9 @@
 
     <input id="file" name="file" type="file" />
     <button id="upload_file" onclick="uploadFile()"> read name </button>
-
+    <form action="createBucket.php" method="post">
+        <input type="submit" name="runScript" value="Run PHP Script">
+    </form>
     <?php include("testConnection.php"); ?>
 </body>
 </html>

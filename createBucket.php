@@ -1,18 +1,27 @@
-<?php
-require_once "vendor/autoload.php";
+ <?php
+<!--
+require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
 
-try {
-    $storage = new StorageClient([
-        'keyFilePath' => 'JSON_KEY_FILE_PATH',
-    ]);
+// Replace these values with your own
+$projectId = 'coursework-test-406000';
+$bucketName = '123123123124my-bucket';
 
-    $bucketName = '123123123123my-bucket';
-    $bucket = $storage->bucket($bucketName);
-    $response = $storage->createBucket($bucketName);
-    echo "Your Bucket $bucketName is created successfully.";
-} catch(Exception $e) {
-    echo $e->getMessage();
+// Create a storage client
+$storage = new StorageClient([
+    'projectId' => $projectId,
+]);
+
+// Create a new bucket
+$bucket = $storage->createBucket($bucketName);
+
+echo 'Bucket ' . $bucket->name() . ' created.'; -->
+
+
+if (isset($_POST['runScript'])) {
+    
+    echo "PHP script is executed!";
 }
 
+?>
