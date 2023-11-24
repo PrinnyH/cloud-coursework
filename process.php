@@ -4,18 +4,21 @@ require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
 
-// Replace these values with your own
-$projectId = 'coursework-test-406000 ';
+// Replace 'your-project-id' with your Google Cloud project ID
+$projectId = 'coursework-test-406000';
+
+// Replace 'your-bucket-name' with the desired bucket name
 $bucketName = '123123123123my-bucket';
 
-// Create a storage client
+// Instantiate the StorageClient
 $storage = new StorageClient([
     'projectId' => $projectId,
 ]);
 
-// Create a new bucket
+// Get the bucket
 $bucket = $storage->createBucket($bucketName);
 
-echo 'Bucket ' . $bucket->name() . ' created.';
+// Print the created bucket information
+printf('Bucket created: %s' . PHP_EOL, $bucket->name());
 
 ?>
