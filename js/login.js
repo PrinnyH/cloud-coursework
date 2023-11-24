@@ -14,7 +14,7 @@ function uploadFile(){
     var xhr = new XMLHttpRequest();
 
     // Configure it: GET-request for the URL /process.php
-    xhr.open('GET', '/./process.php', true);
+    xhr.open('GET', 'cloud-coursework/process.php', true);
 
     // This function will be called when the request is complete
     xhr.onload = function() {
