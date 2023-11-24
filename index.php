@@ -7,6 +7,7 @@
 <body>
     <h1>You need to log in</h1>
     <button id="login_button" onclick="login()"> login (fake) </button>
+    <?php phpinfo() ?>
 </body>
 <footer>
     
