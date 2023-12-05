@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 use Google\Cloud\Storage\StorageClient;
 
 // Replace 'your-project-id' with your Google Cloud project ID
-$projectId = 'coursework-test-406000';
+$projectId = 'coursework-self-load-balance';
 
 // Replace 'your-bucket-name' with the desired bucket name
 $bucketName = '123123123123my-bucket';
