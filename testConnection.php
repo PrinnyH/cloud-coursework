@@ -11,6 +11,10 @@ $username = "root"; // Change this to your database username
 $password = ",dO*cp%|jzSi5=#)"; // Change this to your database password
 $database = "test_data"; // Change this to your database name
 
+// Set the connection timeout
+$timeout = 10; // Timeout in seconds
+$mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, $timeout);
+
 // Attempt to connect to the database
 $mysqli = new mysqli($host, $username, $password, $database);
 
