@@ -7,13 +7,20 @@
 </head>
 <body>
     <h1>You are logged in!</h1>
-    <button id="logout_button" onclick="logout()"> logout </button>
-
-    <input id="file" name="file" type="file" />
-    <button id="upload_file" onclick="uploadFile()"> read name </button>
+    <div>
+        <button id="logout_button" onclick="logout()"> logout </button>
+    </div>
+    <div >
+        <input id="file" name="file" type="file" />
+    </div>
+    <div >
+        <button id="Create Test Bucket" onclick="createTestBucket()"> read name </button>
+    </div>
     <div id ="output">
         <h5>...</h5>
     </div>
+
     <?php include("testConnection.php"); ?>
+
 </body>
 </html>

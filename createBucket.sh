@@ -1,1 +1,0 @@
-gcloud storage buckets create gs://123123123123my-bucket

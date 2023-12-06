@@ -9,7 +9,7 @@ function logout(){
     window.location.href = "index.php";
 }
 
-function uploadFile(){
+function createTestBucket(){
     // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
 
@@ -24,18 +24,18 @@ function uploadFile(){
         } else {
             // There was an error with the request
             console.error('Request failed. Status: ' + xhr.status);
+            document.getElementById('output').innerHTML = 'Request failed. Status: ' + xhr.status;
         }
     };
 
     // This function will be called if an error occurs
     xhr.onerror = function() {
         console.error('Network error occurred');
+        document.getElementById('output').innerHTML = 'Network error occurred'
     };
 
     // Send the request
     xhr.send();
-
-
 
     alert("Bucket created");
 }
