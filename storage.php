@@ -14,11 +14,12 @@
         <input id="file" name="file" type="file" />
     </div>
     <div >
-        <button id="Create Test Bucket" onclick="createTestBucket()"> read name </button>
+        <button id="Create_Test_Bucket" onclick="createTestBucket()"> Create Test Bucket </button>
+        <div id ="output">
+            <h5>...</h5>
+        </div>
     </div>
-    <div id ="output">
-        <h5>...</h5>
-    </div>
+    
 
     <?php include("testConnection.php"); ?>
 
