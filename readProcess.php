@@ -47,7 +47,7 @@ $projectId = 'coursework-self-load-balance';
 $bucketName = '123123123123my-bucket';
 
 //$directories = list_directories_in_bucket($projectId, $bucketName);
-$directories = list_all_directories($projectId);
+$directories = list_all_directories($bucketName);
 
 print_r($directories);
 ?>
