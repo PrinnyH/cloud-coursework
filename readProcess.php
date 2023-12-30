@@ -28,20 +28,34 @@ function list_all_directories($bucketName) {
 
     $allDirectories = [];
     foreach ($bucket->objects() as $object) {
-        $objectName = $object->name();
-        $pathParts = explode('/', $objectName);
-        $path = '';
+        $pathParts = explode('/', $object->name());
+
+        // Reference to start of the array
+        $currentLevel = &$allDirectories;
 
         foreach ($pathParts as $part) {
+            // Build nested array structure
             if ($part != end($pathParts)) { // Ignore the actual file name
-                $path .= $part . '/';
-                $allDirectories[$path] = true; // Use array keys to avoid duplicates
+                if (!isset($currentLevel[$part])) {
+                    $currentLevel[$part] = [];
+                }
+                $currentLevel = &$currentLevel[$part];
             }
         }
     }
 
-    return array_keys($allDirectories);
+    return $allDirectories;
 }
+
+function print_directories($directories, $level = 0) {
+    foreach ($directories as $dir => $subDirs) {
+        echo str_repeat(' ', $level * 4) . $dir . PHP_EOL;
+        if (!empty($subDirs)) {
+            print_directories($subDirs, $level + 1);
+        }
+    }
+}
+
 
 $projectId = 'coursework-self-load-balance';
 $bucketName = '123123123123my-bucket';
@@ -49,5 +63,7 @@ $bucketName = '123123123123my-bucket';
 //$directories = list_directories_in_bucket($projectId, $bucketName);
 $directories = list_all_directories($bucketName);
 
-print_r($directories);
+print_directories($directories);
+
+//print_r($directories);
 ?>
