@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="js/login.js"></script>
+    <script src="js/login.js"></script>
     <title>Database Access</title>
 </head>
 <body>
