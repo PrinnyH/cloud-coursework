@@ -1,5 +1,8 @@
 <?php
 
+// Set the Content-Type to text/plain
+header('Content-Type: text/plain');
+
 require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
@@ -50,7 +53,7 @@ function list_all_directories($bucketName) {
 function print_directories($directories, $level = 0) {
     foreach ($directories as $dir => $subDirs) {
         // Print the directory name with indentation
-        echo str_repeat('    ', $level) . $dir . '/ <br>';
+        echo str_repeat('    ', $level) . $dir . '/' . PHP_EOL;
 
         // If there are subdirectories, recursively print them
         if (!empty($subDirs)) {
