@@ -7,24 +7,6 @@ require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
 
-function list_directories_in_bucket($projectId, $bucketName) {
-    $storage = new StorageClient(['projectId' => $projectId]);
-    $bucket = $storage->bucket($bucketName);
-    
-    $options = [
-        'prefix'    => '',
-        'delimiter' => '/'
-    ];
-    
-    $directories = [];
-    foreach ($bucket->objects($options) as $object) {
-        if (substr($object->name(), -1) === '/') {
-            $directories[] = $object->name();
-        }
-    }    
-    return $directories;
-}
-
 function list_all_directories($bucketName) {
     $storage = new StorageClient();
     $bucket = $storage->bucket($bucketName);
@@ -50,16 +32,20 @@ function list_all_directories($bucketName) {
     return $allDirectories;
 }
 
-function print_directories($directories, $level = 0) {
+function print_directories_html($directories, $level = 0) {
+    $html = '';
+
     foreach ($directories as $dir => $subDirs) {
-        // Print the directory name with indentation
-        echo str_repeat('    ', $level) . $dir . '/' . PHP_EOL;
+        // Print the directory name with indentation, using non-breaking spaces for indentation
+        $html .= str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $level) . htmlspecialchars($dir) . '/<br>';
 
         // If there are subdirectories, recursively print them
         if (!empty($subDirs)) {
-            print_directories($subDirs, $level + 1);
+            $html .= print_directories_html($subDirs, $level + 1);
         }
     }
+
+    return $html;
 }
 
 
