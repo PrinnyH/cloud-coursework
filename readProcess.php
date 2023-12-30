@@ -7,6 +7,7 @@ require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
 
+
 function list_all_directories($bucketName) {
     $storage = new StorageClient();
     $bucket = $storage->bucket($bucketName);
@@ -33,18 +34,23 @@ function list_all_directories($bucketName) {
 }
 
 function print_directories_html($directories, $level = 0) {
-    $html = '';
+    $html = $level == 0 ? '<ul>' : '<ul style="list-style-type:none; padding-left:20px;">'; // Indent sub-lists
 
     foreach ($directories as $dir => $subDirs) {
-        // Print the directory name with indentation, using non-breaking spaces for indentation
-        $html .= str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $level) . htmlspecialchars($dir) . '/<br>';
+        // Escape the directory name to prevent XSS attacks
+        $dirSafe = htmlspecialchars($dir);
 
-        // If there are subdirectories, recursively print them
+        $html .= "<li>{$dirSafe}/";
+
         if (!empty($subDirs)) {
+            // Recursively build the HTML for subdirectories
             $html .= print_directories_html($subDirs, $level + 1);
         }
+
+        $html .= '</li>';
     }
 
+    $html .= '</ul>';
     return $html;
 }
 
