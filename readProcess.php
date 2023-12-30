@@ -22,10 +22,32 @@ function list_directories_in_bucket($projectId, $bucketName) {
     return $directories;
 }
 
+function list_all_directories($bucketName) {
+    $storage = new StorageClient();
+    $bucket = $storage->bucket($bucketName);
+
+    $allDirectories = [];
+    foreach ($bucket->objects() as $object) {
+        $objectName = $object->name();
+        $pathParts = explode('/', $objectName);
+        $path = '';
+
+        foreach ($pathParts as $part) {
+            if ($part != end($pathParts)) { // Ignore the actual file name
+                $path .= $part . '/';
+                $allDirectories[$path] = true; // Use array keys to avoid duplicates
+            }
+        }
+    }
+
+    return array_keys($allDirectories);
+}
+
 $projectId = 'coursework-self-load-balance';
 $bucketName = '123123123123my-bucket';
 
-$directories = list_directories_in_bucket($projectId, $bucketName);
+//$directories = list_directories_in_bucket($projectId, $bucketName);
+$directories = list_all_directories($projectId);
 
 print_r($directories);
 ?>
