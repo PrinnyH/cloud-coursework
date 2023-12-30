@@ -1,8 +1,5 @@
 <?php
 
-// Set the Content-Type to text/plain
-header('Content-Type: text/plain');
-
 require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
