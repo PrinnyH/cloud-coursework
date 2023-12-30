@@ -18,6 +18,11 @@
         <div id ="output">
             <h5>...</h5>
         </div>
+        <p>
+        <button id="Read_Test_Bucket" onclick="readTestBucket()"> Read Test Bucket </button>
+        <div id ="output2">
+            <h5>...</h5>
+        </div>
     </div>
     
 
