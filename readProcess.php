@@ -55,7 +55,7 @@ $bucketName = '123123123123my-bucket';
 //$directories = list_directories_in_bucket($projectId, $bucketName);
 $directories = list_all_directories($bucketName);
 
-print_directories($directories);
+print_directories_html($directories);
 
 //print_r($directories);
 ?>
