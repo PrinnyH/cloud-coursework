@@ -50,7 +50,7 @@ function list_all_directories($bucketName) {
 function print_directories($directories, $level = 0) {
     foreach ($directories as $dir => $subDirs) {
         // Print the directory name with indentation
-        echo str_repeat('    ', $level) . $dir . '/' . PHP_EOL;
+        echo str_repeat('    ', $level) . $dir . '/ <br>';
 
         // If there are subdirectories, recursively print them
         if (!empty($subDirs)) {
