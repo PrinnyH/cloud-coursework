@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('loginOverlay').style.display = 'block';
 
                 // Set event listener for the close button inside the overlay
-                document.getElementById('closeLoginButton').addEventListener('click', function() {
+                document.getElementsByClassName('close-login').addEventListener('click', function() {
                     document.getElementById('loginOverlay').style.display = 'none';
                 });
 
