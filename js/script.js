@@ -64,6 +64,27 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', logout);
     });
 
+    function hideNav(){
+        document.getElementById('sideNavExpanded').style.display = 'none';
+        document.getElementById('sideNavMin').style.display = 'block';
+
+    }
+    // Attach event listener to all login buttons
+    var hideNaveButtons = document.querySelectorAll('.hide-nav-button');
+    hideNaveButtons.forEach(function(button) {
+        button.addEventListener('click', hideNav);
+    });
+
+    function showNav(){
+        document.getElementById('sideNavExpanded').style.display = 'block';
+        document.getElementById('sideNavMin').style.display = 'non';
+    }
+    // Attach event listener to all login buttons
+    var hideNaveButtons = document.querySelectorAll('.show-nav-button');
+    hideNaveButtons.forEach(function(button) {
+        button.addEventListener('click', showNav);
+    });
+
 });
 
 
