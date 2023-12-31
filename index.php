@@ -4,7 +4,7 @@
     <title>Page with Login Overlay</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="23146911805-tuefejed4hddunmos49sph1jgvub608o.apps.googleusercontent.com ">
 </head>
 <body>
 
