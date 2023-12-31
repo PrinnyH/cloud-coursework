@@ -12,16 +12,18 @@
     <!-- Sidebar/nav bar -->
     <nav class="w3-sidebar w3-bar-block w3-light-grey w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
         <div class="w3-container w3-display-container w3-padding-16">
-            <i  class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-            <i  class="fa fa-close w3-right w3-button w3-transparent"></i>
+            <!-- <i  class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i> -->
+            <i  class="fa fa-remove w3-display-topright w3-button w3-transparent"></i>
             <h3 class="w3-wide"><b>VAULTS</b></h3>
         </div>
         <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
             <a href="#" class="w3-bar-item w3-button">My Files</a>
             <a href="#" class="w3-bar-item w3-button">My Shared Files</a>
         </div>
-        <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-        <a href="#logout" class="logout-button w3-text-red w3-bar-item w3-button w3-padding">Logout</a>
+        <div? class="w3-padding-64 w3-large w3-text-black w3-bottom">
+            <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
+            <a href="#logout" class="logout-button w3-text-red w3-bar-item w3-button w3-padding">Logout</a>
+        </div>
     </nav>
 
 
