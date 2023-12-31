@@ -20,13 +20,11 @@
             <a href="#" class="w3-bar-item w3-button">My Files</a>
             <a href="#" class="w3-bar-item w3-button">My Shared Files</a>
         </div>
-        <div class="w3-small w3-bottom">
-            <a href="#contact" class="w3-bar-item w3-text-black w3-button w3-padding">Contact</a> 
-            <a href="#logout" class="logout-button w3-text-red w3-bar-item w3-button w3-padding">Logout</a>
-        </div>
+        <a href="#contact" class="w3-bar-item w3-text-black w3-button w3-padding w3-bottom">Contact</a> 
+        <a href="#logout" class="logout-button w3-text-red w3-bar-item w3-button w3-padding w3-bottom">Logout</a>
     </nav>
 
-
+    <div class>
     <h1>Welcome [Add first name here]</h1>
 
     <!-- <div >
