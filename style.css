@@ -45,7 +45,7 @@ html{
     cursor: default;
 }
 
-.top,.bottom{
+.top, .bottom{
     position:fixed;
     width:100%;
     z-index:1
@@ -62,11 +62,11 @@ html{
     position:static;
     float:left;
 }
-.center .bar{
+.center, .bar{
     display:inline-block;
     width:auto
 }
-.bar .bar-item{
+.bar, .bar-item{
     padding:8px 16px;
     float:left;
     width:auto;
@@ -75,7 +75,7 @@ html{
     outline:0
 }
 
-.bar .button{
+.bar, .button{
     white-space:normal
 }
 .bar-item{
@@ -88,7 +88,7 @@ html{
     float:none;
     outline:0
 }
-.center .bar-item{
+.center, .bar-item{
     text-align:center
 }
 
