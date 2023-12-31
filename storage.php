@@ -35,13 +35,12 @@
                 </div> -->
             </div>
     
-            <div id="sideNavMin" style="display=none;"> 
+            <div id="sideNavMin" style="display='none';"> 
                 <div class="w3-container w3-display-container w3-padding-16">
                     <i class="show-nav-button fa fas fa-angle-double-right w3-display-topright w3-button w3-xxlarge w3-transparent"></i>
                 </div>
             </div>
         </nav>
-
 
 
         <h1>Welcome [Add first name here]</h1>
