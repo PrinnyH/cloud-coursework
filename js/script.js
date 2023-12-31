@@ -1,31 +1,22 @@
-function openOverlay() {
-    var overlay = document.getElementById("loginOverlay");
-    overlay.style.display = "block";
-    loadLoginForm();
-}
-
-function closeOverlay() {
-    document.getElementById("loginOverlay").style.display = "none";
-}
-
-function loadLoginForm() {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById("loginOverlay").innerHTML = xhr.responseText;
-        }
-    };
-    xhr.open("GET", "login-form.html", true);
-    xhr.send();
-}
-
-document.getElementById("loginButton").onclick = function() {
-    openOverlay();
-};
-
 document.addEventListener('DOMContentLoaded', function () {
+    // Function to open the overlay
+    function openOverlay() {
+        document.getElementById('loginOverlay').style.display = 'block';
+    }
+
+    // Function to close the overlay
+    function closeOverlay() {
+        document.getElementById('loginOverlay').style.display = 'none';
+    }
+
+    // Attaching event listeners to the login and close buttons
+    document.getElementById('loginButton').addEventListener('click', openOverlay);
+    // Assuming there's a close button within your overlay
+    document.getElementById('closeButton').addEventListener('click', closeOverlay);
+
+    // Handling the form submission
     document.getElementById('loginForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent the default form submission
+        event.preventDefault(); // Prevent default form submission
 
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'login.php', true);
@@ -34,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.onload = function () {
             if (this.status == 200) {
                 if (this.responseText === 'success') {
-                    window.location.href = 'storage.php'; // Redirect on success
+                    window.location.href = 'storage.php'; // Redirect on successful login
                 } else {
                     document.getElementById('loginError').style.display = 'block';
                     document.getElementById('loginError').textContent = 'Login failed: Incorrect username or password.';
