@@ -18,7 +18,7 @@
     </div>
     
     <!-- Sidebar/nav bar -->
-    <nav id ="sideNavExpanded" class="w3-sidebar w3-bar-block w3-light-grey w3-collapse w3-top" style="z-index:3;width:250px">
+    <nav id ="sideNavExpanded" class="w3-sidebar w3-bar-block w3-light-grey w3-collapse w3-top" style="z-index:3;width:250px;margin-top:83px">
         <div class="w3-container w3-display-container w3-padding-16">
             <i class="hide-nav-button fa fas fa-angle-double-left w3-display-topright w3-button w3-xxlarge w3-transparent"></i>
         </div>
@@ -31,7 +31,7 @@
         </div> -->
     </nav>
     
-    <nav id ="sideNavMin" class="w3-sidebar w3-bar-block w3-light-grey w3-collapse w3-top" style="z-index:3;width:50px;display:none;">
+    <nav id ="sideNavMin" class="w3-sidebar w3-bar-block w3-light-grey w3-collapse w3-top" style="z-index:3;width:50px;display:none;margin-top:83px">
         <div class="w3-container w3-display-container w3-padding-16">
             <i class="show-nav-button fa fas fa-angle-double-right w3-display-topright w3-button w3-xxlarge w3-transparent"></i>
         </div>
