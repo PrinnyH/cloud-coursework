@@ -9,7 +9,7 @@
 <body>
 
     <h2>Welcome to the Website</h2>
-    <button id="loginButton">Login</button>
+    <!-- <button id="loginButton">Login</button> -->
 
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
