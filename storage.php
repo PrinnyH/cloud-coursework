@@ -20,7 +20,7 @@
             <a href="#" class="w3-bar-item w3-button">My Shared Files</a>
         </div>
         <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-        <a id="logout" href="#logout" class=" w3-text-red w3-bar-item w3-button w3-padding">Logout</a>
+        <a href="#logout" class="logout-button w3-text-red w3-bar-item w3-button w3-padding">Logout</a>
     </nav>
 
 

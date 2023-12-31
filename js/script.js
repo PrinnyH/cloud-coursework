@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Attach event listener to all login buttons
-    var logoutButtons = document.getElementById('logout');
+    var logoutButtons = document.querySelectorAll('.logout-button');
     logoutButtons.forEach(function(button) {
         button.addEventListener('click', logout);
     });
