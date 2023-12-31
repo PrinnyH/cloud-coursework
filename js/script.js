@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         xhr.send(new URLSearchParams(formData).toString());
+
+        //start session here
     }
 
     // Attach event listener to all login buttons
@@ -50,9 +52,17 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', openOverlay);
     });
 
-    // Set event listener for the logout button
-    document.getElementById('logout').addEventListener('click', function() {
+
+    function logout(){
         window.location.href = 'index.php'; // Redirect
+        //close session here
+    }
+
+    // Attach event listener to all login buttons
+    var logputButtons = document.getElementById('logout');
+    loginButtons.forEach(function(button) {
+        button.addEventListener('click', logout);
+        
     });
 
 });
