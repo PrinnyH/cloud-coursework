@@ -31,7 +31,6 @@
         </div> -->
     </nav>
 
-    <div class>
     <h1>Welcome [Add first name here]</h1>
 
     <!-- <div >
