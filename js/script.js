@@ -23,22 +23,26 @@ document.getElementById("loginButton").onclick = function() {
     openOverlay();
 };
 
-document.getElementById('loginForm').onsubmit = function(event) {
-    event.preventDefault(); // Prevent normal form submission
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'login.php', true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'login.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    xhr.onload = function() {
-        if (this.status == 200 && this.responseText == 'success') {
-            window.location.href = 'storage.php'; // Redirect on success
-        } else {
-            document.getElementById('loginError').style.display = 'block';
-            document.getElementById('loginError').textContent = 'Login failed: Incorrect username or password.';
-        }
-    };
+        xhr.onload = function () {
+            if (this.status == 200) {
+                if (this.responseText === 'success') {
+                    window.location.href = 'storage.php'; // Redirect on success
+                } else {
+                    document.getElementById('loginError').style.display = 'block';
+                    document.getElementById('loginError').textContent = 'Login failed: Incorrect username or password.';
+                }
+            }
+        };
 
-    var formData = new FormData(document.getElementById('loginForm'));
-    xhr.send(new URLSearchParams(formData).toString());
-};
+        var formData = new FormData(document.getElementById('loginForm'));
+        xhr.send(new URLSearchParams(formData).toString());
+    });
+});
