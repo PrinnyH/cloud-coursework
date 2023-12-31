@@ -30,19 +30,22 @@
             <a href="#contact" class="w3-bar-item w3-text-black w3-button w3-padding">Contact</a> 
         </div> -->
     </nav> -->
-
-    <h1>Welcome [Add first name here]</h1>
-
-    <!-- <div >
-        <button id="Create_Test_Bucket" onclick="createTestBucket()"> Create Test Bucket </button>
-        <div id ="output">
-            <h5>...</h5>
+    <div class="w3-main w3-content" style="max-width:1600px;margin-top:83px">
+        <h1>Welcome [Add first name here]</h1>
+         <div>
+            <button id="Create_Test_Bucket" > Create Test Bucket </button>
+            <div id ="output">
+                <h5>...</h5>
+            </div>
+            <p>
+            <button id="Read_Test_Bucket"> Read Test Bucket </button>
+            <div id ="output2">
+                <h5>...</h5>
+            </div>
         </div>
-        <p>
-        <button id="Read_Test_Bucket" onclick="readTestBucket()"> Read Test Bucket </button>
-        <div id ="output2">
-            <h5>...</h5>
-        </div>
-    </div> -->
+    </div>
+    
+
+   
 </body>
 </html>
