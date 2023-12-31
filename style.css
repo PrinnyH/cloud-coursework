@@ -124,6 +124,10 @@ html{
     -ms-user-select:none;
     user-select:none
 }   
+.button:hover{
+    color:#000!important;
+    background-color:#ccc!important
+}
 
 .padding-large{
     padding:12px 24px !important
