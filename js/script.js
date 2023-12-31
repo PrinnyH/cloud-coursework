@@ -49,4 +49,13 @@ document.addEventListener('DOMContentLoaded', function() {
     loginButtons.forEach(function(button) {
         button.addEventListener('click', openOverlay);
     });
+
+    // Set event listener for the logout button
+    document.getElementById('logout').addEventListener('click', function() {
+        window.location.href = 'index.php'; // Redirect
+    });
+
 });
+
+
+
