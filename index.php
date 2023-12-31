@@ -3,16 +3,20 @@
 <head>
     <title>Page with Login Overlay</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 </head>
 <body>
 
     <h2>Welcome to the Website</h2>
     <button id="loginButton">Login</button>
 
-    <div id="loginOverlay" class="overlay" style="display: none;">
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <!-- <div id="loginOverlay" class="overlay" style="display: none;">
         <div class="login-popup">
             <h2>Login Form</h2>
-            <div id="loginError" style="color: red; display: none;"></div> <!-- Error message placeholder -->
+            <div id="loginError" style="color: red; display: none;"></div>
 
             <form id="loginForm">
                 <label for="username">Username:</label>
@@ -23,7 +27,8 @@
                 <button type="button" id="closeButton">Close</button>
             </form>
         </div>
-    </div>
+    </div> 
+    -->
 
     <script src="js/script.js"></script>
     <?php phpinfo() ?>
