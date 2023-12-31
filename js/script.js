@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function hideNav(){
-        dovument.getElementById('sideNav').animate({width:"50"});
+        $('.sideNav').animate({width:"50"});
         document.getElementById('sideNavExpanded').style.display = 'none';
         document.getElementById('sideNavMin').style.display = 'block';
     }
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function showNav(){
-        dovument.getElementById('sideNav').animate({width:"250"});
+        $('.sideNav').animate({width:"250"});
         document.getElementById('sideNavExpanded').style.display = 'block';
         document.getElementById('sideNavMin').style.display = 'non';
     }
