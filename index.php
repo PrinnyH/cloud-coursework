@@ -11,8 +11,8 @@
     <!-- Navbar -->
     <div class="w3-top">
         <div class="w3-bar w3-black w3-card">
-            <a id="loginButton" href="#login" class="w3-bar-item w3-button w3-padding-large">Login</a>
-            <a href="#signup" class="w3-bar-item w3-button w3-padding-large">Sign Up</a>
+            <a href="#login" class="login-button w3-bar-item w3-button w3-padding-large">Login</a>
+            <a href="#signup" class="signup-button w3-bar-item w3-button w3-padding-large">Sign Up</a>
         </div>
     </div>
 
@@ -25,11 +25,11 @@
             ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
             adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         
-        <a id="loginButton" href="#login" class="w3-black w3-bar-item w3-button w3-padding-large">Login</a>
-        <a href="#signup" class="w3-black w3-bar-item w3-button w3-padding-large">Sign Up</a>
+        <a href="#login" class="login-button w3-black w3-bar-item w3-button w3-padding-large">Login</a>
+        <a href="#signup" class="signup-button w3-black w3-bar-item w3-button w3-padding-large">Sign Up</a>
     </div>
 
-    <div id="loginOverlay" class="overlay" style="display: none;"></div>
+    <div id="loginOverlay" class="w3-overlay" style="display: none;"></div>
     <script src="js/script.js"></script>
 </body>
 
