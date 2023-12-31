@@ -8,9 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     if ($username === $valid_username && $password === $valid_password) {
-        echo 'success'; // Indicate success
+        echo 'true'; // Indicate success
     } else {
-        echo 'failure'; // Indicate failure
+        echo 'false'; // Indicate failure
     }
 }
 ?>
