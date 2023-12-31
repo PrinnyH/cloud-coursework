@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <!-- The Band Section -->
+    <!-- The content Section -->
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="main">
         <h2 class="w3-wide">Vaults</h2>
         <p class="w3-opacity"><i>Store Some Files</i></p>
@@ -29,7 +29,7 @@
         <a href="#signup" class="signup-button w3-black w3-bar-item w3-button w3-padding-large">Sign Up</a>
     </div>
 
-    <div id="loginOverlay" class="w3-overlay" style="display: none;"></div>
+    <div id="loginOverlay" class="w3-modal" style="display: none;"></div>
 
 </body>
 
