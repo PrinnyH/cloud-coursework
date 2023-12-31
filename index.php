@@ -9,7 +9,17 @@
     <h2>Welcome to the Website</h2>
         <button id="loginButton">Login</button>
 
-        <div id="loginOverlay" class="overlay"></div>
+        <div id="loginOverlay" class="overlay">
+            <!-- Other content... -->
+
+            <div id="loginError" style="color: red; display: none;"></div> <!-- Error message placeholder -->
+
+            <form id="loginForm">
+                <!-- Form fields... -->
+                <button type="submit">Login</button>
+                <!-- Other content... -->
+            </form>
+        </div>
 
     <script src="js/script.js"></script>
     <?php phpinfo() ?>
