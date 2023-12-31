@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showNav(){
         $('.sideNav').animate({width:"250"});
         document.getElementById('sideNavExpanded').style.display = 'block';
-        document.getElementById('sideNavMin').style.display = 'non';
+        document.getElementById('sideNavMin').style.display = 'none';
     }
     // Attach event listener to all login buttons
     var hideNaveButtons = document.querySelectorAll('.show-nav-button');
