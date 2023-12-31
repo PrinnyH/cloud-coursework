@@ -7,35 +7,35 @@
 </head>
 <body>
     <!-- Navbar -->
-    <div class="top">
-        <div class="bar black card">
-            <a href="#login" class="bar-item button padding-large">Login</a>
-            <a href="#signup" class="bar-item button padding-large">Sign Up</a>
+    <div class="s-top">
+        <div class="s-bar s-black s-card">
+            <a href="#login" class="s-bar-item s-button s-padding-large">Login</a>
+            <a href="#signup" class="s-bar-item s-button s-padding-large">Sign Up</a>
         </div>
     </div>
 
     <!-- The Band Section -->
-    <div class="container content center padding-64" style="max-width:800px" id="main">
-        <h2 class="wide">Vaults</h2>
-        <p class="opacity"><i>Store Some Files</i></p>
+    <div class="s-container s-content s-center s-padding-64" style="max-width:800px" id="main">
+        <h2 class="s-wide">Vaults</h2>
+        <p class="s-opacity"><i>Store Some Files</i></p>
         <p class="">We have created a website. <br>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
             ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
             adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         
-        <a href="#login" class="black bar-item button padding-large">Login</a>
-        <a href="#signup" class="black bar-item button padding-large">Sign Up</a>
+        <a href="#login" class="s-black s-bar-item s-button s-padding-large">Login</a>
+        <a href="#signup" class="s-black s-bar-item s-button s-padding-large">Sign Up</a>
     </div>
 </body>
 
-<footer class="container padding-64 center opacity light-grey xlarge">
-    <i class="fa fa-facebook-official hover-opacity"></i>
-    <i class="fa fa-instagram hover-opacity"></i>
-    <i class="fa fa-snapchat hover-opacity"></i>
-    <i class="fa fa-pinterest-p hover-opacity"></i>
-    <i class="fa fa-twitter hover-opacity"></i>
-    <i class="fa fa-linkedin hover-opacity"></i>
-    <p class="medium">Created by Prince and Valli</p>
+<footer class="s-container s-padding-64 s-center s-opacity s-light-grey s-xlarge">
+    <i class="fa fa-facebook-official s-hover-opacity"></i>
+    <i class="fa fa-instagram s-hover-opacity"></i>
+    <i class="fa fa-snapchat s-hover-opacity"></i>
+    <i class="fa fa-pinterest-p s-hover-opacity"></i>
+    <i class="fa fa-twitter s-hover-opacity"></i>
+    <i class="fa fa-linkedin s-hover-opacity"></i>
+    <p class="s-medium">Created by Prince and Valli</p>
 </footer>
 
 </html>
