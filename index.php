@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="js/login.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Database Access</title>
-</head>
-<body>
-Sure! Below is an example index.html that works with the previously provided JavaScript (script.js). This HTML file includes the necessary elements for the login overlay, buttons to open and close the overlay, and placeholders for the login form and error messages.
-HTML (index.html)
-
-html
-
-<!DOCTYPE html>
-<html>
-<head>
     <title>Page with Login Overlay</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
