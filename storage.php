@@ -43,7 +43,7 @@
             </div>
         </nav>
 
-        <div class="w3-main w3-content">
+        <div class="w3-main w3-content w3-left">
             <h1>Welcome [Add first name here]</h1>
             <div>
                 <button id="Create_Test_Bucket" > Create Test Bucket </button>
