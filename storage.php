@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <script src="js/login.js"></script>
     <script src="js/script.js"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+    <link rel="stylesheet" href="style.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Database Access</title>
 </head>
@@ -43,7 +44,7 @@
             </div>
         </nav>
 
-        <div class="w3-left">
+        <div class="w3-left w3-padding-64">
             <h1>Welcome [Add first name here]</h1>
             <div>
                 <button id="Create_Test_Bucket" > Create Test Bucket </button>
