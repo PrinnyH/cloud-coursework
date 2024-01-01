@@ -47,15 +47,21 @@
         <div class="w3-left w3-padding-large" style="margin-left:20px;">
             <h1>Welcome [Add first name here]</h1>
             <div>
-                <button id="Create_Test_Bucket" > Create Test Bucket </button>
-                <div id ="output">
-                    <h5>...</h5>
-                </div>
-                <p>
-                <button id="Read_Test_Bucket"> Read Test Bucket </button>
-                <div id ="output2">
-                    <h5>...</h5>
-                </div>
+                <button> Create Folder </button>
+                <button> Upload File </button>
+                <button> Expand All </button>
+
+                <p> Per item in this list 
+                <p> Per Folder Listed
+                <button> Create Folder </button>
+                <button> Delete Folder </button>
+                <button> Upload To </button>
+
+                <p> Per File Listed
+                <button> Delete </button>
+                
+                <p> Drag/Drop all else
+
             </div>
         </div>
 
