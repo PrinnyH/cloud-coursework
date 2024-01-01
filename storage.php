@@ -19,7 +19,7 @@
     </div>
     
     <!--Main Content  -->
-    <div class="w3-main w3-content" style="max-width:1600px;margin-top:83px">
+    <div class="w3-main w3-content" style="margin-top:83px">
         <!-- Sidebar/nav bar -->
         <nav class="sideNav w3-sidebar w3-bar-block w3-light-grey w3-top" style="width:250px;">
             <div id ="sideNavExpanded"> 
