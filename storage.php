@@ -21,7 +21,7 @@
     <!--Main Content  -->
     <div class="w3-main w3-content" style="max-width:1600px;margin-top:83px">
         <!-- Sidebar/nav bar -->
-        <nav class="sideNav w3-sidebar w3-bar-block w3-light-grey w3-collapse w3-top" style="width:250px;margin-top:83px">
+        <nav class="sideNav w3-sidebar w3-bar-block w3-light-grey w3-top" style="width:250px;">
             <div id ="sideNavExpanded"> 
                 <div class="w3-container w3-display-container w3-padding-16">
                     <i class="hide-nav-button fa fas fa-angle-double-left w3-display-topright w3-button w3-xxlarge w3-transparent"></i>
