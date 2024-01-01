@@ -23,7 +23,7 @@
     <!--Main Content  -->
     <div style="max-width:2000px; margin-top:83px;">
         <!-- Sidebar/nav bar -->
-        <nav class="sideNav w3-bar-block w3-light-grey w3-left" style="width:250px; position:flex;">
+        <nav class="sideNav w3-bar-block w3-light-grey w3-left" style="width:250px; height:100%; position:flex;">
             <div id ="sideNavExpanded"> 
                 <div class="w3-container w3-display-container w3-padding-16">
                     <i class="hide-nav-button fa fas fa-angle-double-left w3-display-topright w3-button w3-xxlarge w3-transparent"></i>
