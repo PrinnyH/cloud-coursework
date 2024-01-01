@@ -29,7 +29,7 @@
                 <div class="w3-container w3-display-container w3-padding-16">
                     <i class="hide-nav-button fa fas fa-angle-double-left w3-display-topright w3-button w3-xxlarge w3-transparent"></i>
                 </div>
-                <div class="w3-padding-large w3-large w3-text-grey" style="font-weight:bold">
+                <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
                     <a href="#" class="w3-bar-item w3-button">My Files</a>
                     <a href="#" class="w3-bar-item w3-button">My Shared Files</a>
                 </div>
@@ -44,7 +44,7 @@
             </div>
         </nav>
 
-        <div class="w3-left w3-padding-64">
+        <div class="w3-left w3-padding-large" style="margin-left:20px;">
             <h1>Welcome [Add first name here]</h1>
             <div>
                 <button id="Create_Test_Bucket" > Create Test Bucket </button>
