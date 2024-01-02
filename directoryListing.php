@@ -10,34 +10,29 @@ function list_all_directories($bucketName) {
     $allDirectories = [];
     foreach ($bucket->objects() as $object) {
         $objectName = $object->name();
-        // Ignore empty paths or trailing slashes indicating pseudo-directories
-        if (empty($objectName) || substr($objectName, -1) === '/') {
-            continue;
-        }
-
+        // Split the object name into path parts
         $pathParts = explode('/', $objectName);
 
         // Reference to start of the array
         $currentLevel = &$allDirectories;
 
         foreach ($pathParts as $index => $part) {
-            // Ignore empty parts to avoid blank entries
+            // Skip empty parts
             if (empty($part)) {
                 continue;
             }
 
-            // Directory logic
+            // Add '/' at the end of the directory name
+            $part .= ($index < count($pathParts) - 1) ? '/' : '';
+
+            // Initialize the directory or file in the array
+            if (!isset($currentLevel[$part])) {
+                $currentLevel[$part] = ($index < count($pathParts) - 1) ? [] : null;
+            }
+
+            // Move reference deeper into the array
             if ($index < count($pathParts) - 1) {
-                // This is a directory
-                if (!isset($currentLevel[$part . '/'])) {
-                    $currentLevel[$part . '/'] = [];
-                }
-                $currentLevel = &$currentLevel[$part . '/'];
-            } else {
-                // This is a file
-                if (!isset($currentLevel[$part])) {
-                    $currentLevel[$part] = []; // Modify as needed for file details
-                }
+                $currentLevel = &$currentLevel[$part];
             }
         }
     }
