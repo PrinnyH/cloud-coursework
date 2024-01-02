@@ -35,7 +35,7 @@ function print_directories_html($directories, $level = 0) {
         // Escape the directory name to prevent XSS attacks
         $dirSafe = htmlspecialchars($dir);
 
-        $html .= "<li>├─{$dirSafe}/"
+        $html .= "<li>├─{$dirSafe}/";
         // Add a button next to each directory
         //directory
         if (str_ends_with($dirSafe, '/')){
@@ -43,7 +43,8 @@ function print_directories_html($directories, $level = 0) {
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>+🗀</button>
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>🗑</button>
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>+🖹</button>";
-        }else{
+        }
+        else        {
             $html .= "
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>🗑</button>";
         }
