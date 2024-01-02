@@ -53,12 +53,16 @@ function print_directories_html($directories, $level = 0) {
     foreach ($directories as $dir => $subDirs) {
         $dirSafe = htmlspecialchars($dir); // Escape the directory name
 
+        // Split the path and get the last part for display
+        $pathParts = explode('/', rtrim($dirSafe, '/'));
+        $displayName = end($pathParts);
+
         // Flex container for each list item's content
         $html .= "<li style='padding-top: 10px;'>";
         $html .= "<div style='display: flex; justify-content: space-between; align-items: center; width: 100%;'>";
 
-        // Directory/file name
-        $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─{$dirSafe}</span>";
+        // Display only the last part of the path
+        $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─{$displayName}</span>";
 
         // Buttons (conditionally displayed)
         if (substr($dirSafe, -1) === '/') {
