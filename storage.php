@@ -6,6 +6,8 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.html");
     exit();
 }
+$name = $_SESSION['user_id']
+
 ?>
 <html lang="en">
 <head>
@@ -54,7 +56,7 @@ if (!isset($_SESSION['user_id'])) {
         </nav>
 
         <div class="w3-left w3-padding-large" style="margin-left:20px;">
-            <h1>Welcome <?php echo htmlspecialchars($email); ?></h1>
+            <h1>Welcome <?php echo htmlspecialchars($name); ?></h1>
             <div>
                 <button> Create Folder </button>
                 <button> Upload File </button>
