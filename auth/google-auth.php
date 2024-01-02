@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_token = $_POST['token'];
 
     // Include Google Client Library
-    require 'vendor/autoload.php';
+    require_once 'vendor/autoload.php';
 
     $client = new Google_Client(['client_id' => '23146911805-tuefejed4hddunmos49sph1jgvub608o']);  // Specify your app's client ID
 
