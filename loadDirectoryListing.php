@@ -1,7 +1,7 @@
 <?php
-    require 'vendor/autoload.php';
+    //require 'vendor/autoload.php';
 
-    use Google\Cloud\Storage\StorageClient;
+    //use Google\Cloud\Storage\StorageClient;
 
     session_start();
 
