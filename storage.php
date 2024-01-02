@@ -19,8 +19,11 @@ $name = $_SESSION['user_id']
         function handleDirectoryClick(button) {
             var dirName = button.getAttribute('data-dir');
             console.log("Button clicked for directory: " + dirName);
-            // Further actions can be added here
         }
+        function handleAddDirectory(this){}
+        function handleDeleteDirectory(this){}
+        function handleUploadFile(this){}
+        function handleDeleteFile(this){}
     </script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
