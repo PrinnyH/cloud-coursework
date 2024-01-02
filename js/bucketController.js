@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
     function handleAddDirectory(){
         var dirName = button.getAttribute('data-dir');
         
@@ -27,11 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
         var dirName = button.getAttribute('data-dir');
         console.log("Button clicked for directory: " + dirName);
     }
-    function handleUploadFile(){
+    
+    function handleDeleteFile(){
         var dirName = button.getAttribute('data-dir');
         console.log("Button clicked for directory: " + dirName);
     }
-    function handleDeleteFile(){
+
+    function handleUploadFile(){
         var dirName = button.getAttribute('data-dir');
         console.log("Button clicked for directory: " + dirName);
     }
@@ -54,4 +54,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Call this function to initially load the directory listing
 loadDirectoryListing();
-});
