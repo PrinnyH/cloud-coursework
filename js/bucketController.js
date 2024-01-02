@@ -53,5 +53,5 @@ function loadDirectoryListing() {
 };
     
 document.addEventListener('DOMContentLoaded', function() {
-    loadDirectoryListing();
+    //loadDirectoryListing();
 });
