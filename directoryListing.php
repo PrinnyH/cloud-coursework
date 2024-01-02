@@ -1,8 +1,9 @@
 <?php
-session_start();
 require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
+
+session_start();
 
 function list_all_directories() {
     $storage = new StorageClient();

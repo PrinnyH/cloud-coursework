@@ -72,16 +72,9 @@ $name = $_SESSION['user_id']
                 <p> Drag/Drop all else
 
             </div>
-            <!-- <div id="directoryListing">
-            </div> -->
-
-            <?php
-                echo "nothing";
-                //include 'directoryListing.php'; 
-
-                //$directories = list_all_directories();
-                //echo print_directories_html($directories);
-            ?>
+            <div id="directoryListing">
+            </div>
+            
         </div>
 
 
