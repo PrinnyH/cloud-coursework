@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                window.location.href = 'storage.html'; // Redirect on success
+                window.location.href = 'storage.html'; 
                 console.log('User email: ' + data.email);
                 // Redirect or update UI
             } else {
