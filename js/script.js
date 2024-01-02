@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = 'storage.html'; // Redirect on success
                 } else {
                     alert('Incorrect username or password.'); // Show error message
-                }
+                } 
             }
         };
 
