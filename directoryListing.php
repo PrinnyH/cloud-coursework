@@ -42,29 +42,32 @@ function list_all_directories($bucketName) {
 
 
 function print_directories_html($directories, $level = 0) {
-    $html = $level == 0 ? '<ul>' : '<ul style="list-style-type:none; padding-left:20px;">'; // Indent sub-lists
+    $html = $level == 0 ? '<ul style="padding: 0;">' : '<ul style="list-style-type:none; padding-left:20px;">';
 
     foreach ($directories as $dir => $subDirs) {
-        // Escape the directory name to prevent XSS attacks
-        $dirSafe = htmlspecialchars($dir);
+        $dirSafe = htmlspecialchars($dir); // Escape the directory name
 
-        $html .= "<li style='padding-top:10px;'>├─{$dirSafe}";
-        // Add a button next to each directory
-        //directory
-        if (substr($dirSafe, -1) === '/'){
-            $html .= "
-            <button onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
-            <button onclick='handleDeleteDirectory(this)' data-dir='{$dirSafe}'>🗑</button>
-            <button onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>";
-        }
-        else        {
-            $html .= "
-            <button onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>";
-        }
-            
+        // Flex container for each list item
+        $html .= "<li style='display: flex; justify-content: space-between; align-items: center; padding-top: 10px;'>";
 
+        // Directory/file name
+        $html .= "<span style='flex-grow: 1;'>├─{$dirSafe}</span>";
+
+        // Buttons (conditionally displayed)
+        if (substr($dirSafe, -1) === '/') {
+            $html .= "<span>
+                <button onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
+                <button onclick='handleDeleteDirectory(this)' data-dir='{$dirSafe}'>🗑</button>
+                <button onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
+              </span>";
+        } else {
+            $html .= "<span>
+                <button onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
+              </span>";
+        }
+
+        // Subdirectories
         if (!empty($subDirs)) {
-            // Recursively build the HTML for subdirectories
             $html .= print_directories_html($subDirs, $level + 1);
         }
 
