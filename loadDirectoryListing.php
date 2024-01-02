@@ -4,44 +4,44 @@
     use Google\Cloud\Storage\StorageClient;
 
     function list_all_directories($bucketName) {
-        $storage = new StorageClient();
-        $bucket = $storage->bucket($bucketName);
+        // $storage = new StorageClient();
+        // $bucket = $storage->bucket($bucketName);
 
         $allDirectories = [];
-        foreach ($bucket->objects() as $object) {
-            $objectName = $object->name();
-            $pathParts = explode('/', $objectName);
+        // foreach ($bucket->objects() as $object) {
+        //     $objectName = $object->name();
+        //     $pathParts = explode('/', $objectName);
 
-            $fullPath = ''; // Initialize an empty string to build the full path
+        //     $fullPath = ''; // Initialize an empty string to build the full path
 
-            foreach ($pathParts as $index => $part) {
-                // Skip empty parts
-                if (empty($part)) {
-                    continue;
-                }
+        //     foreach ($pathParts as $index => $part) {
+        //         // Skip empty parts
+        //         if (empty($part)) {
+        //             continue;
+        //         }
 
-                // Append this part to the full path
-                $fullPath .= $part;
+        //         // Append this part to the full path
+        //         $fullPath .= $part;
 
-                // Determine if the current part is a directory
-                $isDirectory = $index < count($pathParts) - 1;
+        //         // Determine if the current part is a directory
+        //         $isDirectory = $index < count($pathParts) - 1;
 
-                // Add a slash only if it's a directory
-                if ($isDirectory) {
-                    $fullPath .= '/';
-                }
+        //         // Add a slash only if it's a directory
+        //         if ($isDirectory) {
+        //             $fullPath .= '/';
+        //         }
 
-                // Add the current part to the array if it doesn't exist
-                if (!isset($allDirectories[$fullPath])) {
-                    $allDirectories[$fullPath] = $isDirectory ? [] : null;
-                }
+        //         // Add the current part to the array if it doesn't exist
+        //         if (!isset($allDirectories[$fullPath])) {
+        //             $allDirectories[$fullPath] = $isDirectory ? [] : null;
+        //         }
 
-                // Move reference deeper into the array for directories
-                if ($isDirectory) {
-                    $currentLevel = &$allDirectories[$fullPath];
-                }
-            }
-        }
+        //         // Move reference deeper into the array for directories
+        //         if ($isDirectory) {
+        //             $currentLevel = &$allDirectories[$fullPath];
+        //         }
+        //     }
+        // }
 
         return $allDirectories;
     }
