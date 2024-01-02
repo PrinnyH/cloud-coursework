@@ -42,16 +42,17 @@ function list_all_directories($bucketName) {
 
 
 function print_directories_html($directories, $level = 0) {
-    $html = $level == 0 ? '<ul style="padding: 0;">' : '<ul style="list-style-type:none; padding-left:20px;">';
+    $html = $level == 0 ? '<ul style="padding: 0; margin: 0;">' : '<ul style="list-style-type:none; padding-left:20px;">';
 
     foreach ($directories as $dir => $subDirs) {
         $dirSafe = htmlspecialchars($dir); // Escape the directory name
 
-        // Flex container for each list item
-        $html .= "<li style='display: flex; justify-content: space-between; align-items: center; padding-top: 10px;'>";
+        // Flex container for each list item's content
+        $html .= "<li style='padding-top: 10px;'>";
+        $html .= "<div style='display: flex; justify-content: space-between; align-items: center; width: 100%;'>";
 
         // Directory/file name
-        $html .= "<span style='flex-grow: 1;'>├─{$dirSafe}</span>";
+        $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─{$dirSafe}</span>";
 
         // Buttons (conditionally displayed)
         if (substr($dirSafe, -1) === '/') {
@@ -65,6 +66,8 @@ function print_directories_html($directories, $level = 0) {
                 <button onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
               </span>";
         }
+
+        $html .= "</div>"; // Close flex container div
 
         // Subdirectories
         if (!empty($subDirs)) {
