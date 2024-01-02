@@ -42,7 +42,7 @@ $name = $_SESSION['user_id']
     <!--Main Content  -->
     <div class="w3-main w3-content" style="max-width:2000px; margin-top:83px; height:100%; display: flex; justify-content: space-between; align-items: center; width: 100%;">
         <!-- Sidebar/nav bar -->
-        <nav class="sideNav w3-bar-block w3-light-grey w3-left" style="width:250px; position:flex; height:100%">
+        <nav class="sideNav w3-bar-block w3-light-grey w3-left" style="min-width:250px; position:flex; height:100%">
             <div id ="sideNavExpanded"> 
                 <div class="w3-container w3-display-container w3-padding-16">
                     <i class="hide-nav-button fa fas fa-angle-double-left w3-display-topright w3-button w3-xxlarge w3-transparent"></i>
