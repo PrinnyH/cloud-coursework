@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start(); // Start the session
+print_r($_SESSION);
 
 // Check if the email is set in the session
 if (isset($_SESSION['email'])) {
