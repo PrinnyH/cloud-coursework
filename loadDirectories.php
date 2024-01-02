@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require 'directoryListing.php'; 
 
     $directories = list_all_directories();
