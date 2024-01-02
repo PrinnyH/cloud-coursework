@@ -37,7 +37,7 @@ $name = $_SESSION['user_id']
         </div>
     </div>
     <!--Main Content  -->
-    <div class="w3-main w3-content" style="max-width:2000px; margin-top:83px; height:100%; display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <div class="w3-main w3-content" style="max-width:2000px; margin-top:83px; height:100%; display: flex; justify-content: space-between; width: 100%;">
         <!-- Sidebar/nav bar -->
         <nav class="sideNav w3-bar-block w3-light-grey w3-left" style="min-width:250px; position:flex; height:100%">
             <div id ="sideNavExpanded"> 
