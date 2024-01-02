@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    function handleAddDirectory(this){
+    function handleAddDirectory(){
         var dirName = button.getAttribute('data-dir');
         
         var xhr = new XMLHttpRequest();
@@ -23,15 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.send(params);
     }
     
-    function handleDeleteDirectory(this){
+    function handleDeleteDirectory(){
         var dirName = button.getAttribute('data-dir');
         console.log("Button clicked for directory: " + dirName);
     }
-    function handleUploadFile(this){
+    function handleUploadFile(){
         var dirName = button.getAttribute('data-dir');
         console.log("Button clicked for directory: " + dirName);
     }
-    function handleDeleteFile(this){
+    function handleDeleteFile(){
         var dirName = button.getAttribute('data-dir');
         console.log("Button clicked for directory: " + dirName);
     }
