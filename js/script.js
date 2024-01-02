@@ -52,12 +52,13 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', openOverlay);
     });
 
-    function onGoogleSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    function handleCredentialResponse(response) {
+        var id_token = response.credential;
+        // The ID token you need to pass to your backend:
+        console.log("ID Token: " + id_token);
+
+
+        
     }
 
 
