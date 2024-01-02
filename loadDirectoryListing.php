@@ -3,11 +3,9 @@
 
     use Google\Cloud\Storage\StorageClient;
 
-    session_start();
-
-    function list_all_directories() {
+    function list_all_directories($bucketName) {
         $storage = new StorageClient();
-        $bucket = $storage->bucket($_SESSION['user_bucket_id']);
+        $bucket = $storage->bucket($bucketName);
 
         $allDirectories = [];
         foreach ($bucket->objects() as $object) {
@@ -50,7 +48,7 @@
 
 
     function print_directories_html($directories) {
-        $html = "<ul>";
+        $html = "<ul class='list-dir'>";
 
         foreach ($directories as $dir => $subDirs) {
             $dirSafe = htmlspecialchars($dir); // Escape the directory name
@@ -64,8 +62,8 @@
             $displayName = end($pathParts);
 
             // Flex container for each list item's content with border and background
-            $html .= "<li >";
-            $html .= "<div style='padding-left:{$indentation}px;'>"; // Light blue border and background
+            $html .= "<li class='list-dir-item'>";
+            $html .= "<div class='list-dir-item-container' style='padding-left:{$indentation}px;'>"; // Light blue border and background
 
             // Display only the last part of the path
             $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─{$displayName}</span>";
@@ -73,13 +71,13 @@
             // Buttons (conditionally displayed)
             if (substr($dirSafe, -1) === '/') {
                 $html .= "<span>
-                    <button onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
-                    <button onclick='handleDeleteDirectory(this)' data-dir='{$dirSafe}'>🗑</button>
-                    <button onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
+                    <button class='list-dir-item-button' onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
+                    <button class='list-dir-item-button' onclick='handleDeleteDirectory(this)' data-dir='{$dirSafe}'>🗑</button>
+                    <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
                 </span>";
             } else {
                 $html .= "<span>
-                    <button onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
+                    <button class='list-dir-item-button' onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
                 </span>";
             }
 
@@ -96,7 +94,7 @@
         $html .= '</ul>';
         return $html;
     }
-
-    // $directories = list_all_directories();
+    //$bucketName = $_SESSION['user_bucket_id'];
+    // $directories = list_all_directories($bucketName);
     // echo print_directories_html($directories);
 ?>
