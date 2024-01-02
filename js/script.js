@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function logout(){
-        window.location.href = 'index.php'; // Redirect
+        window.location.href = 'index.html'; // Redirect
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut();
         
