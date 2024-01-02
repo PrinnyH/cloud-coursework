@@ -2,8 +2,8 @@ function createTestBucket(){
     // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
 
-    // Configure it: GET-request for the URL /process.php
-    xhr.open('GET', 'process.php', true);
+    // Configure it: POST-request for the URL /process.php
+    xhr.open('POST', 'process.php', true);
 
     // This function will be called when the request is complete
     xhr.onload = function() {
@@ -34,8 +34,8 @@ function readTestBucket(){
     // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
 
-    // Configure it: GET-request for the URL /process.php
-    xhr.open('GET', 'readProcess.php', true);
+    // Configure it: POST-request for the URL /process.php
+    xhr.open('POST', 'readProcess.php', true);
 
     // This function will be called when the request is complete
     xhr.onload = function() {
