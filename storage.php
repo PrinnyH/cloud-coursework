@@ -78,7 +78,7 @@ $name = $_SESSION['user_id']
             <?php
                 include 'directoryListing.php'; 
 
-                $directories = list_all_directories();
+                //$directories = list_all_directories();
                 //echo print_directories_html($directories);
             ?>
         </div>
