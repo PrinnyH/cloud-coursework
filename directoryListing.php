@@ -1,9 +1,7 @@
 <?php
-
 require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
-
 
 function list_all_directories($bucketName) {
     $storage = new StorageClient();
@@ -37,7 +35,8 @@ function print_directories_html($directories, $level = 0) {
         // Escape the directory name to prevent XSS attacks
         $dirSafe = htmlspecialchars($dir);
 
-        $html .= "<li>{$dirSafe}/";
+        // Add a button next to each directory
+        $html .= "<li>{$dirSafe}/ <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>Action</button>";
 
         if (!empty($subDirs)) {
             // Recursively build the HTML for subdirectories
@@ -50,15 +49,4 @@ function print_directories_html($directories, $level = 0) {
     $html .= '</ul>';
     return $html;
 }
-
-
-$projectId = 'coursework-self-load-balance';
-$bucketName = '123123123123my-bucket';
-
-//$directories = list_directories_in_bucket($projectId, $bucketName);
-$directories = list_all_directories($bucketName);
-
-print_directories_html($directories);
-
-//print_r($directories);
 ?>
