@@ -21,22 +21,30 @@ function list_all_directories() {
             }
 
             // Append this part to the full path
-            // Add a slash only if it's not the last part (file name)
             $fullPath .= $part;
-            if ($index < count($pathParts) - 1) {
+
+            // Determine if the current part is a directory
+            $isDirectory = $index < count($pathParts) - 1;
+
+            // Add a slash only if it's a directory
+            if ($isDirectory) {
                 $fullPath .= '/';
             }
 
-            // Check if this is a directory (not the last part)
-            if ($index < count($pathParts) - 1 && !isset($allDirectories[$fullPath])) {
-                $allDirectories[$fullPath] = [];
+            // Add the current part to the array if it doesn't exist
+            if (!isset($allDirectories[$fullPath])) {
+                $allDirectories[$fullPath] = $isDirectory ? [] : null;
+            }
+
+            // Move reference deeper into the array for directories
+            if ($isDirectory) {
+                $currentLevel = &$allDirectories[$fullPath];
             }
         }
     }
 
     return $allDirectories;
 }
-
 
 
 function print_directories_html($directories, $level = 0) {
