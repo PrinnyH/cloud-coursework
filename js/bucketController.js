@@ -43,7 +43,7 @@ function loadDirectoryListing() {
     xhr.open('GET', 'loadDirectoryListing.php', true);
     xhr.onload = function() {
         if (this.status == 200) {
-            document.getElementById('directoryListing').innerHTML = this.responseText;
+            //document.getElementById('directoryListing').innerHTML = this.responseText;
         } else {
             console.error('Error loading directory listing');
         }
