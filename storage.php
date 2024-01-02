@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 $name = $_SESSION['user_id']
+$bucket_id = $_SESSION['user_bucket_id']
 
 ?>
 <html lang="en">
@@ -54,7 +55,7 @@ $name = $_SESSION['user_id']
         </nav>
 
         <div class="w3-left" style="margin:20px; width: 100%; box-sizing: border-box;">
-            <h1>Welcome <?php echo htmlspecialchars($name); ?></h1>
+            <h1>Welcome <?php echo htmlspecialchars($name);?> + <?php echo htmlspecialchars($bucket_id);?></h1>
             <div>
                 <button> Create Folder </button>
                 <button> Upload File </button>
