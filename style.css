@@ -2,3 +2,25 @@ html, body {
     height: 100%;
 }
 
+.list-dir{
+    padding: 0; 
+    margin: 0; 
+    list-style-type: none;
+}
+
+.list-dir-item {
+    margin-top: 1px;
+}
+
+.list-dir-item-container{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border: 1px solid #ADD8E6; 
+    background-color: #E0FFFF;
+}
+
+.list-dir-item-button{
+    background: #000;
+    color: azure;
+}

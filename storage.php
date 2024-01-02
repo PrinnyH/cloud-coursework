@@ -73,8 +73,8 @@ $name = $_SESSION['user_id']
 
             </div>
             <div id="directoryListing">
-                <!-- Directory listing will be loaded here -->
             </div>
+            <script> { loadDirectoryListing(); }</script>
         </div>
 
 
