@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function loadDirectoryListing() {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'loadDirectories.php', true);
+        xhr.open('POST', 'loadDirectories.php', true);
         
         xhr.onload = function() {
             if (this.status == 200) {
