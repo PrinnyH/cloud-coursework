@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Set session variables
                 $_SESSION['user_id'] = $userid;
                 $_SESSION['email'] = $email;
-                print_r($_SESSION);
                 // Respond to the client
                 echo json_encode(['status' => 'success', 'email' => $email]);
             } else {

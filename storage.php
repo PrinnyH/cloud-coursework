@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <?php
 session_start(); // Start the session
-// Check if the email is set in the session
-if (isset($_SESSION['email'])) {
-    $email = $_SESSION['email']; // Retrieve the email from the session
-} else {
-    $email = "Guest"; // Default value if the email isn't set
+if (!isset($_SESSION['user_id'])) {
+    // If the user is not logged in, redirect them to the login page
+    header("Location: index.html");
+    exit();
 }
 ?>
 <html lang="en">
