@@ -36,9 +36,6 @@ $name = $_SESSION['user_id']
             <a href="logout.php" class="logout-button w3-bar-item w3-button w3-padding-large w3-text-red w3-right">Logout</a>
         </div>
     </div>
-    
-    
-
     <!--Main Content  -->
     <div class="w3-main w3-content" style="max-width:2000px; margin-top:83px; height:100%; display: flex; justify-content: space-between; align-items: center; width: 100%;">
         <!-- Sidebar/nav bar -->
