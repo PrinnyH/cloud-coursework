@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        xhr.send();
+        xhr.send(new URLSearchParams(formData).toString());
     }
 
     // Attach event listener to all login buttons
