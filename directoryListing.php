@@ -21,10 +21,14 @@ function list_all_directories() {
             }
 
             // Append this part to the full path
-            $fullPath .= $part . '/';
+            // Add a slash only if it's not the last part (file name)
+            $fullPath .= $part;
+            if ($index < count($pathParts) - 1) {
+                $fullPath .= '/';
+            }
 
-            // Create an entry in the array if it doesn't exist
-            if (!isset($allDirectories[$fullPath])) {
+            // Check if this is a directory (not the last part)
+            if ($index < count($pathParts) - 1 && !isset($allDirectories[$fullPath])) {
                 $allDirectories[$fullPath] = [];
             }
         }
@@ -32,6 +36,7 @@ function list_all_directories() {
 
     return $allDirectories;
 }
+
 
 
 function print_directories_html($directories, $level = 0) {
