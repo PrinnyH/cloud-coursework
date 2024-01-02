@@ -40,7 +40,7 @@ function handleUploadFile(){
 function loadDirectoryListing() {
     var xhr = new XMLHttpRequest();
     
-    xhr.open('POST', 'loadDirectories.php', true);
+    xhr.open('POST', 'loadDirectoryListing.php', true);
     xhr.onload = function() {
         if (this.status == 200) {
             document.getElementById('directoryListing').innerHTML = this.responseText;
