@@ -55,10 +55,19 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleCredentialResponse(response) {
         var id_token = response.credential;
         // The ID token you need to pass to your backend:
-        console.log("ID Token: " + id_token);
+        fetch('auth/google-auth.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ token: id_token })
+        }).then(response => response.json())
+          .then(data => {
+            // Handle response data
+            console.log(data);
+        });
 
 
-        
     }
 
 
