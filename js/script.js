@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.onload = function() {
             if (this.status == 200) {
                 if (this.responseText === 'true') {
-                    window.location.href = 'storage.php'; // Redirect on success
+                    window.location.href = 'storage.html'; // Redirect on success
                 } else {
                     alert('Incorrect username or password.'); // Show error message
                 }
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                window.location.href = 'storage.php'; // Redirect on success
+                window.location.href = 'storage.html'; // Redirect on success
                 console.log('User email: ' + data.email);
                 // Redirect or update UI
             } else {
