@@ -62,7 +62,7 @@ $name = $_SESSION['user_id']
             </div>
         </nav>
 
-        <div class="w3-left w3-padding-large" style="margin-left:20px; width: 100%; box-sizing: border-box;">
+        <div class="w3-left" style="margin:20px; width: 100%; box-sizing: border-box;">
             <h1>Welcome <?php echo htmlspecialchars($name); ?></h1>
             <div>
                 <button> Create Folder </button>
