@@ -6,8 +6,8 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.html");
     exit();
 }
-$name = $_SESSION['user_id']
-$bucket_id = $_SESSION['user_bucket_id']
+$name = $_SESSION['user_id'];
+$bucket_id = $_SESSION['user_bucket_id'];
 
 ?>
 <html lang="en">
