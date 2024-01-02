@@ -74,7 +74,6 @@ $name = $_SESSION['user_id']
             </div>
             <div id="directoryListing">
             </div>
-            <script> { loadDirectoryListing(); }</script>
         </div>
 
 

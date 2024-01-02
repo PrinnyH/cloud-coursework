@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $storage = new StorageClient();
     $bucket = $storage->bucket($_SESSION['user_bucket_id']);
     
-
     echo 'true';
 } else {
     echo 'false';
