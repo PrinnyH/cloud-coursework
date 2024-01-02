@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.onload = function() {
             if (this.status == 200) {
                 if (this.responseText === 'true') {
-                    loadDirectoryListing();
+                    //loadDirectoryListing();
                 } else {
                     alert('There was a problem');
                 } 
@@ -39,22 +39,22 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
 
-    function loadDirectoryListing() {
-        var xhr = new XMLHttpRequest();
+    // function loadDirectoryListing() {
+    //     var xhr = new XMLHttpRequest();
         
-        xhr.open('POST', 'loadDirectoryListing.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    //     xhr.open('POST', 'loadDirectoryListing.php', true);
+    //     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    //     xhr.onload = function() {
+    //         if (this.status == 200) {
+    //             document.getElementById('directoryListing').innerHTML = this.responseText;
+    //         } else {
+    //             console.error('Error loading directory listing');
+    //         }
+    //     };
         
-        xhr.onload = function() {
-            if (this.status == 200) {
-                document.getElementById('directoryListing').innerHTML = this.responseText;
-            } else {
-                console.error('Error loading directory listing');
-            }
-        };
-        
-        xhr.send();
-    };
+    //     xhr.send();
+    // };
     
-    loadDirectoryListing();
+    // loadDirectoryListing();
 });

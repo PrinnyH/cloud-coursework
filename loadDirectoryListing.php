@@ -97,6 +97,6 @@
         return $html;
     }
 
-    $directories = list_all_directories();
-    echo print_directories_html($directories);
+    // $directories = list_all_directories();
+    // echo print_directories_html($directories);
 ?>
