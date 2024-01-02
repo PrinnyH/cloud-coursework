@@ -41,9 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        xhr.send(new URLSearchParams(formData).toString());
-
-        //start session here
+        xhr.send();
     }
 
     // Attach event listener to all login buttons

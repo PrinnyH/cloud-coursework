@@ -15,16 +15,7 @@ $name = $_SESSION['user_id']
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="js/login.js"></script>
     <script src="js/script.js"></script>
-    <script>
-        function handleDirectoryClick(button) {
-            var dirName = button.getAttribute('data-dir');
-            console.log("Button clicked for directory: " + dirName);
-        }
-        function handleAddDirectory(this){}
-        function handleDeleteDirectory(this){}
-        function handleUploadFile(this){}
-        function handleDeleteFile(this){}
-    </script>
+    <script src="js/bucketController.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
@@ -81,17 +72,8 @@ $name = $_SESSION['user_id']
                 <p> Drag/Drop all else
 
             </div>
-            <div>
-                <?php
-                    session_start();
-                    include 'directoryListing.php'; // Include the separate PHP file here
-
-                    $projectId = 'coursework-self-load-balance';
-                    $bucketName = $_SESSION['user_bucket_id'];
-
-                    $directories = list_all_directories($bucketName);
-                    echo print_directories_html($directories);
-                ?>
+            <div id="directoryListing">
+                <!-- Directory listing will be loaded here -->
             </div>
         </div>
 

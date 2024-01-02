@@ -3,18 +3,16 @@ require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
 
-function list_all_directories($bucketName) {
+function list_all_directories() {
     $storage = new StorageClient();
-    $bucket = $storage->bucket($bucketName);
+    $bucket = $storage->bucket($_SESSION['user_bucket_id']);
 
     $allDirectories = [];
     foreach ($bucket->objects() as $object) {
         $objectName = $object->name();
-        // Split the object name into path parts
         $pathParts = explode('/', $objectName);
 
-        // Reference to start of the array
-        $currentLevel = &$allDirectories;
+        $fullPath = ''; // Initialize an empty string to build the full path
 
         foreach ($pathParts as $index => $part) {
             // Skip empty parts
@@ -22,17 +20,12 @@ function list_all_directories($bucketName) {
                 continue;
             }
 
-            // Add '/' at the end of the directory name
-            $part .= ($index < count($pathParts) - 1) ? '/' : '';
+            // Append this part to the full path
+            $fullPath .= $part . '/';
 
-            // Initialize the directory or file in the array
-            if (!isset($currentLevel[$part])) {
-                $currentLevel[$part] = ($index < count($pathParts) - 1) ? [] : null;
-            }
-
-            // Move reference deeper into the array
-            if ($index < count($pathParts) - 1) {
-                $currentLevel = &$currentLevel[$part];
+            // Create an entry in the array if it doesn't exist
+            if (!isset($allDirectories[$fullPath])) {
+                $allDirectories[$fullPath] = [];
             }
         }
     }
