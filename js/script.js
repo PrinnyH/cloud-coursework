@@ -53,21 +53,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function handleCredentialResponse(response) {
-        var id_token = response.credential;
-        // The ID token you need to pass to your backend:
-        fetch('auth/google-auth.php', {
+        var id_token = googleUser.getAuthResponse().id_token;
+
+        fetch('/auth/google-auth.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ token: id_token })
-        }).then(response => response.json())
-          .then(data => {
-            // Handle response data
-            console.log(data);
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                window.location.href = 'storage.php'; // Redirect on success
+                console.log('User email: ' + data.email);
+                // Redirect or update UI
+            } else {
+                console.error('Error:', data.message);
+            }
         });
-
-
+       
     }
 
 

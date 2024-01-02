@@ -1,4 +1,5 @@
 <?php
+session_start(); // Start a new session or resume the existing one
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the ID token sent by the client
@@ -13,20 +14,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $payload = $client->verifyIdToken($id_token);
         if ($payload) {
-            $userid = $payload['sub'];
-            // If request specified a G Suite domain:
-            //$domain = $payload['hd'];
+            $userid = $payload['sub']; // User's unique Google ID
+            $email = $payload['email']; // User's email address
+            $email_verified = $payload['email_verified']; // Boolean: whether the email is verified
 
-            // Perform user authentication and session management here
-            // ...
+            // Check if the email is verified
+            if ($email_verified) {
+                // Set session variables
+                $_SESSION['user_id'] = $userid;
+                $_SESSION['email'] = $email;
 
-            echo json_encode(['status' => 'success', 'userid' => $userid]);
+                // Respond to the client
+                echo json_encode(['status' => 'success', 'email' => $email]);
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Email not verified']);
+            }
         } else {
-            // Invalid ID token
             echo json_encode(['status' => 'error', 'message' => 'Invalid ID token']);
         }
     } catch (Exception $e) {
-        // Handle error
         echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     }
 } else {
