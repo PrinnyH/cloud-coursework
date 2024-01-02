@@ -14,13 +14,18 @@ function list_all_directories($bucketName) {
         // Reference to start of the array
         $currentLevel = &$allDirectories;
 
-        foreach ($pathParts as $part) {
-            // Build nested array structure
-            if ($part != end($pathParts)) { // Ignore the actual file name
-                if (!isset($currentLevel[$part])) {
-                    $currentLevel[$part] = [];
+        foreach ($pathParts as $index => $part) {
+            if ($index < count($pathParts) - 1) {
+                // This is a directory
+                if (!isset($currentLevel[$part . '/'])) {
+                    $currentLevel[$part . '/'] = [];
                 }
-                $currentLevel = &$currentLevel[$part];
+                $currentLevel = &$currentLevel[$part . '/'];
+            } else {
+                // This is a file
+                if (!isset($currentLevel[$part])) {
+                    $currentLevel[$part] = []; // You can change this if you need to store more information about files
+                }
             }
         }
     }
@@ -35,10 +40,10 @@ function print_directories_html($directories, $level = 0) {
         // Escape the directory name to prevent XSS attacks
         $dirSafe = htmlspecialchars($dir);
 
-        $html .= "<li>├─{$dirSafe}/";
+        $html .= "<li>├─{$dirSafe}";
         // Add a button next to each directory
         //directory
-        if (str_ends_with($dirSafe, '/')){
+        if (substr($dirSafe, -1) === '/'){
             $html .= "
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>+🗀</button>
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>🗑</button>
