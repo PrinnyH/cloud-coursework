@@ -48,7 +48,7 @@ function list_all_directories() {
 
 
 function print_directories_html($directories) {
-    $html = '<ul style="padding: 0; margin: 0; list-style-type: none;">';
+    $html = "<ul class='list-dir'>";
 
     foreach ($directories as $dir => $subDirs) {
         $dirSafe = htmlspecialchars($dir); // Escape the directory name
@@ -62,8 +62,8 @@ function print_directories_html($directories) {
         $displayName = end($pathParts);
 
         // Flex container for each list item's content with border and background
-        $html .= "<li style='padding-top: 10px;'>";
-        $html .= "<div style='display: flex; justify-content: space-between; align-items: center; padding-left: {$indentation}px; border: 1px solid #ADD8E6; background-color: #E0FFFF;'>"; // Light blue border and background
+        $html .= "<li class='list-dir-item'>";
+        $html .= "<div class='list-dir-item-container' style='padding-left:{$indentation}px;'>"; // Light blue border and background
 
         // Display only the last part of the path
         $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─{$displayName}</span>";
@@ -71,13 +71,13 @@ function print_directories_html($directories) {
         // Buttons (conditionally displayed)
         if (substr($dirSafe, -1) === '/') {
             $html .= "<span>
-                <button onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
-                <button onclick='handleDeleteDirectory(this)' data-dir='{$dirSafe}'>🗑</button>
-                <button onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
+                <button class='list-dir-item-button' onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
+                <button class='list-dir-item-button' onclick='handleDeleteDirectory(this)' data-dir='{$dirSafe}'>🗑</button>
+                <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
               </span>";
         } else {
             $html .= "<span>
-                <button onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
+                <button class='list-dir-item-button' onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
               </span>";
         }
 
