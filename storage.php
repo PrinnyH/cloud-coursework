@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<?php
+session_start(); // Start the session
+
+// Check if the email is set in the session
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email']; // Retrieve the email from the session
+} else {
+    $email = "Guest"; // Default value if the email isn't set
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,7 +56,7 @@
         </nav>
 
         <div class="w3-left w3-padding-large" style="margin-left:20px;">
-            <h1>Welcome [Add first name here]</h1>
+            <h1>Welcome <?php echo htmlspecialchars($email); ?></h1>
             <div>
                 <button> Create Folder </button>
                 <button> Upload File </button>
