@@ -39,15 +39,14 @@ function print_directories_html($directories, $level = 0) {
         // Add a button next to each directory
         //directory
         if (str_ends_with($dirSafe, '/')){
-            html .= "
+            $html .= "
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>+🗀</button>
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>🗑</button>
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>+🖹</button>";
         }else{
-            html .= "
+            $html .= "
             <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>🗑</button>";
         }
-        
             
 
         if (!empty($subDirs)) {
