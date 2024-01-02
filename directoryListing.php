@@ -47,11 +47,15 @@ function list_all_directories() {
 }
 
 
-function print_directories_html($directories, $level = 0) {
-    $html = $level == 0 ? '<ul style="padding: 0; margin: 0;">' : '<ul style="list-style-type:none; padding-left:20px;">';
+function print_directories_html($directories) {
+    $html = '<ul style="padding: 0; margin: 0;">';
 
     foreach ($directories as $dir => $subDirs) {
         $dirSafe = htmlspecialchars($dir); // Escape the directory name
+
+        // Calculate the number of slashes in the path to determine indentation
+        $slashCount = substr_count($dirSafe, '/');
+        $indentation = $slashCount * 20; // 20px per slash for example
 
         // Split the path and get the last part for display
         $pathParts = explode('/', rtrim($dirSafe, '/'));
@@ -59,7 +63,7 @@ function print_directories_html($directories, $level = 0) {
 
         // Flex container for each list item's content
         $html .= "<li style='padding-top: 10px;'>";
-        $html .= "<div style='display: flex; justify-content: space-between; align-items: center; width: 100%;'>";
+        $html .= "<div style='display: flex; justify-content: space-between; align-items: center; padding-left: {$indentation}px;'>";
 
         // Display only the last part of the path
         $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─{$displayName}</span>";
@@ -81,7 +85,7 @@ function print_directories_html($directories, $level = 0) {
 
         // Subdirectories
         if (!empty($subDirs)) {
-            $html .= print_directories_html($subDirs, $level + 1);
+            $html .= print_directories_html($subDirs);
         }
 
         $html .= '</li>';
