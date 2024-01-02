@@ -48,7 +48,7 @@ function list_all_directories() {
 
 
 function print_directories_html($directories) {
-    $html = '<ul style="padding: 0; margin: 0;">';
+    $html = '<ul style="padding: 0; margin: 0; list-style-type: none;">';
 
     foreach ($directories as $dir => $subDirs) {
         $dirSafe = htmlspecialchars($dir); // Escape the directory name
@@ -61,9 +61,9 @@ function print_directories_html($directories) {
         $pathParts = explode('/', rtrim($dirSafe, '/'));
         $displayName = end($pathParts);
 
-        // Flex container for each list item's content
+        // Flex container for each list item's content with border and background
         $html .= "<li style='padding-top: 10px;'>";
-        $html .= "<div style='display: flex; justify-content: space-between; align-items: center; padding-left: {$indentation}px;'>";
+        $html .= "<div style='display: flex; justify-content: space-between; align-items: center; padding-left: {$indentation}px; border: 1px solid #ADD8E6; background-color: #E0FFFF;'>"; // Light blue border and background
 
         // Display only the last part of the path
         $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─{$displayName}</span>";
@@ -94,4 +94,5 @@ function print_directories_html($directories) {
     $html .= '</ul>';
     return $html;
 }
+
 ?>
