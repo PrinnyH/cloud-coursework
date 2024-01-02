@@ -29,14 +29,14 @@ function list_all_directories($bucketName) {
 }
 
 function print_directories_html($directories, $level = 0) {
-    $html = $level == 0 ? '<ul>' : '<ul style="list-style-type:none; padding-left:20px;">'; // Indent sub-lists
+    $html = $level == 0 ? '<ul>│' : '<ul style="list-style-type:none; padding-left:20px;">'; // Indent sub-lists
 
     foreach ($directories as $dir => $subDirs) {
         // Escape the directory name to prevent XSS attacks
         $dirSafe = htmlspecialchars($dir);
 
         // Add a button next to each directory
-        $html .= "<li>{$dirSafe}/ <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>Action</button>";
+        $html .= "<li>├─{$dirSafe}/ <button onclick='handleDirectoryClick(this)' data-dir='{$dirSafe}'>+Folder</button>";
 
         if (!empty($subDirs)) {
             // Recursively build the HTML for subdirectories
