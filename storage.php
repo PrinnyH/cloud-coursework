@@ -28,7 +28,7 @@ $name = $_SESSION['user_id']
     <link rel="stylesheet" href="style.css"> 
     <title>Database Access</title>
 </head>
-<body style="height:100%">
+<body style="height:100% style='display: flex; justify-content: space-between; align-items: center; width: 100%;'">
     <!-- Navbar -->
         <div class="w3-top">
         <div class="w3-bar w3-black w3-card">
@@ -40,7 +40,7 @@ $name = $_SESSION['user_id']
     
 
     <!--Main Content  -->
-    <div class="w3-main w3-content" style="margin-top:83px; height:100% sdisplay: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <div class="w3-main w3-content" style="max-width:2000px; margin-top:83px; height:100%">
         <!-- Sidebar/nav bar -->
         <nav class="sideNav w3-bar-block w3-light-grey w3-left" style="width:250px; position:flex; height:100%">
             <div id ="sideNavExpanded"> 
