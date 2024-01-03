@@ -134,10 +134,12 @@ function handleUploadFile(button) {
     input.onchange = function() {
         if (this.files.length > 0) {
             var formData = new FormData();
-            console.log(dirSelected);
-            console.log(this.files);
             formData.append('dirSelected', dirSelected);
-            formData.append('uploadedFiles', this.files);
+
+            // Append each file to the FormData object
+            for (var i = 0; i < this.files.length; i++) {
+                formData.append('uploadedFiles[]', this.files[i]);
+            }
 
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'uploadFile.php', true);
@@ -160,6 +162,7 @@ function handleUploadFile(button) {
     input.value = '';
     input.click();
 }
+
 
 
 
