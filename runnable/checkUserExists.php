@@ -1,7 +1,5 @@
 <?php
 
-
-
 // Set the connection timeout
 $timeout = 10; // Timeout in seconds
 $mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, $timeout);
