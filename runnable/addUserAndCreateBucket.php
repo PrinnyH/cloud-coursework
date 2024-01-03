@@ -1,5 +1,6 @@
 <?php
     require_once("credentials.php");
+    session_start();
 
     // Set the connection timeout
     $timeout = 10; // Timeout in seconds
