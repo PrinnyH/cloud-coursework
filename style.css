@@ -27,5 +27,6 @@ html, body {
 
 
 .editable-name {
-    padding: 5px;
+    margin: 5px;
+    padding: 1px;
 }
