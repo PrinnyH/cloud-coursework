@@ -128,7 +128,7 @@ function validateName(name) {
 
 function handleUploadFile(button) {
     var dirSelected = button.getAttribute('data-dir');
-    var input = document.getElementById('fileFolderInput');
+    var input = document.getElementById('fileInput');
 
     // Configure the input for file or folder selection
     input.onchange = function() {
@@ -163,6 +163,42 @@ function handleUploadFile(button) {
     input.click();
 }
 
+function handleUploadFolder(button) {
+    var dirSelected = button.getAttribute('data-dir');
+    var input = document.getElementById('folderInput');
+
+    // Configure the input for file or folder selection
+    input.onchange = function() {
+        if (this.files.length > 0) {
+            var formData = new FormData();
+            formData.append('dirSelected', dirSelected);
+
+            // Append each file to the FormData object
+            for (var i = 0; i < this.files.length; i++) {
+                formData.append('uploadedFiles[]', this.files[i]);
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'uploadFile.php', true);
+
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    if (this.responseText === 'true') {
+                        loadDirectoryListing();
+                    } else {
+                        alert('There was a problem');
+                    }
+                }
+            };
+
+            xhr.send(formData);
+        }
+    };
+
+    // Reset the input and trigger the file/folder input dialog
+    input.value = '';
+    input.click();
+}
 
 
 
