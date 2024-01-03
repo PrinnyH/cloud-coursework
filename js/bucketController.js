@@ -216,10 +216,42 @@ function drop(event) {
 }
 
 function handleMoveDirectory(draggedDir, targetDir) {
-    console.log('Rearranged:', draggedDir, 'onto', targetDir);
     
+    console.log('Rearranged:', draggedDir, 'onto', targetDir);
 
     
+
+    var endsWithSlash = draggedDir.endsWith('/');
+    var names = draggedDir.split("/");
+    var name = names[names.length - 1] === "" ? names[names.length - 2] + "/" : names[names.length - 1];
+    var newFullPath = targetDir + name + (endsWithSlash ? '/' : fileExtension);
+
+    console.log(draggedDir);
+    console.log(targetDir);
+    console.log(name);
+    console.log(newFullPath);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'renameDirectory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function() {
+        if (this.status == 200) {
+            if (this.responseText === 'true') {
+                loadDirectoryListing();
+            } else {
+                alert('There was a problem');
+            } 
+        }
+    };
+    
+    var params = new URLSearchParams();
+    params.append('oldDir', draggedDir);
+    params.append('newDir', newFullPath);
+    
+    xhr.send(params);
+
+
 
 }
 
