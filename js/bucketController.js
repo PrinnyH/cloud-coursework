@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.onload = function() {
             if (this.status == 200) {
                 if (this.responseText === 'true') {
-                    //loadDirectoryListing();
+                    loadDirectoryListing();
                 } else {
                     alert('There was a problem');
                 } 
