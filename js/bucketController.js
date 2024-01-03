@@ -29,7 +29,7 @@ function handleDelete(button) {
     if (confirmation !== "DELETE") {
         return;
     }
-    
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'deleteDirectory.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -72,7 +72,7 @@ function handleNameChange(element, fullPath, fileExtension) {
     if (!isValidName) {
         // If the name is invalid, highlight the input and exit the function
         element.style.borderColor = 'red';
-        alert('Invalid name. Please ensure the name does not contain spaces or special characters (/,?*:"<>|)');
+        alert('Invalid name. Please ensure the name does not contain spaces or special characters (/,?*:"<>|) and name is below 25 chracters');
         return;
     }
 
@@ -110,6 +110,7 @@ function handleNameChange(element, fullPath, fileExtension) {
 function validateName(name) {
     var validName = true;
     validName &= name.trim() !== '';
+    validName &= name.length <= 25;
     validName &= !name.includes(' ');
     validName &= !name.includes('/');
     validName &= !name.includes(',');

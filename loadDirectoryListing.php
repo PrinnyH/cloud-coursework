@@ -82,7 +82,7 @@
 
             // Make the directory/file name editable
             $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─";
-            $html .= "<input type='text' class='editable-name' oninput='this.size=this.value.length' value='{$fileName}' ";
+            $html .= "<input type='text' class='editable-name' value='{$fileName}' ";
             $html .= "onchange='handleNameChange(this, \"{$dirSafe}\", \"{$fileExtension}\")' />"; // Event when the name is changed
             $html .= $fileExtension; // Display the extension (not editable)
             $html .= "</span>";
