@@ -61,10 +61,13 @@ function handleNameChange(element, fullPath, fileExtension) {
     var basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
     var newFullPath = basePath + newName + (endsWithSlash ? '/' : fileExtension);
 
+    console.log(fullPath);
+    console.log(newFullPath);
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'moveDirectory.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    
+
     xhr.onload = function() {
         if (this.status == 200) {
             if (this.responseText === 'true') {
