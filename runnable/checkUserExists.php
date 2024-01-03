@@ -17,7 +17,6 @@ if ($mysqli->connect_error) {
 }
 
 $email = $_SESSION['email']; // Assuming $_SESSION['email'] is already set
-console_log($email);
 
 // Prepare the query
 if ($stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?")) {
