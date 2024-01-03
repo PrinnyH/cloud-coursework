@@ -73,13 +73,13 @@
             // Buttons (conditionally displayed)
             if (substr($dirSafe, -1) === '/') {
                 $html .= "<span>
-                    <button class='list-dir-item-button' onclick='handleAddDirectory()' data-dir='{$dirSafe}'>+🗀</button>
-                    <button class='list-dir-item-button' onclick='handleDeleteDirectory()' data-dir='{$dirSafe}'>🗑</button>
-                    <button class='list-dir-item-button' onclick='handleUploadFile()' data-dir='{$dirSafe}'>+🖹</button>
+                    <button class='list-dir-item-button' onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
+                    <button class='list-dir-item-button' onclick='handleDeleteDirectory(this)' data-dir='{$dirSafe}'>🗑</button>
+                    <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
                 </span>";
             } else {
                 $html .= "<span>
-                    <button class='list-dir-item-button' onclick='handleDeleteFile()' data-dir='{$dirSafe}'>🗑</button>
+                    <button class='list-dir-item-button' onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
                 </span>";
             }
 

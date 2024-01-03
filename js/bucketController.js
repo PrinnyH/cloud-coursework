@@ -1,5 +1,5 @@
 
-function handleAddDirectory(){
+function handleAddDirectory(button){
     var dirName = button.getAttribute('data-dir');
     
     var xhr = new XMLHttpRequest();
@@ -22,17 +22,17 @@ function handleAddDirectory(){
     xhr.send(params);
 };
 
-function handleDeleteDirectory(){
+function handleDeleteDirectory(button){
     var dirName = button.getAttribute('data-dir');
     console.log("Button clicked for directory: " + dirName);
 };
 
-function handleDeleteFile(){
+function handleDeleteFile(button){
     var dirName = button.getAttribute('data-dir');
     console.log("Button clicked for directory: " + dirName);
 };
 
-function handleUploadFile(){
+function handleUploadFile(button){
     var dirName = button.getAttribute('data-dir');
     console.log("Button clicked for directory: " + dirName);
 };
