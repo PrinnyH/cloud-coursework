@@ -17,6 +17,8 @@
             array_pop($pathParts); // Remove the file name
             $parentDir = implode('/', $pathParts) . '/';
 
+            if ($parentDir === "/") $parentDir = "";    //check for root dir
+
             // List objects in the current directory
             $objects = $bucket->objects(['prefix' => $filePath]);
             foreach ($objects as $object) {
