@@ -134,6 +134,8 @@ function handleUploadFile(button) {
     input.onchange = function() {
         if (this.files.length > 0) {
             var formData = new FormData();
+            console.log(dirSelected);
+            console.log(this.files);
             formData.append('dirSelected', dirSelected);
             formData.append('uploadedFiles', this.files);
 
