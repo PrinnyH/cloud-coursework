@@ -216,7 +216,11 @@ function drop(event) {
 }
 
 function handleMoveDirectory(draggedDir, targetDir) {
-    if (targetDir.includes(draggedDir) || draggedDir === ""){
+    if (draggedDir === "" ){
+        return; //no possible root moving
+    }
+   
+    if (targetDir.includes(draggedDir)){
         return; //no possible self childing
     }
     var names = draggedDir.split("/");
