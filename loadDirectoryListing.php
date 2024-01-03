@@ -59,7 +59,7 @@
             $slashCount = substr_count($dirSafe, '/');
             // Add extra indentation for files
             $isFile = substr($dirSafe, -1) !== '/';
-            $indentation = ($slashCount + ($isFile ? 1 : 0)) * 20; // 20px per slash for example
+            $indentation = ($slashCount + ($isFile ? 1 : 0)) * 30; // 20px per slash for example
     
             // Split the path and get the last part for display
             $pathParts = explode('/', rtrim($dirSafe, '/'));
@@ -82,7 +82,7 @@
 
             // Make the directory/file name editable
             $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─";
-            $html .= "<input type='text' class='editable-name' value='{$fileName}' ";
+            $html .= "<input type='text' class='editable-name' oninput='this.size=this.value.length' value='{$fileName}' ";
             $html .= "onchange='handleNameChange(this, \"{$dirSafe}\", \"{$fileExtension}\")' />"; // Event when the name is changed
             $html .= $fileExtension; // Display the extension (not editable)
             $html .= "</span>";
