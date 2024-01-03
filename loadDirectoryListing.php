@@ -8,36 +8,46 @@
         $storage = new StorageClient();
         $bucket = $storage->bucket($_SESSION['user_bucket_id']);
     
-        $allDirectories = ['/' => []]; // Initialize root directory
+        $allDirectories = [];
         foreach ($bucket->objects() as $object) {
             $objectName = $object->name();
             $pathParts = explode('/', $objectName);
     
-            // Initialize with root
-            $currentLevel = &$allDirectories['/'];
+            $fullPath = ''; // Initialize an empty string to build the full path
     
             foreach ($pathParts as $index => $part) {
-                // Skip empty parts or file names
-                if (empty($part) || $index == count($pathParts) - 1) {
+                // Detect root or empty part (for a folder named '/')
+                if ($index === 0 && empty($part) && count($pathParts) > 1) {
+                    $fullPath = '/ ';
+                    $allDirectories[$fullPath] = [];
                     continue;
                 }
     
-                // Append this part to the path
-                $part .= '/'; // Add slash to indicate directory
+                // Append this part to the full path
+                $fullPath .= $part;
     
-                // Add the current part to the array if it doesn't exist
-                if (!isset($currentLevel[$part])) {
-                    $currentLevel[$part] = [];
+                // Determine if the current part is a directory
+                $isDirectory = $index < count($pathParts) - 1;
+    
+                // Add a slash only if it's a directory
+                if ($isDirectory) {
+                    $fullPath .= '/';
                 }
     
-                // Move reference deeper into the array for the next loop iteration
-                $currentLevel = &$currentLevel[$part];
+                // Add the current part to the array if it doesn't exist
+                if (!isset($allDirectories[$fullPath])) {
+                    $allDirectories[$fullPath] = $isDirectory ? [] : null;
+                }
+    
+                // Move reference deeper into the array for directories
+                if ($isDirectory) {
+                    $currentLevel = &$allDirectories[$fullPath];
+                }
             }
         }
     
         return $allDirectories;
-    }
-    
+    } 
 
     function print_directories_html($directories) {
         $html = "<ul class='list-dir'>";
