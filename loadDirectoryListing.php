@@ -1,5 +1,5 @@
 <?php
-    require "vendor/autoload.php";
+    require_once "vendor/autoload.php";
 
     use Google\Cloud\Storage\StorageClient;
     session_start();
