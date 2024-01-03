@@ -15,7 +15,7 @@ html, body {
 .list-dir-item-container{
     display: flex; 
     justify-content: space-between; 
-    align-items: center; 
+    align-items: end; 
     border: 1px solid #ADD8E6; 
     background-color: #E0FFFF;
 }
@@ -28,5 +28,5 @@ html, body {
 
 
 .editable-name {
-   align-content: end;
+   opacity: 75%;
 }
