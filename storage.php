@@ -63,6 +63,7 @@ $bucket_id = $_SESSION['user_bucket_id'];
                             <span>
                                 <button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>
                                 <button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleUploadFile(this)' data-dir=''>+🖹</button>
+                                <input type='file' id='fileFolderInput' style='display: none;' multiple> <!--Hidden so we can activate with a button-->
                             </span>
                         </div>
                     </li>
