@@ -220,7 +220,7 @@ function handleMoveDirectory(draggedDir, targetDir) {
         return; //no possible root moving
     }
 
-    if (targetDir.includes(draggedDir)){
+    if (targetDir.includes(draggedDir) || targetDir === draggedDir){
         return; //no possible self childing
     }
     var names = draggedDir.split("/");
