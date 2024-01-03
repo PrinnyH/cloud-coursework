@@ -15,13 +15,13 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="js/script.js"></script>
+    <script src="js/pageController.js"></script>
     <script src="js/bucketController.js"></script>
     <script src="js/navController.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
     <link rel="stylesheet" href="style.css"> 
-    <title>Database Access</title>
+    <title>Files</title>
 </head>
 <body style="height:100%">
     <!-- Navbar -->
@@ -40,8 +40,8 @@
                     <i class="hide-nav-button fa fas fa-angle-double-left w3-display-topright w3-button w3-xxlarge w3-transparent"></i>
                 </div>
                 <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-                    <a href="#" class="w3-bar-item w3-button" id="navMyFiles">My Files</a>
-                    <a href="#" class="w3-bar-item w3-button" id="navMySharedFiles">My Shared Files</a>
+                    <a href="#MyFiles" class="w3-bar-item w3-button" id="navMyFiles">My Files</a>
+                    <a href="#SharedFiles" class="w3-bar-item w3-button" id="navMySharedFiles">My Shared Files</a>
                 </div>
                 <!-- <div class="w3-padding-16 w3-medium">
                     <a href="#contact" class="w3-bar-item w3-text-black w3-button w3-padding">Contact</a> 
