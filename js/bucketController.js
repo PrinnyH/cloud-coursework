@@ -58,10 +58,21 @@ function handleNameChange(element, fullPath, fileExtension) {
     }
 
     var endsWithSlash = fullPath.endsWith('/');
-    var basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
-    var newFullPath = basePath + newName + (endsWithSlash ? '/' : fileExtension);
+    var basePath, newFullPath;
+
+    // Remove the last segment from the fullPath to get the basePath
+    if (endsWithSlash || fullPath.indexOf('/') === -1) {
+        // It's a directory, or at the root of the bucket
+        basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
+        newFullPath = basePath + newName + (endsWithSlash ? '/' : '');
+    } else {
+        // It's a file, and not at the root
+        basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
+        newFullPath = basePath + newName + fileExtension;
+    }
 
     console.log(fullPath);
+    console.log(basePath);
     console.log(newFullPath);
 
     var xhr = new XMLHttpRequest();
