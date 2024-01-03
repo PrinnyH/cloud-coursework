@@ -220,13 +220,14 @@ function handleMoveDirectory(draggedDir, targetDir) {
         return; //no possible root moving
     }
 
-    if (targetDir.includes(draggedDir) || targetDir == draggedDir){
-        return; //no possible self childing
-    }
     var names = draggedDir.split("/");
     var name = names[names.length - 1] === "" ? names[names.length - 2] + "/" : names[names.length - 1];
     var newFullPath = targetDir + name 
-
+    
+    if (newFullPath.includes(draggedDir) || newFullPath == draggedDir){
+        return; //no possible self childing
+    }
+    
     console.log(draggedDir);
     console.log(targetDir);
     console.log(name);
