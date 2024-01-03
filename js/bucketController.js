@@ -52,16 +52,13 @@ function handleDelete(button) {
 }
 
 
-const replaceLast = (str, pattern, replacement) => {
-    const match =
-      typeof pattern === 'string'
-        ? pattern
-        : (str.match(new RegExp(pattern.source, 'g')) || []).slice(-1)[0];
-    if (!match) return str;
-    const last = str.lastIndexOf(match);
-    return last !== -1
-      ? `${str.slice(0, last)}${replacement}${str.slice(last + match.length)}`
-      : str;
+const replaceLast = (fullString, toReplace, toReplaceWith) => {
+    const match = typeof toReplace === 'string' ? toReplace : (fullString.match(new RegExp(toReplace.source, 'g')) || []).slice(-1)[0];
+    if (!match) 
+        return fullString;
+    
+    const last = fullString.lastIndexOf(match);
+    return last !== -1 ? `${fullString.slice(0, last)}${toReplaceWith}${fullString.slice(last + match.length)}` : fullString;
   };
 
 function handleNameChange(element, fullPath, fileExtension) {
@@ -72,7 +69,7 @@ function handleNameChange(element, fullPath, fileExtension) {
     if (!isValidName) {
         // If the name is invalid, highlight the input and exit the function
         element.style.borderColor = 'red';
-        alert('Invalid name. Please ensure the name does not contain spaces or special characters (/,?*:"<>|) and name is below 25 chracters');
+        alert('Invalid name. \n Please ensure the name does not contain spaces or special characters (/,?*:"<>|) and name is below 25 chracters');
         return;
     }
 
@@ -82,9 +79,9 @@ function handleNameChange(element, fullPath, fileExtension) {
     var basePath = replaceLast(fullPath, oldName, "");
     var newFullPath = basePath + newName + (endsWithSlash ? '/' : fileExtension);
 
-    console.log(fullPath);
-    console.log(basePath);
-    console.log(newFullPath);
+    // console.log(fullPath);
+    // console.log(basePath);
+    // console.log(newFullPath);
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'renameDirectory.php', true);
