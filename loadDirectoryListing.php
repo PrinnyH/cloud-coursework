@@ -1,11 +1,8 @@
 <?php
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-    
     require "vendor/autoload.php";
 
     use Google\Cloud\Storage\StorageClient;
-    start_session();
+    session_start();
 
     function list_all_directories() {
         $storage = new StorageClient();
@@ -100,7 +97,6 @@
         return $html;
     }
     
-    //$bucketName = $_SESSION['user_bucket_id'];
-    // $directories = list_all_directories($bucketName);
-    // echo print_directories_html($directories);
+    $directories = list_all_directories();
+    echo print_directories_html($directories);
 ?>
