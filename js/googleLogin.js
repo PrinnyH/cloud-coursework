@@ -25,7 +25,7 @@ window.onload = function () {
         callback: handleCredentialResponse
     });
     google.accounts.id.renderButton(
-        document.getElementById('buttonDiv'),
+        document.getElementById('g_id_onload'),
         { theme: 'outline', size: 'large' }  // customization attributes
     );
     google.accounts.id.prompt(); // Display the One Tap sign-in prompt
