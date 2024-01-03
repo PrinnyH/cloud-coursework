@@ -18,7 +18,7 @@
     $email = $_SESSION['email'];
 
     // Prepare the query
-    if ($stmt = $mysqli->prepare("SELECT Email FROM 'User' WHERE Email = ?")) {
+    if ($stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?")) {
         
         // Bind parameters (s - string)
         $stmt->bind_param("s", $email);
@@ -26,13 +26,13 @@
         // Execute the query
         $stmt->execute();
 
-        // Store the result to get properties like num_rows
-        $stmt->store_result();
+        // Bind the result variable
+        $stmt->bind_result($bucketId);
 
-        if ($stmt->num_rows > 0) {
-            echo "true";
-        } else {
-            echo "false";
+        // Fetch the value
+        if ($stmt->fetch()) {
+            $_SESSION['user_bucket_id'] = $bucketId;
+            exit;
         }
 
         // Close statement
@@ -43,5 +43,4 @@
 
     // Close the connection
     $mysqli->close();
-
 ?>
