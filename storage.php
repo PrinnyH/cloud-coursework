@@ -4,7 +4,7 @@
     if (!isset($_SESSION['email'])) {
         // If the user is not logged in, redirect them to the login page
         //header("Location: index.html");
-        exit();
+        //exit();
     }
     $name = $_SESSION['email'];
     $bucket_id = $_SESSION['user_bucket_id'];
