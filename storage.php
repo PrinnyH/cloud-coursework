@@ -73,6 +73,20 @@ $bucket_id = $_SESSION['user_bucket_id'];
                 <p> Drag/Drop all else
 
             </div>
+            
+            <div>
+                <ul class='list-dir'>
+                    <li class='list-dir-item'>
+                        <div class='list-dir-item-container' style='padding-left:{$indentation}px;'>
+                            <span>
+                                <button class='list-dir-item-button' onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
+                                <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
             <div id="directoryListing">
             </div>
             
