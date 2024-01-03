@@ -29,6 +29,10 @@ body {
     transform: translateY(-10px);
 }
 
+.card-text{
+    color: #ffffff; /* Set text color to white */
+}
+
 
 .list-dir{
     padding: 0; 
