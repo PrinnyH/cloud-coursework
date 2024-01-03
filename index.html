@@ -2,19 +2,17 @@
 <html>
 <head>
     <title>VAULTZ</title>
-    <script src="js/pageController.js"></script>
-    <script src="js/googleLogin.js"></script>
+    <script src="js/script.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- USING THE W3 style sheeet to make look prettier -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navbar -->
     <div class="w3-top">
+        <div class="w3-bar w3-black w3-card">
+        </div>
     </div>
 
     <!-- The content Section -->
@@ -25,48 +23,45 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
             ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
             adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        
     </div>
-    
+    <div id="loginOverlay" class="w3-modal" style="display: none;"></div>
     <div id="g_id_onload"
-        data-client_id="23146911805-tuefejed4hddunmos49sph1jgvub608o.apps.googleusercontent.com"
-        data-context="signin"
-        data-ux_mode="popup"
-        data-callback="handleCredentialResponse"
-        data-itp_support="true">
+        data-client_id="23146911805-tuefejed4hddunmos49sph1jgvub608o"
+        data-callback="handleCredentialResponse">
     </div>
 
-    <div class="grid-container">
-        <div class="card" id="card1">
-            <h2>Card 1</h2>
-            <p>This is the content of Card 1.</p>
+    <div class="card-deck">
+        <div class="card .bg-dark">
+          <div class="card-body text-center">
+            <p class="card-text">Some text inside the first card</p>
+          </div>
         </div>
-
-        <div class="card" id="card2">
-            <h2>Card 2</h2>
-            <p>This is the content of Card 2.</p>
+        <div class="card .bg-dark">
+          <div class="card-body text-center">
+            <p class="card-text">Some text inside the second card</p>
+          </div>
         </div>
-
-        <div class="card" id="card3">
-            <h2>Card 3</h2>
-            <p>This is the content of Card 3.</p>
+        <div class="card .bg-dark">
+          <div class="card-body text-center">
+            <p class="card-text">Some text inside the third card</p>
+          </div>
         </div>
-
-        <div class="card" id="card4">
-            <h2>Card 4</h2>
-            <p>This is the content of Card 4.</p>
+        <div class="card .bg-dark">
+          <div class="card-body text-center">
+            <p class="card-text">Some text inside the fourth card</p>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="g_id_signin"
+    <button class="g_id_signin"
         data-type="standard"
-        data-shape="pill"
-        data-theme="outline"
-        data-text="signin_with"
         data-size="large"
-        data-locale="en-GB"
-        data-logo_alignment="left">
-    </div>
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-width="400"
+        data-logo_alignment="center">
+    </button>
 </body>
 
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
