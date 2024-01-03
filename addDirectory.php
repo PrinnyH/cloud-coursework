@@ -15,7 +15,7 @@
 
         // Create a pseudo-folder by uploading an empty file
         $file = $bucket->upload('', 
-        ['name' => $newFolderPath . '.dummy'] // This creates a dummy file in the new folder
+            ['name' => $newFolderPath]
         );
 
         echo 'true';
