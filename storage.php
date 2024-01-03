@@ -6,9 +6,9 @@
         header("Location: index.html");
         exit();
     }
-    $name = $_SESSION['email'];
+    $name = $_SESSION['firstname'];
+    $email =  $_SESSION['email'];
     $bucket_id = $_SESSION['user_bucket_id'];
-
 ?>
 <html lang="en">
 <head>
