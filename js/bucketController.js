@@ -80,7 +80,7 @@ function handleNameChange(element, fullPath, fileExtension) {
     console.log(newFullPath);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'moveDirectory.php', true);
+    xhr.open('POST', 'renameDirectory.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {
