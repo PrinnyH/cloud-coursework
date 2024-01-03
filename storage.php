@@ -3,8 +3,8 @@
     session_start(); // Start the session
     if (!isset($_SESSION['email'])) {
         // If the user is not logged in, redirect them to the login page
-        //header("Location: index.html");
-        //exit();
+        header("Location: index.html");
+        exit();
     }
     $name = $_SESSION['email'];
     $bucket_id = $_SESSION['user_bucket_id'];

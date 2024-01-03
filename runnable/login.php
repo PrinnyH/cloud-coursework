@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $_SESSION['user_id'] = $username;
     $_SESSION['user_bucket_id'] = "123123123123my-bucket";      //TO BE REMOVED AND GRABBED FROM DATABASE
-
+    $_SESSION['email'] = "zionmaster100@gmail.com"; 
 
     if ($username === $valid_username && $password === $valid_password) {
         echo 'true'; // Indicate success
