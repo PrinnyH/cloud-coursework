@@ -53,6 +53,7 @@ function handleNameChange(element, fullPath, fileExtension) {
     // Reconstruct the new full path
     var newFullPath = basePath +  element.value + (endsWithSlash ? '/' : fileExtension);
 
+    console.log("Old path is: " + fullPath);
     console.log("New full path is: " + newFullPath);
     // Add your logic to handle the name change, using newFullPath
 }
