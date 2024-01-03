@@ -58,7 +58,7 @@ function handleNameChange(element, fullPath, fileExtension) {
     }
 
     var endsWithSlash = fullPath.endsWith('/');
-    var basePath = fullPath.substring(0, fullPath.lastIndexOf('/').lastIndexOf('/') + 1);
+    var basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
     var newFullPath = basePath + newName + (endsWithSlash ? '/' : fileExtension);
 
     console.log(fullPath);
