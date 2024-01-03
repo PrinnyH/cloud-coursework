@@ -51,7 +51,7 @@
         $html = "<ul class='list-dir'>";
         
         //the top bar defined her to allow dropping onto
-        $html .= "<li class='list-dir-item' draggable='true' ondragstart='dragStart(event)' ondragover='dragOver(event)' ondrop='drop(event)'>";
+        $html .= "<li class='list-dir-item' draggable='true' ondragstart='dragStart(event)' ondragover='dragOver(event)' ondrop='drop(event) data-dir=''>";
         $html .= "<div class='list-dir-item-container' style='padding-left:0px; justify-content:right; border: 0px solid; background:lightgray;'>";
         $html .= "<span>";
         $html .= "<button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>";
@@ -76,7 +76,7 @@
             $displayName = end($pathParts);
             
             // Flex container for each list item's content with border and background
-            $html .= "<li class='list-dir-item' draggable='true' ondragstart='dragStart(event)' ondragover='dragOver(event)' ondrop='drop(event)' style='padding-left:{$indentation}px;'>";
+            $html .= "<li class='list-dir-item' draggable='true' ondragstart='dragStart(event)' ondragover='dragOver(event)' ondrop='drop(event)' data-dir='{$dirSafe} style='padding-left:{$indentation}px;'>";
             $html .= "<div class='list-dir-item-container'>"; // Light blue border and background
     
             // Determine if it's a file and split the name and extension
