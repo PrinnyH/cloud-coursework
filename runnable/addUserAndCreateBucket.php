@@ -14,7 +14,7 @@
         echo("false");
         exit;
     }
-    $email = $_SESSION['email'];
+    $email = $_POST['email'];
 
     // Prepare the query
     if ($stmt = $mysqli->prepare("SELECT Email FROM 'User' WHERE Email = ?")) {
