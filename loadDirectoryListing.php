@@ -75,12 +75,12 @@
             // Buttons (conditionally displayed)
             if ($isFile) {
                 $html .= "<span>
-                    <button class='list-dir-item-button' onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
+                    <button class='list-dir-item-button' onclick='handleDelete(this)' data-dir='{$dirSafe}'>🗑</button>
                 </span>";
             } else {
                 $html .= "<span>
                     <button class='list-dir-item-button' onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
-                    <button class='list-dir-item-button' onclick='handleDeleteDirectory(this)' data-dir='{$dirSafe}'>🗑</button>
+                    <button class='list-dir-item-button' onclick='handleDelete(this)' data-dir='{$dirSafe}'>🗑</button>
                     <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
                 </span>";
             }

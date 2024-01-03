@@ -22,15 +22,29 @@ function handleAddDirectory(button){
     xhr.send(params);
 };
 
-function handleDeleteDirectory(button){
+function handleDelete(button){
     var dirName = button.getAttribute('data-dir');
-    console.log("Button clicked for directory: " + dirName);
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'deleteDirectory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            if (this.responseText === 'true') {
+                loadDirectoryListing();
+            } else {
+                alert('There was a problem');
+            } 
+        }
+    };
+    
+    var params = new URLSearchParams();
+    params.append('dirName', dirName);
+    
+    xhr.send(params);
 };
 
-function handleDeleteFile(button){
-    var dirName = button.getAttribute('data-dir');
-    console.log("Button clicked for directory: " + dirName);
-};
 
 function handleUploadFile(button){
     var dirName = button.getAttribute('data-dir');
