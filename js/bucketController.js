@@ -216,11 +216,11 @@ function drop(event) {
 }
 
 function handleMoveDirectory(draggedDir, targetDir) {
-    if (draggedDir === "undefined" ){
+    if (draggedDir == "undefined" ){
         return; //no possible root moving
     }
 
-    if (targetDir.includes(draggedDir) || targetDir === draggedDir){
+    if (targetDir.includes(draggedDir) || targetDir == draggedDir){
         return; //no possible self childing
     }
     var names = draggedDir.split("/");
