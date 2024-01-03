@@ -18,15 +18,3 @@ function handleCredentialResponse(response) {
     
     xhr.send(params);
 }
-
-// window.onload = function () {
-//     google.accounts.id.initialize({
-//         client_id: '23146911805-tuefejed4hddunmos49sph1jgvub608o.apps.googleusercontent.com',
-//         callback: handleCredentialResponse
-//     });
-//     google.accounts.id.renderButton(
-//         document.getElementById('googleSignIn'),
-//         { theme: 'outline', size: 'large' }  // customization attributes
-//     );
-//     //google.accounts.id.prompt(); // Display the One Tap sign-in prompt
-// };
