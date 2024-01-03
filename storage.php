@@ -56,21 +56,6 @@ $bucket_id = $_SESSION['user_bucket_id'];
 
         <div class="w3-left" style="margin:20px; width: 100%; box-sizing: border-box;">
             <h1>Welcome <?php echo htmlspecialchars($name);?> + <?php echo htmlspecialchars($bucket_id);?></h1>
-            <div>
-                <ul class='list-dir'>
-                    <li class='list-dir-item' draggable="true" ondrop='drop(event)' data-dir='{$dirSafe}'>
-                        <div class='list-dir-item-container' style='padding-left:0px; justify-content:right; border: 0px solid; background:lightgray;'>
-                            <span>
-                                <button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>
-                                <button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleUploadFile(this)' data-dir=''>+🖹</button>
-                                <input type='file' id='fileInput' style='display: none;' multiple> <!--Hidden so we can activate with a button-->
-                                <input type='file' id='folderInput' style='display: none;'webkitdirectory multiple> <!--Hidden so we can activate with a button-->
-                            </span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
             <div id="directoryListing">
             </div>
             

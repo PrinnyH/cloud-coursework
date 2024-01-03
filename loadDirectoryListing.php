@@ -51,7 +51,17 @@
 
     function print_directories_html($directories) {
         $html = "<ul class='list-dir'>";
-    
+        
+        $html =. "<li class='list-dir-item' draggable='true' ondrop='drop(event)'>
+                <div class='list-dir-item-container' style='padding-left:0px; justify-content:right; border: 0px solid; background:lightgray;'>
+                    <span>
+                        <button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>
+                        <button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleUploadFile(this)' data-dir=''>+🖹</button>
+                        <input type='file' id='fileInput' style='display: none;' multiple> <!--Hidden so we can activate with a button-->
+                        <input type='file' id='folderInput' style='display: none;'webkitdirectory multiple> <!--Hidden so we can activate with a button-->
+                    </span>
+                </div>
+            </li>"
         foreach ($directories as $dir => $subDirs) {
             $dirSafe = htmlspecialchars($dir); // Escape the directory name
     
@@ -64,9 +74,9 @@
             // Split the path and get the last part for display
             $pathParts = explode('/', rtrim($dirSafe, '/'));
             $displayName = end($pathParts);
-    
+            
             // Flex container for each list item's content with border and background
-            $html .= "<li class='list-dir-item' draggable='true' ondragstart='dragStart(event)' ondragover='dragOver(event)' ondrop='drop(event)' data-dir='{$dirSafe}' style='padding-left:{$indentation}px;'>";
+            $html .= "<li class='list-dir-item' draggable='true' ondragstart='dragStart(event)' ondragover='dragOver(event)' ondrop='drop(event)' style='padding-left:{$indentation}px;'>";
             $html .= "<div class='list-dir-item-container'>"; // Light blue border and background
     
             // Determine if it's a file and split the name and extension
