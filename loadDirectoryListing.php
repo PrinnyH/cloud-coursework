@@ -51,7 +51,7 @@
         $html = "<ul class='list-dir'>";
         
         //the top bar defined her to allow dropping onto
-        $html .= "<li class='list-dir-item' draggable='true' ondrop='drop(event)'>";
+        $html .= "<li class='list-dir-item' draggable='true'ondragstart='' ondragover='dragOver(event)' ondrop='drop(event)'>";
         $html .= "<div class='list-dir-item-container' style='padding-left:0px; justify-content:right; border: 0px solid; background:lightgray;'>";
         $html .= "<span>";
         $html .= "<button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>";
