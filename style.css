@@ -23,10 +23,10 @@ html, body {
 .list-dir-item-button{
     background: #000;
     color: azure;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 
 .editable-name {
-    vertical-align: bottom;
+    align-self: bottom;
 }
