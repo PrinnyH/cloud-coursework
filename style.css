@@ -24,3 +24,8 @@ html, body {
     background: #000;
     color: azure;
 }
+
+
+.editable-name {
+    padding: 5px;
+}
