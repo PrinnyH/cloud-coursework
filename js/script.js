@@ -50,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', openOverlay);
     });
 
-    function handleCredentialResponse(response) {
+    function handleCredentialResponse(googleUser) {
         var id_token = googleUser.getAuthResponse().id_token;
-
+    
         fetch('/auth/google-auth.php', {
             method: 'POST',
             headers: {
@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', data.message);
             }
         });
-       
     }
+    
 
 
 
