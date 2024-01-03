@@ -9,26 +9,24 @@
     
     
     <script>
-        // Initialize Google Auth API
-        function initGoogleAuth() {
-            gapi.load('auth2', function() {
-                gapi.auth2.init({
-                    client_id: '23146911805-tuefejed4hddunmos49sph1jgvub608o.apps.googleusercontent.com' // Replace with your client ID
-                });
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential);
+            // You can send this token to your server for further verification and processing
+        }
+        window.onload = function () {
+            google.accounts.id.initialize({
+                client_id: '23146911805-tuefejed4hddunmos49sph1jgvub608o.apps.googleusercontent.com',
+                callback: handleCredentialResponse
             });
-        }
-        
-        // Handle the sign-in process
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-            // Handle the successful login here
-        }
+            google.accounts.id.renderButton(
+                document.getElementById('buttonDiv'),
+                { theme: 'outline', size: 'large' }  // customization attributes
+            );
+            google.accounts.id.prompt(); // Display the One Tap sign-in prompt
+        };
     </script>
-    <script src="https://apis.google.com/js/platform.js?onload=initGoogleAuth" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
 
 </head>
 <body>
@@ -54,7 +52,20 @@
     </div>
     <div id="loginOverlay" class="w3-modal" style="display: none;"></div>
     
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div id="g_id_onload"
+        data-client_id="23146911805-tuefejed4hddunmos49sph1jgvub608o.apps.googleusercontent.com"
+        data-login_uri="storage.php"
+        data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin"
+        data-type="standard"
+        data-shape="rectangular"
+        data-theme="outline"
+        data-text="$ {button.text}"
+        data-size="large">
+    </div>
+
 
 </body>
 
