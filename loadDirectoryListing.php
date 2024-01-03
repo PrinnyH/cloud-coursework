@@ -51,16 +51,16 @@
         $html = "<ul class='list-dir'>";
         
         //the top bar defined her to allow dropping onto
-        $html .= "<li class='list-dir-item' draggable='true' ondrop='drop(event)'>"
-        $html .= "<div class='list-dir-item-container' style='padding-left:0px; justify-content:right; border: 0px solid; background:lightgray;'>"
-        $html .= "<span>"
-        $html .= "<button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>"
-        $html .= "<button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleUploadFile(this)' data-dir=''>+🖹</button>"
-        $html .= "<input type='file' id='fileInput' style='display: none;' multiple> "
-        $html .= "<input type='file' id='folderInput' style='display: none;'webkitdirectory multiple>"
-        $html .= "</span>"
-        $html .= "</div>"
-        $html .= "</li>"
+        $html .= "<li class='list-dir-item' draggable='true' ondrop='drop(event)'>";
+        $html .= "<div class='list-dir-item-container' style='padding-left:0px; justify-content:right; border: 0px solid; background:lightgray;'>";
+        $html .= "<span>";
+        $html .= "<button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>";
+        $html .= "<button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleUploadFile(this)' data-dir=''>+🖹</button>";
+        $html .= "<input type='file' id='fileInput' style='display: none;' multiple> ";
+        $html .= "<input type='file' id='folderInput' style='display: none;'webkitdirectory multiple>";
+        $html .= "</span>";
+        $html .= "</div>";
+        $html .= "</li>";
 
         foreach ($directories as $dir => $subDirs) {
             $dirSafe = htmlspecialchars($dir); // Escape the directory name
