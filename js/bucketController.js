@@ -70,7 +70,7 @@ function handleNameChange(element, fullPath, fileExtension) {
     }
 
     var endsWithSlash = fullPath.endsWith('/');
-    var names = fullPath.split("/").
+    var names = fullPath.split("/");
     var oldName = names[names.length - 1] === "" ? names[names.length - 2] + "/" : names[names.length - 1];
     var basePath = replaceLast(fullPath, oldName, "");
     var newFullPath = basePath + newName + (endsWithSlash ? '/' : fileExtension);
