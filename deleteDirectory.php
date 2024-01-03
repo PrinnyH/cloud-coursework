@@ -1,38 +1,38 @@
 <?php
-session_start();
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $filePath = $_POST['dirName']; // Full path of the file or directory
+    $path = $_POST['dirName']; // Full path of the file or directory
 
     // Initialize Google Cloud Storage client
     $storage = new StorageClient();
     $bucket = $storage->bucket($_SESSION['user_bucket_id']);
 
     try {
-        // Extract the parent directory path
-        $pathParts = explode('/', rtrim($filePath, '/'));
-        array_pop($pathParts); // Remove the file or directory name
-        $parentDir = implode('/', $pathParts);
-        $parentDir = empty($parentDir) ? "" : $parentDir . '/';
+        // Check if the path is for a directory (ends with '/')
+        $isDirectory = substr($path, -1) === '/';
 
-        // Get the object
-        $object = $bucket->object($filePath);
+        if ($isDirectory) {
+            // Ensure the directory path ends with a slash
+            $path = rtrim($path, '/') . '/';
 
-        // Check if the object exists
-        if ($object->exists()) {
-            // Move the object to the parent directory, if it's not already there
-            if ($filePath !== $parentDir) {
-                $newObjectName = $parentDir . basename($filePath);
-                $object->copy($bucket, ['name' => $newObjectName]);
+            // List and delete all objects in the directory
+            $objects = $bucket->objects(['prefix' => $path]);
+            foreach ($objects as $object) {
                 $object->delete();
             }
-            echo 'true';
         } else {
-            echo 'false'; // Object not found
+            // It's a file, delete the single object
+            $object = $bucket->object($path);
+            if ($object->exists()) {
+                $object->delete();
+            }
         }
+
+        echo 'true'; // Successfully deleted
     } catch (Exception $e) {
         error_log("Error occurred: " . $e->getMessage()); // Log the error
         echo 'false'; // An error occurred
