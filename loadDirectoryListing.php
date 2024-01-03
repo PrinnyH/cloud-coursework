@@ -52,16 +52,16 @@
     function print_directories_html($directories) {
         $html = "<ul class='list-dir'>";
         
-        $html =. "<li class='list-dir-item' draggable='true' ondrop='drop(event)'>
+        $html =. """ <li class='list-dir-item' draggable='true' ondrop='drop(event)'>
                 <div class='list-dir-item-container' style='padding-left:0px; justify-content:right; border: 0px solid; background:lightgray;'>
                     <span>
                         <button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>
                         <button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleUploadFile(this)' data-dir=''>+🖹</button>
-                        <input type='file' id='fileInput' style='display: none;' multiple> <!--Hidden so we can activate with a button-->
-                        <input type='file' id='folderInput' style='display: none;'webkitdirectory multiple> <!--Hidden so we can activate with a button-->
+                        <input type='file' id='fileInput' style='display: none;' multiple> 
+                        <input type='file' id='folderInput' style='display: none;'webkitdirectory multiple>
                     </span>
                 </div>
-            </li>"
+            </li> """
         foreach ($directories as $dir => $subDirs) {
             $dirSafe = htmlspecialchars($dir); // Escape the directory name
     
