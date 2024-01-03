@@ -10,16 +10,15 @@ body {
     height: 100vh;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 800px;
-    margin: 20px auto;
+.card-deck {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
 }
 
 .card {
-    background-color: #ffffff;
+    background-color: #343a40;
+    color: #ffffff; /* Set text color to white */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -29,6 +28,7 @@ body {
 .card:hover {
     transform: translateY(-10px);
 }
+
 
 .list-dir{
     padding: 0; 
