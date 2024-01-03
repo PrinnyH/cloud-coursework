@@ -75,14 +75,6 @@ $bucket_id = $_SESSION['user_bucket_id'];
             </div>
             <div id="directoryListing">
             </div>
-            <?php
-                include "loadDirectoryListing.php";
-                //session_start();
-                //$bucketName = $_SESSION['user_bucket_id'];
-                //$directories = list_all_directories();
-                //echo htmlspecialchars(print_directories_html($directories));
-            ?>
-            
         </div>
 
 
