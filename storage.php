@@ -58,7 +58,7 @@ $bucket_id = $_SESSION['user_bucket_id'];
             <h1>Welcome <?php echo htmlspecialchars($name);?> + <?php echo htmlspecialchars($bucket_id);?></h1>
             <div>
                 <ul class='list-dir'>
-                    <li class='list-dir-item'>
+                    <li class='list-dir-item' draggable="true" ondrop='drop(event)' data-dir='{$dirSafe}'>
                         <div class='list-dir-item-container' style='padding-left:0px; justify-content:right; border: 0px solid; background:lightgray;'>
                             <span>
                                 <button class='list-dir-item-button' style='margin-bottom:0px;' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>
