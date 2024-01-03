@@ -2,7 +2,7 @@ function handleCredentialResponse(response) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'runnable/googleAuthenticateLogin.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
+    //asdsa
     xhr.onload = function() {
         if (this.status == 200) {
             if (this.responseText === 'true') {
