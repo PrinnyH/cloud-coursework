@@ -57,24 +57,6 @@ $bucket_id = $_SESSION['user_bucket_id'];
         <div class="w3-left" style="margin:20px; width: 100%; box-sizing: border-box;">
             <h1>Welcome <?php echo htmlspecialchars($name);?> + <?php echo htmlspecialchars($bucket_id);?></h1>
             <div>
-                <button> Create Folder </button>
-                <button> Upload File </button>
-                <button> Expand All </button>
-
-                <p> Per item in this list 
-                <p> Per Folder Listed
-                <button> Create Folder </button>
-                <button> Delete Folder </button>
-                <button> Upload To </button>
-
-                <p> Per File Listed
-                <button> Delete </button>
-                
-                <p> Drag/Drop all else
-
-            </div>
-            
-            <div>
                 <ul class='list-dir'>
                     <li class='list-dir-item'>
                         <div class='list-dir-item-container' style='padding-left:0px;'>
