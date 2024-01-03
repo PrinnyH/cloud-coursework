@@ -198,6 +198,30 @@ function handleUploadFolder(button) {
     input.click();
 }
 
+function dragStart(event) {
+    event.dataTransfer.setData('text/plain', event.target.dataset.dir);
+}
+
+function dragOver(event) {
+    event.preventDefault(); // Necessary to allow dropping
+}
+
+function drop(event) {
+    event.preventDefault();
+    var targetDir = event.currentTarget.dataset.dir; // The directory you dropped onto
+    var draggedDir = event.dataTransfer.getData('text/plain'); // The directory being dragged
+
+    // Trigger the method for rearranging
+    handleMoveDirectory(draggedDir, targetDir);
+}
+
+function handleMoveDirectory(draggedDir, targetDir) {
+    console.log('Rearranged:', draggedDir, 'onto', targetDir);
+    
+
+    
+
+}
 
 
 function loadDirectoryListing() {

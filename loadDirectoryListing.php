@@ -66,7 +66,7 @@
             $displayName = end($pathParts);
     
             // Flex container for each list item's content with border and background
-            $html .= "<li class='list-dir-item' style='padding-left:{$indentation}px;'>";
+            $html .= "<li class='list-dir-item' draggable='true' ondragstart='dragStart(event)' ondragover='dragOver(event)' ondrop='drop(event)' data-dir='{$dirSafe}' style='padding-left:{$indentation}px;'>";
             $html .= "<div class='list-dir-item-container'>"; // Light blue border and background
     
             // Determine if it's a file and split the name and extension
@@ -81,7 +81,7 @@
             }
 
             // Make the directory/file name editable
-            $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─";
+            $html .= "<span style='flex-grow: 1; white-space: nowrap;'>";
             $html .= "<input type='text' class='editable-name' value='{$fileName}' ";
             $html .= "onchange='handleNameChange(this, \"{$dirSafe}\", \"{$fileExtension}\")' />"; // Event when the name is changed
             $html .= $fileExtension; // Display the extension (not editable)
