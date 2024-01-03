@@ -46,12 +46,15 @@ function handleDelete(button){
 };
 
 function handleNameChange(element, fullPath) {
-    var newName = element.value;
-    // fullPath contains the original full path of the file/directory
-    // newName contains the new name as edited by the user
+    // Check if the original path ended with a slash (indicating a directory)
+    var endsWithSlash = fullPath.endsWith('/');
+    // Extract the base path (excluding the last segment)
+    var basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
+    // Reconstruct the new full path
+    var newFullPath = basePath +  element.value + (endsWithSlash ? '/' : '');
 
-    console.log("New name for " + fullPath + " is " + newName);
-    // Add your logic to handle the name change
+    console.log("New full path is: " + newFullPath);
+    // Add your logic to handle the name change, using newFullPath
 }
 
 
