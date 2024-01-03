@@ -1,4 +1,8 @@
 <?php
+
+ini_set('display_errors', 'On');
+error_reporting(E_ALL); 
+
 session_start(); // Start a new session or resume the existing one
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
