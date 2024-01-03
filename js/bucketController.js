@@ -224,14 +224,15 @@ function handleMoveDirectory(draggedDir, targetDir) {
     var name = names[names.length - 1] === "" ? names[names.length - 2] + "/" : names[names.length - 1];
     var newFullPath = targetDir + name 
     
-    if (newFullPath.includes(draggedDir) || newFullPath == draggedDir){
-        return; //no possible self childing
-    }
-    
     console.log(draggedDir);
     console.log(targetDir);
     console.log(name);
     console.log(newFullPath);
+
+    if (newFullPath.includes(draggedDir) || newFullPath == draggedDir){
+        console.log("DENIED");
+        return; //no possible self childing
+    }
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'renameDirectory.php', true);
