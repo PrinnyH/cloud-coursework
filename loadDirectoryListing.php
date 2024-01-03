@@ -69,10 +69,22 @@
             $html .= "<li class='list-dir-item'>";
             $html .= "<div class='list-dir-item-container' style='padding-left:{$indentation}px;'>"; // Light blue border and background
     
+            // Determine if it's a file and split the name and extension
+            $isFile = substr($dirSafe, -1) !== '/';
+            $fileName = $displayName;
+            $fileExtension = '';
+
+            if ($isFile) {
+                $fileParts = pathinfo($displayName);
+                $fileName = $fileParts['filename'];
+                $fileExtension = isset($fileParts['extension']) ? '.' . $fileParts['extension'] : '';
+            }
+
             // Make the directory/file name editable
             $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─";
-            $html .= "<input type='text' class='editable-name' value='{$displayName}' ";
+            $html .= "<input type='text' class='editable-name' value='{$fileName}' ";
             $html .= "onchange='handleNameChange(this, \"{$dirSafe}\")' />"; // Event when the name is changed
+            $html .= $fileExtension; // Display the extension (not editable)
             $html .= "</span>";
 
             // Buttons (conditionally displayed)
