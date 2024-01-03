@@ -6,16 +6,7 @@ function handleCredentialResponse(response) {
     xhr.onload = function() {
         if (this.status == 200) {
             if (this.responseText === 'true') {
-                // check have registered
-                if (!checkUserExists()){
-                    // if no register and create bucket for them
-                    return;
-                    createUserAndAssignBucket();
-                }
-                // if yes skip
-                // get bucketID with email
-                getAssosiatedBucket();
-                window.location.href = 'storage.php';
+                checkUserExists();
             } else {
                 alert('There was a problem');
             } 
@@ -36,9 +27,9 @@ function checkUserExists(){
     xhr.onload = function() {
         if (this.status == 200) {
             if (this.responseText === 'true') {
-                return true;
+                getAssosiatedBucket();
             } else {
-                return false;
+                createUserAndAssignBucket();
             } 
         }
     };
@@ -46,16 +37,15 @@ function checkUserExists(){
     xhr.send();
 }
 
-
 function createUserAndAssignBucket(){
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'runnable/assuserAndCreateBucket.php', true);
+    xhr.open('POST', 'runnable/addUserAndCreateBucket.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {
         if (this.status == 200) {
             if (this.responseText === 'true') {
-               return;
+                getAssosiatedBucket();
             } else {
                 alert("There was a problem.");
             } 
@@ -65,7 +55,6 @@ function createUserAndAssignBucket(){
     xhr.send();
 }
 
-
 function getAssosiatedBucket(){
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'runnable/getPersonalBucketID.php', true);
@@ -74,7 +63,7 @@ function getAssosiatedBucket(){
     xhr.onload = function() {
         if (this.status == 200) {
             if (this.responseText === 'true') {
-                return;
+                window.location.href = 'storage.php';
             } else {
                 alert("There was a problem.");
             } 
