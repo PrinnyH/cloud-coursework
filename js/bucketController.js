@@ -45,6 +45,18 @@ function handleDelete(button){
     xhr.send(params);
 };
 
+const replaceLast = (str, pattern, replacement) => {
+    const match =
+      typeof pattern === 'string'
+        ? pattern
+        : (str.match(new RegExp(pattern.source, 'g')) || []).slice(-1)[0];
+    if (!match) return str;
+    const last = str.lastIndexOf(match);
+    return last !== -1
+      ? `${str.slice(0, last)}${replacement}${str.slice(last + match.length)}`
+      : str;
+  };
+
 function handleNameChange(element, fullPath, fileExtension) {
     var newName = element.value;
     var isValidName = validateName(newName);
@@ -58,18 +70,10 @@ function handleNameChange(element, fullPath, fileExtension) {
     }
 
     var endsWithSlash = fullPath.endsWith('/');
-    var basePath, newFullPath;
-
-    // Remove the last segment from the fullPath to get the basePath
-    if (endsWithSlash || fullPath.indexOf('/') === -1) {
-        // It's a directory, or at the root of the bucket
-        basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
-        newFullPath = basePath + newName + (endsWithSlash ? '/' : '');
-    } else {
-        // It's a file, and not at the root
-        basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
-        newFullPath = basePath + newName + fileExtension;
-    }
+    var names = fullPath.split("/").
+    var oldName = names[names.length - 1] === "" ? names[names.length - 2] + "/" : names[names.length - 1];
+    var basePath = replaceLast(fullPath, oldName, "");
+    var newFullPath = basePath + newName + (endsWithSlash ? '/' : fileExtension);
 
     console.log(fullPath);
     console.log(basePath);
