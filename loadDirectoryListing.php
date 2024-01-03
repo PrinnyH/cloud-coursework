@@ -16,8 +16,10 @@
             $fullPath = ''; // Initialize an empty string to build the full path
     
             foreach ($pathParts as $index => $part) {
-                // Skip empty parts
-                if (empty($part)) {
+                // Detect root or empty part (for a folder named '/')
+                if ($index === 0 && empty($part) && count($pathParts) > 1) {
+                    $fullPath = '/';
+                    $allDirectories[$fullPath] = [];
                     continue;
                 }
     
@@ -45,7 +47,7 @@
         }
     
         return $allDirectories;
-    }
+    } 
 
     function print_directories_html($directories) {
         $html = "<ul class='list-dir'>";
