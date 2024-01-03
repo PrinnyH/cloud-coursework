@@ -216,15 +216,10 @@ function drop(event) {
 }
 
 function handleMoveDirectory(draggedDir, targetDir) {
-    
-    console.log('Rearranged:', draggedDir, 'onto', targetDir);
-
-    
-
     var endsWithSlash = draggedDir.endsWith('/');
     var names = draggedDir.split("/");
     var name = names[names.length - 1] === "" ? names[names.length - 2] + "/" : names[names.length - 1];
-    var newFullPath = targetDir + name + (endsWithSlash ? '/' : fileExtension);
+    var newFullPath = targetDir + name + (endsWithSlash ? '/' : "");
 
     console.log(draggedDir);
     console.log(targetDir);
