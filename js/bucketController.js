@@ -45,6 +45,15 @@ function handleDelete(button){
     xhr.send(params);
 };
 
+function handleNameChange(element, fullPath) {
+    var newName = element.value;
+    // fullPath contains the original full path of the file/directory
+    // newName contains the new name as edited by the user
+
+    console.log("New name for " + fullPath + " is " + newName);
+    // Add your logic to handle the name change
+}
+
 
 function handleUploadFile(button){
     var dirName = button.getAttribute('data-dir');

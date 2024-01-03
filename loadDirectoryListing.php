@@ -69,9 +69,12 @@
             $html .= "<li class='list-dir-item'>";
             $html .= "<div class='list-dir-item-container' style='padding-left:{$indentation}px;'>"; // Light blue border and background
     
-            // Display only the last part of the path
-            $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─{$displayName}</span>";
-    
+            // Make the directory/file name editable
+            $html .= "<span style='flex-grow: 1; white-space: nowrap;'>";
+            $html .= "<input type='text' class='editable-name' value='{$displayName}' ";
+            $html .= "onchange='handleNameChange(this, \"{$dirSafe}\")' />"; // Event when the name is changed
+            $html .= "</span>";
+        
             // Buttons (conditionally displayed)
             if ($isFile) {
                 $html .= "<span>
@@ -84,6 +87,13 @@
                     <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
                 </span>";
             }
+
+            
+            
+            In this updated version:
+            
+                I replaced the display of $displayName with an input element.
+                The input element has an onchange event, which calls handleNameChange(this, "{$dirSafe}"). This function should be defined in your JavaScript a
     
             $html .= "</div>"; // Close flex container div
     
