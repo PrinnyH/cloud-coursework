@@ -4,40 +4,52 @@ require_once 'vendor/autoload.php';
 use Google\Cloud\Storage\StorageClient;
 session_start();
 
-function formatPath($path) {
-    // Ensure the path is correctly formatted
-    return rtrim($path, '/') . '/';
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $oldDir = formatPath($_POST['oldDir']);
-    $newDir = formatPath($_POST['newDir']);
+    $oldPath = $_POST['oldDir']; // Could be a file or directory path
+    $newPath = $_POST['newDir']; // New file or directory path
     
     $storage = new StorageClient();
     $bucket = $storage->bucket($_SESSION['user_bucket_id']);
 
-    // List all objects in the old directory
-    $objects = $bucket->objects(['prefix' => $oldDir]);
-    foreach ($objects as $object) {
-        // Determine the new object name
-        $newObjectName = $newDir . substr($object->name(), strlen($oldDir));
+    // Check if the path is a directory
+    $isDirectory = substr($oldPath, -1) === '/';
+    $oldPath = $isDirectory ? formatPath($oldPath) : $oldPath;
+    $newPath = $isDirectory ? formatPath($newPath) : $newPath;
 
-        try {
-            // Copy the object to the new location
-            $object->copy($bucket, ['name' => $newObjectName]);
-
-            // Delete the original object
-            $object->delete();
-        } catch (Exception $e) {
-            // Handle exceptions (log them, notify, etc.)
-            error_log("Error moving object: " . $e->getMessage());
-            echo 'false';
-            exit; // Exit the script or handle the error appropriately
+    // Process based on whether it's a directory
+    if ($isDirectory) {
+        // Directory: move all objects in the directory
+        $objects = $bucket->objects(['prefix' => $oldPath]);
+        foreach ($objects as $object) {
+            $newObjectName = $newPath . substr($object->name(), strlen($oldPath));
+            moveObject($object, $bucket, $newObjectName);
+        }
+    } else {
+        // Single file: move the file
+        $object = $bucket->object($oldPath);
+        if ($object->exists()) {
+            moveObject($object, $bucket, $newPath);
         }
     }
 
     echo 'true';
 } else {
     echo 'false';
+}
+
+function formatPath($path) {
+    // Add a slash only if it's not already present and if the path is not empty
+    return (substr($path, -1) !== '/' && !empty($path)) ? $path . '/' : $path;
+}
+
+function moveObject($object, $bucket, $newName) {
+    try {
+        $object->copy($bucket, ['name' => $newName]);
+        $object->delete();
+    } catch (Exception $e) {
+        error_log("Error moving object: " . $e->getMessage());
+        echo 'false';
+        exit;
+    }
 }
 ?>

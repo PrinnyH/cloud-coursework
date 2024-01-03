@@ -69,7 +69,7 @@ function handleNameChange(element, fullPath, fileExtension) {
     if (!isValidName) {
         // If the name is invalid, highlight the input and exit the function
         element.style.borderColor = 'red';
-        alert('Invalid name. \n Please ensure the name does not contain spaces or special characters (/,?*:"<>|) and name is below 25 chracters');
+        alert('Invalid name. \nPlease ensure name: \nDoes not contain spaces or special characters (/,?*:"<>|) \nName is below 25 chracters');
         return;
     }
 
