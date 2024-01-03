@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <?php
-session_start(); // Start the session
-if (!isset($_SESSION['user_id'])) {
-    // If the user is not logged in, redirect them to the login page
-    header("Location: index.html");
-    exit();
-}
-$name = $_SESSION['user_id'];
-$bucket_id = $_SESSION['user_bucket_id'];
+    session_start(); // Start the session
+    if (!isset($_SESSION['user_id'])) {
+        // If the user is not logged in, redirect them to the login page
+        header("Location: index.html");
+        exit();
+    }
+    $name = $_SESSION['user_id'];
+    $bucket_id = $_SESSION['user_bucket_id'];
 
 ?>
 <html lang="en">
@@ -18,6 +18,7 @@ $bucket_id = $_SESSION['user_bucket_id'];
     <script src="js/login.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bucketController.js"></script>
+    <script src="js/navController.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
     <link rel="stylesheet" href="style.css"> 
@@ -40,8 +41,8 @@ $bucket_id = $_SESSION['user_bucket_id'];
                     <i class="hide-nav-button fa fas fa-angle-double-left w3-display-topright w3-button w3-xxlarge w3-transparent"></i>
                 </div>
                 <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-                    <a href="#" class="w3-bar-item w3-button">My Files</a>
-                    <a href="#" class="w3-bar-item w3-button">My Shared Files</a>
+                    <a href="#" class="w3-bar-item w3-button" id="navMyFiles">My Files</a>
+                    <a href="#" class="w3-bar-item w3-button" id="navMySharedFiles">My Shared Files</a>
                 </div>
                 <!-- <div class="w3-padding-16 w3-medium">
                     <a href="#contact" class="w3-bar-item w3-text-black w3-button w3-padding">Contact</a> 
@@ -53,15 +54,8 @@ $bucket_id = $_SESSION['user_bucket_id'];
                 </div>
             </div>
         </nav>
-
-        <div class="w3-left" style="margin:20px; width: 100%; box-sizing: border-box;">
-            <h1>Welcome <?php echo htmlspecialchars($name);?> + <?php echo htmlspecialchars($bucket_id);?></h1>
-            <div id="directoryListing">
-            </div>
-            
-        </div>
-
-
+        
+        <div id="contentArea" class="w3-left" style="margin:20px; width: 100%; box-sizing: border-box;"> </div>
     </div>
     
 

@@ -224,13 +224,13 @@ function handleMoveDirectory(draggedDir, targetDir) {
     var name = names[names.length - 1] === "" ? names[names.length - 2] + "/" : names[names.length - 1];
     var newFullPath = targetDir + name 
     
-    console.log(draggedDir);
-    console.log(targetDir);
-    console.log(name);
-    console.log(newFullPath);
+    // console.log(draggedDir);
+    // console.log(targetDir);
+    // console.log(name);
+    // console.log(newFullPath);
 
     if (newFullPath.startsWith(draggedDir) || newFullPath == draggedDir){
-        console.log("DENIED");
+        // console.log("DENIED");
         return; //no possible self childing
     }
 
@@ -253,9 +253,6 @@ function handleMoveDirectory(draggedDir, targetDir) {
     params.append('newDir', newFullPath);
     
     xhr.send(params);
-
-
-
 }
 
 
@@ -275,7 +272,3 @@ function loadDirectoryListing() {
     
     xhr.send();
 };
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadDirectoryListing();
-});
