@@ -3,7 +3,7 @@ function handleAddDirectory(button){
     var dirName = button.getAttribute('data-dir');
     
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'addDirectory.php', true);
+    xhr.open('POST', 'runnable/addDirectory.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     
     xhr.onload = function() {
@@ -31,7 +31,7 @@ function handleDelete(button) {
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'deleteDirectory.php', true);
+    xhr.open('POST', 'runnable/deleteDirectory.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {
@@ -84,7 +84,7 @@ function handleNameChange(element, fullPath, fileExtension) {
     // console.log(newFullPath);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'renameDirectory.php', true);
+    xhr.open('POST', 'runnable/renameDirectory.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {
@@ -139,7 +139,7 @@ function handleUploadFile(button) {
             }
 
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'uploadFile.php', true);
+            xhr.open('POST', 'runnable/uploadFile.php', true);
 
             xhr.onload = function() {
                 if (this.status === 200) {
@@ -177,7 +177,7 @@ function handleUploadFolder(button) {
             }
 
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'uploadFolder.php', true);
+            xhr.open('POST', 'runnable/uploadFolder.php', true);
 
             xhr.onload = function() {
                 if (this.status === 200) {
@@ -235,7 +235,7 @@ function handleMoveDirectory(draggedDir, targetDir) {
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'renameDirectory.php', true);
+    xhr.open('POST', 'runnable/renameDirectory.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {
@@ -259,7 +259,7 @@ function handleMoveDirectory(draggedDir, targetDir) {
 function loadDirectoryListing() {
     var xhr = new XMLHttpRequest();
     
-    xhr.open('POST', 'loadDirectoryListing.php', true);
+    xhr.open('POST', 'runnable/loadDirectoryListing.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     
     xhr.onload = function() {

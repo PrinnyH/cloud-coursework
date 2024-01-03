@@ -15,7 +15,6 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="js/login.js"></script>
     <script src="js/script.js"></script>
     <script src="js/bucketController.js"></script>
     <script src="js/navController.js"></script>
@@ -29,7 +28,7 @@
         <div class="w3-top">
         <div class="w3-bar w3-black w3-card">
             <h3 class="w3-padding-large w3-bar-item w3-wide"><b>VAULTS</b></h3>
-            <a href="logout.php" class="logout-button w3-bar-item w3-button w3-padding-large w3-text-red w3-right">Logout</a>
+            <a href="runnable/logout.php" class="logout-button w3-bar-item w3-button w3-padding-large w3-text-red w3-right">Logout</a>
         </div>
     </div>
     <!--Main Content  -->

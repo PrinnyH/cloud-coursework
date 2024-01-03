@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var xhr = new XMLHttpRequest();
         var formData = new FormData(document.getElementById('loginForm'));
         
-        xhr.open('POST', 'login.php', true);
+        xhr.open('POST', 'runnable/login.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         xhr.onload = function() {
