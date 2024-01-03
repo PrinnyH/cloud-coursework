@@ -216,10 +216,10 @@ function drop(event) {
 }
 
 function handleMoveDirectory(draggedDir, targetDir) {
-    if (draggedDir === "" ){
+    if (draggedDir === "undefined" ){
         return; //no possible root moving
     }
-   
+
     if (targetDir.includes(draggedDir)){
         return; //no possible self childing
     }
