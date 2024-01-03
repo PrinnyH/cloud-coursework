@@ -219,10 +219,9 @@ function handleMoveDirectory(draggedDir, targetDir) {
     if (targetDir.includes(draggedDir)){
         return; //no possible self childing
     }
-    var endsWithSlash = draggedDir.endsWith('/');
     var names = draggedDir.split("/");
     var name = names[names.length - 1] === "" ? names[names.length - 2] + "/" : names[names.length - 1];
-    var newFullPath = targetDir + name + (endsWithSlash ? '/' : "");
+    var newFullPath = targetDir + name 
 
     console.log(draggedDir);
     console.log(targetDir);
