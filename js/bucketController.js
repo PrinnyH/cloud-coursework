@@ -229,7 +229,7 @@ function handleMoveDirectory(draggedDir, targetDir) {
     console.log(name);
     console.log(newFullPath);
 
-    if (newFullPath.includes(draggedDir) || newFullPath == draggedDir){
+    if (newFullPath.startsWith(draggedDir) || newFullPath == draggedDir){
         console.log("DENIED");
         return; //no possible self childing
     }
