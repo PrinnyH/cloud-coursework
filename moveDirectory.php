@@ -11,18 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $storage = new StorageClient();
     $bucket = $storage->bucket($_SESSION['user_bucket_id']);
 
-    // List all objects in the old directory
-    $objects = $bucket->objects(['prefix' => $oldDir]);
-    foreach ($objects as $object) {
-        // Replace the old directory path with the new directory path in each object's name
-        $newObjectName = str_replace($oldDir, $newDir, $object->name());
-
-        // Copy the object to the new location
-        $bucket->object($object->name())->copy($bucket, ['name' => $newObjectName]);
-
-        // Delete the original object
-        $object->delete();
-    }
+    
+    // Copy the object to the new location
+    $bucket->object($oldDir)->copy($bucket, $newDir);
+    // delete old object
+    $bucket->object($oldDir)->delete();
+    
 
     echo 'true';
 } else {

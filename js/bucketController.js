@@ -95,7 +95,7 @@ function validateName(name) {
     validName &= !name.includes('<');
     validName &= !name.includes('>');
     validName &= !name.includes('|');
-    return  validName;
+    return validName;
 }
 
 
