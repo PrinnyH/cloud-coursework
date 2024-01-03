@@ -67,7 +67,7 @@
     
             // Flex container for each list item's content with border and background
             $html .= "<li class='list-dir-item'>";
-            $html .= "|<div class='list-dir-item-container' style='padding-left:{$indentation}px;'>"; // Light blue border and background
+            $html .= "<div class='list-dir-item-container' style='padding-left:{$indentation}px;'>|"; // Light blue border and background
     
             // Determine if it's a file and split the name and extension
             $isFile = substr($dirSafe, -1) !== '/';
