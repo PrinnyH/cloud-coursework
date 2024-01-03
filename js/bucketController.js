@@ -173,13 +173,14 @@ function handleUploadFolder(button) {
             var formData = new FormData();
             formData.append('dirSelected', dirSelected);
 
-            // Append each file to the FormData object
+            // Append each file and its relative path to the FormData object
             for (var i = 0; i < this.files.length; i++) {
                 formData.append('uploadedFiles[]', this.files[i]);
+                formData.append('filePaths[]', this.files[i].webkitRelativePath);
             }
 
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'uploadFile.php', true);
+            xhr.open('POST', 'uploadFolder.php', true);
 
             xhr.onload = function() {
                 if (this.status === 200) {
