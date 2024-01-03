@@ -51,48 +51,50 @@
 
     function print_directories_html($directories) {
         $html = "<ul class='list-dir'>";
-
+    
         foreach ($directories as $dir => $subDirs) {
             $dirSafe = htmlspecialchars($dir); // Escape the directory name
-
+    
             // Calculate the number of slashes in the path to determine indentation
             $slashCount = substr_count($dirSafe, '/');
-            $indentation = $slashCount * 20; // 20px per slash for example
-
+            // Add extra indentation for files
+            $isFile = substr($dirSafe, -1) !== '/';
+            $indentation = ($slashCount + ($isFile ? 1 : 0)) * 20; // 20px per slash for example
+    
             // Split the path and get the last part for display
             $pathParts = explode('/', rtrim($dirSafe, '/'));
             $displayName = end($pathParts);
-
+    
             // Flex container for each list item's content with border and background
             $html .= "<li class='list-dir-item'>";
             $html .= "<div class='list-dir-item-container' style='padding-left:{$indentation}px;'>"; // Light blue border and background
-
+    
             // Display only the last part of the path
             $html .= "<span style='flex-grow: 1; white-space: nowrap;'>├─{$displayName}</span>";
-
+    
             // Buttons (conditionally displayed)
-            if (substr($dirSafe, -1) === '/') {
+            if ($isFile) {
+                $html .= "<span>
+                    <button class='list-dir-item-button' onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
+                </span>";
+            } else {
                 $html .= "<span>
                     <button class='list-dir-item-button' onclick='handleAddDirectory(this)' data-dir='{$dirSafe}'>+🗀</button>
                     <button class='list-dir-item-button' onclick='handleDeleteDirectory(this)' data-dir='{$dirSafe}'>🗑</button>
                     <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>+🖹</button>
                 </span>";
-            } else {
-                $html .= "<span>
-                    <button class='list-dir-item-button' onclick='handleDeleteFile(this)' data-dir='{$dirSafe}'>🗑</button>
-                </span>";
             }
-
+    
             $html .= "</div>"; // Close flex container div
-
+    
             // Subdirectories
             if (!empty($subDirs)) {
                 $html .= print_directories_html($subDirs);
             }
-
+    
             $html .= '</li>';
         }
-
+    
         $html .= '</ul>';
         return $html;
     }
