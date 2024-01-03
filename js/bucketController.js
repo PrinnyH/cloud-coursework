@@ -46,59 +46,58 @@ function handleDelete(button){
 };
 
 function handleNameChange(element, fullPath, fileExtension) {
-    function handleNameChange(element, fullPath, fileExtension) {
-        var newName = element.value;
-        var isValidName = validateName(newName);
-        element.style.borderColor = '';
-        
-        if (!isValidName) {
-            // If the name is invalid, highlight the input and exit the function
-            element.style.borderColor = 'red';
-            alert('Invalid name. Please ensure the name does not contain spaces or special characters (/,?*:"<>|)');
-            return;
+    var newName = element.value;
+    var isValidName = validateName(newName);
+    element.style.borderColor = '';
+    
+    if (!isValidName) {
+        // If the name is invalid, highlight the input and exit the function
+        element.style.borderColor = 'red';
+        alert('Invalid name. Please ensure the name does not contain spaces or special characters (/,?*:"<>|)');
+        return;
+    }
+
+    var endsWithSlash = fullPath.endsWith('/');
+    var basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
+    var newFullPath = basePath + newName + (endsWithSlash ? '/' : fileExtension);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'moveDirectory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            if (this.responseText === 'true') {
+                loadDirectoryListing();
+            } else {
+                alert('There was a problem');
+            } 
         }
+    };
     
-        var endsWithSlash = fullPath.endsWith('/');
-        var basePath = fullPath.substring(0, fullPath.lastIndexOf('/') + 1);
-        var newFullPath = basePath + newName + (endsWithSlash ? '/' : fileExtension);
+    var params = new URLSearchParams();
+    params.append('oldDir', fullPath);
+    params.append('newDir', newFullPath);
     
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'moveDirectory.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        
-        xhr.onload = function() {
-            if (this.status == 200) {
-                if (this.responseText === 'true') {
-                    loadDirectoryListing();
-                } else {
-                    alert('There was a problem');
-                } 
-            }
-        };
-        
-        var params = new URLSearchParams();
-        params.append('oldDir', fullPath);
-        params.append('newDir', newFullPath);
-        
-        xhr.send(params);
-    }
-    
-    function validateName(name) {
-        var validName = true;
-        validName &= name.trim() !== '';
-        validName &= !name.includes(' ');
-        validName &= !name.includes('/');
-        validName &= !name.includes(',');
-        validName &= !name.includes('?');
-        validName &= !name.includes('*');
-        validName &= !name.includes(':');
-        validName &= !name.includes('"');
-        validName &= !name.includes('<');
-        validName &= !name.includes('>');
-        validName &= !name.includes('|');
-        return  validName;
-    }
+    xhr.send(params);
 }
+
+function validateName(name) {
+    var validName = true;
+    validName &= name.trim() !== '';
+    validName &= !name.includes(' ');
+    validName &= !name.includes('/');
+    validName &= !name.includes(',');
+    validName &= !name.includes('?');
+    validName &= !name.includes('*');
+    validName &= !name.includes(':');
+    validName &= !name.includes('"');
+    validName &= !name.includes('<');
+    validName &= !name.includes('>');
+    validName &= !name.includes('|');
+    return  validName;
+}
+
 
 
 function handleUploadFile(button){
