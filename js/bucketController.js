@@ -53,9 +53,25 @@ function handleNameChange(element, fullPath, fileExtension) {
     // Reconstruct the new full path
     var newFullPath = basePath +  element.value + (endsWithSlash ? '/' : fileExtension);
 
-    console.log("Old path is: " + fullPath);
-    console.log("New full path is: " + newFullPath);
-    // Add your logic to handle the name change, using newFullPath
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'moveDirectory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            if (this.responseText === 'true') {
+                loadDirectoryListing();
+            } else {
+                alert('There was a problem');
+            } 
+        }
+    };
+    
+    var params = new URLSearchParams();
+    params.append('oldDir', fullPath);
+    params.append('newDir', newFullPath);
+    
+    xhr.send(params);
 }
 
 

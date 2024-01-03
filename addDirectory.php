@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $counter++;
     }
 
-    // Create a pseudo-folder by uploading an empty file
     $bucket->upload('', ['name' => $newFolderPath]);
 
     echo 'true';
