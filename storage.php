@@ -79,8 +79,8 @@ $bucket_id = $_SESSION['user_bucket_id'];
                     <li class='list-dir-item'>
                         <div class='list-dir-item-container' style='padding-left:{$indentation}px;'>
                             <span>
-                                <button class='list-dir-item-button' onclick='handleAddDirectory(this)' data-dir='/'>+🗀</button>
-                                <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir='/'>+🖹</button>
+                                <button class='list-dir-item-button' onclick='handleAddDirectory(this)' data-dir=''>+🗀</button>
+                                <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir=''>+🖹</button>
                             </span>
                         </div>
                     </li>
