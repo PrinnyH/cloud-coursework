@@ -106,3 +106,32 @@ function getAssosiatedBucket() {
 
     xhr.send();
 }
+
+
+function fakeLogin() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'runnable/fakeLogin.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function () {
+        if (this.status == 200) {
+            try {
+                var response = JSON.parse(this.responseText);
+
+                if (response.success) {
+                    // Store the new cookie values in your preferred way
+                    document.cookie = 'auth_token=' + response.updatedToken + '; expires=' + new Date(response.expiry).toUTCString() + '; path=/';
+
+                    // Redirect to 'storage.php' or perform other actions
+                    window.location.href = 'storage.php';
+                } else {
+                    alert("There was an issue getting Vault: " + response.message);
+                }
+            } catch (error) {
+                console.error('Error parsing JSON response:', error);
+            }
+        }
+    };
+    xhr.send();
+}
+
