@@ -1,12 +1,12 @@
 <h1>SHARED FOLDERS <?php echo htmlspecialchars($name);?></h1>
-<select id="sharedFolderSelector" class="dropdown" onchange="dropDownChange()">
+<div   class="dropdown" onchange="dropDownChange()">
   <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
+  <select id="sharedFolderSelector" class="dropdown-content">
     <option href="#">Link 1</option>
     <option href="#">Link 2</option>
     <option href="#">Link 3</option>
-  </div>
-</select>
+  </select>
+</div>
 <button class="dropbtn">Dropdown</button>
 <div id="directoryListing">
 </div>
