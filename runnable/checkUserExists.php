@@ -5,7 +5,7 @@
 require_once("credentials.php");
 session_start();
 $email = $_SESSION['email']; // Assuming $_SESSION['email'] is already set
-
+error_log("started sql");
 // Initialize the mysqli object
 $mysqli = new mysqli($host, $username, $password, $database);
 
