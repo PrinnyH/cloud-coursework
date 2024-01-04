@@ -23,7 +23,7 @@ if ($mysqli->connect_error) {
 
 $stringToHash = $email . $name;
 // we use password hash here but we are just creating a unique name for the bucket we want to create
-$hashedString = password_hash($stringToHash, PASSWORD_DEFAULT);
+$hashedString = sha1($stringToHash);
 
 $storage = new StorageClient();
 // Create a new bucket
