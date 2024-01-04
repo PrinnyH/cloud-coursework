@@ -1,6 +1,6 @@
 <?php
-    require_once('../vendor/autoload.php');
 
+    require_once('../vendor/autoload.php');
     use Google\Cloud\Storage\StorageClient;
     
     require_once("credentials.php");
@@ -19,7 +19,7 @@
                 $bucket_id = $decodedToken->bucket_id;
             }
         }
-        $bucket = $storage->bucket(bucket_id);
+        $bucket = $storage->bucket($bucket_id);
     
         $allDirectories = [];
         foreach ($bucket->objects() as $object) {
