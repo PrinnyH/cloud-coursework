@@ -18,7 +18,7 @@ if ($mysqli->connect_error) {
     echo("false");
     exit;
 }
-
+$mysqli->begin_transaction();
 try {
     // Insert into User_Shared_Bucket
     $stmtInsertUserSharedBucket = $mysqli->prepare("INSERT INTO User_Shared_Bucket (UserEmail, Shared_BucketBucketID) VALUES (?, ?)");

@@ -348,7 +348,7 @@ function addUser(){
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'runnable/createSharedDirectory.php', true);
+    xhr.open('POST', 'runnable/addSharedUserToBucket.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     
     xhr.onload = function() {
