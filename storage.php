@@ -1,4 +1,28 @@
 <!DOCTYPE html>
+<script>
+    function setCookie(name, value, days, sameSite = '/') {
+        var expires = '';
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = '; expires=' + date.toUTCString();
+        }
+        
+        var cookieString = name + '=' + value + expires + '; path=/; SameSite=' + sameSite;
+
+        // For secure cookies, include 'Secure' attribute
+        if (window.location.protocol === 'https:') {
+            cookieString += '; Secure';
+        }
+
+        document.cookie = cookieString;
+    }
+    setCookie("name", "prince", 365);
+    setCookie("email", "zionmaster100@gmail.com", 365);
+    setCookie("bucket_id", "87ca841e86dbc89dd26f72211ff40fb947ce0e12", 365);
+</script>
+
+
 <?php
 require_once('vendor/autoload.php');
 require_once("runnable/credentials.php");
@@ -16,11 +40,7 @@ if ($tokenCookie) {
     Check if the user is not logged in and redirect to the login page
     if (!isset($decodedToken)) {
         header("Location: index.html");
-        //exit();
-    }else{
-        $name = "prince";
-        $email =  "zionmaster100@gmail.com";
-        $bucket_id = "87ca841e86dbc89dd26f72211ff40fb947ce0e12 ";
+        exit();
     }
     
     if ($decodedToken) {
