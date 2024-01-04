@@ -23,7 +23,19 @@ function loadContent(page) {
 }
 
 function dropDownChange(){
+    document.getElementById("myDropdown").classList.toggle("show");
     var x = document.getElementById("sharedFolderSelector").value;
     console.log("You selected: " + x);
 }
+
+function adUser(){
+    var x = document.getElementById("sharedFolderSelector").value;
+    console.log("Add to: " + x);
+}
+
+function removeUser(){
+    var x = document.getElementById("sharedFolderSelector").value;
+    console.log("Add to: " + x);
+}
+
 
