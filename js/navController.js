@@ -24,8 +24,6 @@ function loadContent(page) {
 
 function dropDownChange(){
     document.getElementById("sharedFolderSelector").classList.toggle("show");
-    var x = document.getElementById("sharedFolderSelector").value;
-    console.log("You selected: " + x);
 }
 
 function addUser(){

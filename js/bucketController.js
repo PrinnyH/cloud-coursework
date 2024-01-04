@@ -275,7 +275,7 @@ function loadDirectoryListing() {
 
 function loadSharedDirectoryListing(button) {
     var bucketSelected = button.getAttribute('data-id');
-    console.log(bucketSelected.value);
+    console.log(bucketSelected);
 
     // var xhr = new XMLHttpRequest();
     // xhr.open('POST', 'runnable/loadDirectoryListing.php', true);
