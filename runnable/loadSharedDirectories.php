@@ -6,21 +6,29 @@
 
     require_once('../vendor/autoload.php');
     use Google\Cloud\Storage\StorageClient;
-    require_once("credentials.php");
     use Firebase\JWT\JWT;
     use Firebase\JWT\Key;
 
     function list_all_shared_buckets() {
+        $secretKey = 'password123**1$$23'; 
+        
         $tokenCookie = $_COOKIE['auth_token'] ?? null;
         // Check if the token cookie is set
         if ($tokenCookie) {
             // Decode the token to get user information
-            $decodedToken = JWT::decode($tokenCookie, new key('password123**1$$23', 'HS256'));
+            $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
             
             if ($decodedToken) {
                 $email = $decodedToken->email;
             }
         }
+        
+        $host = "10.107.112.3";
+        $port = "3306";             
+        $username = "root";
+        $password = "f}]^x\a>9Kk#D2xF"; 
+        $database = "vaultzsSite";
+
         // Set the connection timeout
         $timeout = 10; // Timeout in seconds
         $mysqli = new mysqli($host, $username, $password, $database, $port);
