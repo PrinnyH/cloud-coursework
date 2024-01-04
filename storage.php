@@ -14,7 +14,7 @@ if ($tokenCookie) {
     // Decode the token to get user information
     $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
     
-    Check if the user is not logged in and redirect to the login page
+    //Check if the user is not logged in and redirect to the login page
     if (!isset($decodedToken)) {
         header("Location: index.html");
         exit();
