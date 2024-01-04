@@ -6,7 +6,7 @@
 
     require_once('../vendor/autoload.php');
     use Google\Cloud\Storage\StorageClient;
-    
+    require_once("credentials.php");
     use Firebase\JWT\JWT;
     use Firebase\JWT\Key;
 
