@@ -3,8 +3,6 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-require_once('../vendor/autoload.php');
-
     // Replace these with your database credentials
     $host = "10.107.112.3";
     $port = "3306";             
