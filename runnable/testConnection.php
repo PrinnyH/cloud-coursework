@@ -3,7 +3,7 @@
 use MongoDB\Client;
 use MongoDB\Driver\ServerApi;
 
-$uri = mongodb+srv://vaultz-user:r7z82ChXYpPkwIoX@website.7x18c79.mongodb.net/?retryWrites=true&w=majority;
+$uri = "mongodb+srv://vaultz-user:r7z82ChXYpPkwIoX@website.7x18c79.mongodb.net/?retryWrites=true&w=majority";
 // Specify Stable API version 1
 $apiVersion = new ServerApi(ServerApi::V1);
 // Create a new client and connect to the server
