@@ -1,19 +1,16 @@
 <?php
-require_once("credentials.php");
 
-// Create a new MySQLi object
-$conn = new mysqli($host, $username, $password, $database, $port);
-
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+use Exception;
+use MongoDB\Client;
+$uri = mongodb+srv://vaultz-user:r7z82ChXYpPkwIoX@website.7x18c79.mongodb.net/?retryWrites=true&w=majority;
+// Create a new client and connect to the server
+$client = new MongoDB\Client($uri);
+try {
+    // Send a ping to confirm a successful connection
+    $client->selectDatabase('admin')->command(['ping' => 1]);
+    echo "Pinged your deployment. You successfully connected to MongoDB!\n";
+} catch (Exception $e) {
+    printf($e->getMessage());
 }
-
-echo "Connected successfully";
-
-// Perform your database operations here...
-
-// Close the connection
-$conn->close();
 
 ?>
