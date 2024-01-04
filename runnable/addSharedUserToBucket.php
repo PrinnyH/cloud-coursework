@@ -8,6 +8,9 @@ require_once("credentials.php");
 $email = $_POST['given-email'];
 $bucketID = $_POST['given-bucketID'];
 
+error_log($email);
+error_log($bucketID);
+
 // Set the connection timeout
 $timeout = 10; // Timeout in seconds
 $mysqli = new mysqli($host, $username, $password, $database, $port);
