@@ -3,7 +3,7 @@
     session_start(); // Start the session
     if (!isset($_SESSION['email'])) {
         // If the user is not logged in, redirect them to the login page
-        header("Location: index.php");
+        header("Location: index.html");
         exit();
     }
     $name = $_SESSION['firstname'];

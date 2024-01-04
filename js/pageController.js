@@ -44,7 +44,7 @@ function submitLoginForm() {
 }
     
 function logout(){
-    window.location.href = 'index.php'; // Redirect        
+    window.location.href = 'index.html'; // Redirect        
     //close session here
 }
 
