@@ -71,3 +71,10 @@ function getAssosiatedBucket(){
     
     xhr.send();
 }
+
+window.onload = function() {
+    google.accounts.id.initialize({
+        client_id: '23146911805-tuefejed4hddunmos49sph1jgvub608o.apps.googleusercontent.com',
+        callback: handleCredentialResponse
+    });
+};
