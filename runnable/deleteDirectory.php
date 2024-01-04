@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bucket_id = $decodedToken->bucket_id;
         }
     }
-    $bucket = $storage->bucket(bucket_id);
+    $bucket = $storage->bucket($bucket_id);
 
     try {
         // Check if the path is for a directory (ends with '/')

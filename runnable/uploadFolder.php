@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['uploadedFiles'])) {
             $bucket_id = $decodedToken->bucket_id;
         }
     }
-    $bucket = $storage->bucket(bucket_id);
+    $bucket = $storage->bucket($bucket_id);
 
     $uploadSuccess = true;
 

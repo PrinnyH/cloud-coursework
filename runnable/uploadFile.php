@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['uploadedFiles'])) {
             $bucket_id = $decodedToken->bucket_id;
         }
     }
-    $bucket = $storage->bucket(bucket_id);
+    $bucket = $storage->bucket($bucket_id);
 
     // Iterate over each file
     foreach ($files['name'] as $index => $name) {
