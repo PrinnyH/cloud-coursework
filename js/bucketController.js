@@ -318,6 +318,7 @@ function populateFolderDropDown(){
 
 function loadSharedDirectoryListing(button) {
     var bucketSelected = button.getAttribute('data-id');
+    document.getElementById("selectedBucket").getAttribute('selected-bucket') = bucketSelected;
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'runnable/loadSelectedSharedDirectory.php', true);
@@ -336,3 +337,38 @@ function loadSharedDirectoryListing(button) {
     
     xhr.send(params);
 };
+
+
+function addUser(){
+    var selectedBucket = document.getElementById("selectedBucket").getAttribute('selected-bucket');
+    
+    var email = window.prompt("Please enter the email to add:", "");
+    if (!validateName(email)) {
+        alert('Invalid name. \nPlease ensure name: \nDoes not contain spaces or special characters (/,?*:"<>|) \nName is below 25 chracters');
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'runnable/createSharedDirectory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            if (this.responseText.trim() === 'true') {
+                return;
+            } else {
+                alert("There was a problem adding email")
+            }
+        }
+    };
+
+    var params = new URLSearchParams();
+    params.append('given-email', email);
+    params.append('given-bucketID', selectedBucket);
+    
+    xhr.send(params);
+}
+
+function removeUser(){
+    var x = document.getElementById("sharedFolderSelector").value;
+    console.log("Add to: " + x);
+}

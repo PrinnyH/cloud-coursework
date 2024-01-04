@@ -9,4 +9,4 @@
 <button onclick="removeUser()" class="dropbtn">-👤</button>
 <div id="directoryListing">
 </div>
-
+<div id="selectedBucket" selected-bucket=''></div>

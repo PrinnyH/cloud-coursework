@@ -25,16 +25,6 @@ function dropDownChange(){
     document.getElementById("sharedFolderSelector").classList.toggle("show");
 }
 
-function addUser(){
-    var x = document.getElementById("sharedFolderSelector").value;
-    console.log("Add to: " + x);
-}
-
-function removeUser(){
-    var x = document.getElementById("sharedFolderSelector").value;
-    console.log("Add to: " + x);
-}
-
 //unclicks the dropdown
 window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
