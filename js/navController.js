@@ -23,7 +23,7 @@ function loadContent(page) {
 }
 
 function dropDownChange(){
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("sharedFolderSelector").classList.toggle("show");
     var x = document.getElementById("sharedFolderSelector").value;
     console.log("You selected: " + x);
 }
