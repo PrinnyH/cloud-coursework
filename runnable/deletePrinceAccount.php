@@ -20,12 +20,20 @@ if ($stmt = $conn->prepare("SELECT * FROM User")) {
     // Execute the query
     $stmt->execute();
 
-    // Bind result variables
-    $stmt->bind_result($email, $bucketID);
+    // Store the result to get properties like num_rows
+    $stmt->store_result();
 
-    // Fetch and echo the results
-    while ($stmt->fetch()) {
-        echo "Email: $email, BucketID: $bucketID<br>";
+    // Check if there are rows in the result set
+    if ($stmt->num_rows > 0) {
+        // Bind result variables
+        $stmt->bind_result($email, $bucketID);
+
+        // Fetch and echo the results
+        while ($stmt->fetch()) {
+            echo "Email: $email, BucketID: $bucketID<br>";
+        }
+    } else {
+        echo "The User table is empty.";
     }
 
     // Close statement
