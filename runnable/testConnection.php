@@ -1,6 +1,5 @@
 <?php
 
-use Exception;
 use MongoDB\Client;
 $uri = "mongodb+srv://vaultz-user:r7z82ChXYpPkwIoX@website.7x18c79.mongodb.net/?retryWrites=true&w=majority";
 // Create a new client and connect to the server
