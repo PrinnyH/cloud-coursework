@@ -22,3 +22,8 @@ function loadContent(page) {
         .catch(error => console.error('Error loading content:', error));
 }
 
+function dropDownChange(){
+    var x = document.getElementById("sharedFolderSelector").value;
+    console.log("You selected: " + x);
+}
+
