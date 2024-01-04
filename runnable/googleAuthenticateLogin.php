@@ -15,19 +15,19 @@ try {
             $_SESSION['email'] = $payload['email'];
             $_SESSION['firstname'] = $payload['given_name'];
             error_log("no problem");
-            echo "true";
+            echo 'true';
         } else {
             error_log("payload is not verified");
-            echo "false"; // Token is invalid
+            echo 'false'; // Token is invalid
         }
     } else {
         error_log("ID token is null");
-        echo "false"; // No token provided
+        echo 'false'; // No token provided
     }
 } catch (Exception $e) {
     // Handle exception
     error_log($e->getMessage());
-    echo "false";
+    echo 'false';
 }
 ?>
 
