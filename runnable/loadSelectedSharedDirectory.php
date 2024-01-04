@@ -8,7 +8,7 @@
 
     function list_all_directories() {
 
-        $bucket_id = $_Post['BucketID'];
+        $bucket_id = $_POST['BucketID'];
 
         $storage = new StorageClient();
         $bucket = $storage->bucket($bucket_id);
