@@ -28,7 +28,7 @@ function dropDownChange(){
     console.log("You selected: " + x);
 }
 
-function adUser(){
+function addUser(){
     var x = document.getElementById("sharedFolderSelector").value;
     console.log("Add to: " + x);
 }

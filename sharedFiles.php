@@ -7,8 +7,8 @@
     <a href="#">Create</a>
   </div>
 </div>
-<button onclick="addUser()" class="dropbtn">+ User</button>
-<button onclick="removeUser()" class="dropbtn">- User</button>
+<button onclick="addUser()" class="dropbtn">+👤</button>
+<button onclick="removeUser()" class="dropbtn">-👤</button>
 <div id="directoryListing">
 </div>
 
