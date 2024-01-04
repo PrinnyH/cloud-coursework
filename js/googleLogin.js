@@ -46,7 +46,7 @@ function createUserAndAssignBucket(){
             if (this.responseText === 'true') {
                 getAssosiatedBucket();
             } else {
-                alert("There was a problem.");
+                alert("shouldnt be here yet");
             } 
         }
     };
