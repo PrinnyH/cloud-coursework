@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <?php
-    require_once('../vendor/autoload.php');
-    require_once("credentials.php");
+    require_once('vendor/autoload.php');
+    require_once("runnable/credentials.php");
     use Firebase\JWT\JWT;
     use Firebase\JWT\Key;
-
     // Retrieve the values of the 'auth_token' cookie
     $tokenCookie = $_COOKIE['auth_token'] ?? null;
 
