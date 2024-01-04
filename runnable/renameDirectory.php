@@ -3,12 +3,25 @@ require_once '../vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
 
+require_once("credentials.php");
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $oldPath = $_POST['oldDir']; // Could be a file or directory path
     $newPath = $_POST['newDir']; // New file or directory path
     
     $storage = new StorageClient();
-    $bucket_id = $_COOKIE['bucket_id'];
+    $tokenCookie = $_COOKIE['auth_token'] ?? null;
+    // Check if the token cookie is set
+    if ($tokenCookie) {
+        // Decode the token to get user information
+        $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
+
+        if ($decodedToken) {
+            $bucket_id = $decodedToken->bucket_id;
+        }
+    }
     $bucket = $storage->bucket(bucket_id);
 
     // Check if the path is a directory

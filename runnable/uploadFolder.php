@@ -3,6 +3,10 @@ require_once '../vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
 
+require_once("credentials.php");
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['uploadedFiles'])) {
     $parentPath = $_POST['dirSelected']; // Full path of the directory
     $files = $_FILES['uploadedFiles'];
@@ -10,7 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['uploadedFiles'])) {
 
     // Initialize Google Cloud Storage client
     $storage = new StorageClient();
-    $bucket_id = $_COOKIE['bucket_id'];
+    $tokenCookie = $_COOKIE['auth_token'] ?? null;
+    // Check if the token cookie is set
+    if ($tokenCookie) {
+        // Decode the token to get user information
+        $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
+
+        if ($decodedToken) {
+            $bucket_id = $decodedToken->bucket_id;
+        }
+    }
     $bucket = $storage->bucket(bucket_id);
 
     $uploadSuccess = true;

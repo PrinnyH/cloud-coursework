@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <?php
-    // Check if the user is not logged in and redirect to the login page
-    if (!isset($_COOKIE['email']) || !isset($_COOKIE['username']) || !isset($_COOKIE['bucket_id'])) {
-        header("Location: index.html");
-        exit();
-    }
+require_once("credentials.php");
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
-    // Retrieve user information from cookies
-    $name = $_COOKIE['username'];
-    $email = $_COOKIE['email'];
-    $bucket_id = $_COOKIE['bucket_id'];
+// Retrieve the values of the 'auth_token' cookie
+$tokenCookie = $_COOKIE['auth_token'] ?? null;
+
+// Check if the token cookie is set
+if ($tokenCookie) {
+    // Decode the token to get user information
+    $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
+    
+    if ($decodedToken) {
+        // Get the email and name from the decoded token
+        $name = $decodedToken->username;
+        $email =  $decodedToken->email;
+        $bucket_id = $decodedToken->bucket_id;
+    }
+}
+// Check if the user is not logged in and redirect to the login page
+if (!isset($email)) {
+    header("Location: index.html");
+    exit();
+}
 ?>
 <html lang="en">
 <head>
