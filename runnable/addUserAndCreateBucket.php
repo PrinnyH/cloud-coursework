@@ -1,50 +1,46 @@
 <?php
-     ini_set('display_errors', 'On');
-     error_reporting(E_ALL); 
-     
-    require_once("credentials.php");
-    session_start();
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 
-    // Set the connection timeout
-    $timeout = 10; // Timeout in seconds
-    $mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, $timeout);
+require_once('vendor/autoload.php');
+use Google\Cloud\Storage\StorageClient;
 
-    // Attempt to connect to the database
-    $mysqli = new new mysqli($host, $username, $password, $database, $port);
+require_once("credentials.php");
+session_start();
+$email = $_SESSION['email'];
+$name = $_SESSION['firstname'];
 
-    //Output any connection error
-    if ($mysqli->connect_error) {
-        error_log('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-        echo("false");
-        exit;
-    }
-    $email = $_POST['email'];
+// Set the connection timeout
+$timeout = 10; // Timeout in seconds
+$mysqli = new mysqli($host, $username, $password, $database, $port);
 
-    // Prepare the query
-    if ($stmt = $mysqli->prepare("SELECT Email FROM 'User' WHERE Email = ?")) {
-        
-        // Bind parameters (s - string)
-        $stmt->bind_param("s", $email);
+// Output any connection error
+if ($mysqli->connect_error) {
+    error_log('Error : (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+    echo("false");
+    exit;
+}
 
-        // Execute the query
-        $stmt->execute();
+$stringToHash = $email . $name;
+// we use password hash here but we are just creating a unique name for the bucket we want to create
+$hashedString = password_hash($stringToHash, PASSWORD_DEFAULT);
 
-        // Store the result to get properties like num_rows
-        $stmt->store_result();
+$storage = new StorageClient();
+// Create a new bucket
+$bucket = $storage->createBucket($hashedString);
 
-        if ($stmt->num_rows > 0) {
-            echo "true";
-        } else {
-            echo "false";
-        }
+// Insert data into the database
+if ($stmtInsert = $mysqli->prepare("INSERT INTO User (Email, BucketID) VALUES (?, ?)")) {
+    $stmtInsert->bind_param("ss", $email, $hashedString);
+    $stmtInsert->execute();
+    error_log("Bucket and Database entry created successfully");
+    echo 'true';
+    $stmtInsert->close();
+} else {
+    error_log("Error preparing insert statement: " . $mysqli->error);
+    echo 'false';
+}
 
-        // Close statement
-        $stmt->close();
-    } else {
-        echo "Error preparing statement: " . $mysqli->error;
-    }
-
-    // Close the connection
-    $mysqli->close();
-
+// Close the connection
+$mysqli->close();
 ?>
