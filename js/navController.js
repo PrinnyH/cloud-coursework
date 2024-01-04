@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('navMyFiles').addEventListener('click', function() {
         loadContent('myFiles.php');
-        loadDirectoryListing();
     });
 
     document.getElementById('navMySharedFiles').addEventListener('click', function() {
