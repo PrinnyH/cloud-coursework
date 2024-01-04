@@ -318,7 +318,7 @@ function populateFolderDropDown(){
 
 function loadSharedDirectoryListing(button) {
     var bucketSelected = button.getAttribute('data-id');
-    document.getElementById("selectedBucket").getAttribute('selected-bucket') = bucketSelected;
+    document.getElementById("selectedBucket").setAttribute('selected-bucket', bucketSelected);
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'runnable/loadSelectedSharedDirectory.php', true);
