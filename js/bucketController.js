@@ -272,3 +272,21 @@ function loadDirectoryListing() {
     
     xhr.send();
 };
+
+function loadSharedDirectoryListing(button) {
+    var bucketSelected = button.getAttribute('data-id');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'runnable/loadDirectoryListing.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            document.getElementById('directoryListing').innerHTML = this.responseText;
+        } else {
+            console.error('Error loading directory listing');
+        }
+    };
+    
+    xhr.send();
+};

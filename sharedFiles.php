@@ -2,7 +2,7 @@
 <div class="dropdown">
   <button onclick="dropDownChange()" class="dropbtn">▼ Folder</button>
   <div id="sharedFolderSelector" class="dropdown-content">
-    <a href="#">Link 1</a>
+    <a href="#" onclick='loadSharedDirectoryListing(this)' data-id='test'>Link 1</a>
     <a href="#">Link 2</a>
     <a href="#">Create</a>
   </div>
