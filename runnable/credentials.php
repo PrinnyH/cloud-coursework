@@ -1,6 +1,6 @@
 <?php
     $host = "34.72.95.163";
-    $username = "root";
-    $password = "f}]^x\a>9Kk#D2xF";
+    $username = "vaultz-user";
+    $password = "L24<YJDtr+M`2@>`";
     $database = "vaultzsSite";
 ?>
