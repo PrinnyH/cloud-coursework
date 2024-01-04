@@ -16,9 +16,11 @@ try {
             $_SESSION['firstname'] = $payload['given_name'];
             echo "true";
         } else {
+            error_log("payload is not verified");
             echo "false"; // Token is invalid
         }
     } else {
+        error_log("ID token is null");
         echo "false"; // No token provided
     }
 } catch (Exception $e) {
