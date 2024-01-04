@@ -20,6 +20,8 @@
         echo "Connected successfully to the database.";
     }
 
+
+    $allBucketIds = [];
     if ($stmt = $mysqli->prepare("SELECT Shared_BucketBucketID FROM User_Shared_Bucket WHERE UserEmail = ?")) {
         // Bind parameters and execute query
         $stmt->bind_param("s", "zionmaster100@gmail.com");
