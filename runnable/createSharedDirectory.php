@@ -35,9 +35,9 @@ if ($mysqli->connect_error) {
     exit;
 }
 
-$stringToHash = $email . $name;
+$stringToHash = $email . $name . $_POST['folderName'];
 // we use password hash here but we are just creating a unique name for the bucket we want to create
-$hashedString = sha1($stringToHash) . $_POST['folderName'];
+$hashedString = sha1($stringToHash);
 
 $storage = new StorageClient();
 // Create a new bucket
