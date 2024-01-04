@@ -320,7 +320,7 @@ function loadSharedDirectoryListing(button) {
     var bucketSelected = button.getAttribute('data-id');
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'runnable/loadDirectoryListing.php', true);
+    xhr.open('POST', 'runnable/loadSelectedSharedDirectory.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     
     xhr.onload = function() {
