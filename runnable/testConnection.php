@@ -2,8 +2,8 @@
 
     require_once __DIR__ . '/../vendor/autoload.php';
 
-    use MongoDB\Client;
-    use MongoDB\Driver\ServerApi;
+    use MongoDB\MongoDB\Client;
+    use MongoDB\MongoDB\Driver\ServerApi;
     $uri = "mongodb+srv://vaultz-user:r7z82ChXYpPkwIoX@website.7x18c79.mongodb.net/?retryWrites=true&w=majority";
     // Specify Stable API version 1
     $apiVersion = new ServerApi(ServerApi::V1);
