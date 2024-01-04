@@ -4,14 +4,14 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    require_once('../vendor/autoload.php');
-    use Google\Cloud\Storage\StorageClient;
-    
-    require_once("credentials.php");
-    use Firebase\JWT\JWT;
-    use Firebase\JWT\Key;
-
     function list_all_directories() {
+        require_once('../vendor/autoload.php');
+        use Google\Cloud\Storage\StorageClient;
+        
+        require_once("credentials.php");
+        use Firebase\JWT\JWT;
+        use Firebase\JWT\Key;
+
         $tokenCookie = $_COOKIE['auth_token'] ?? null;
         // Check if the token cookie is set
         if ($tokenCookie) {

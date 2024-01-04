@@ -1,8 +1,8 @@
 <?php
-    $host = "10.107.112.3";         // Localhost because Cloud SQL Proxy is running locally
-    $port = "3306";              // The local port that Cloud SQL Proxy is forwarding to
+    $host = "10.107.112.3";
+    $port = "3306";             
     $username = "root";
-    $password = "f}]^x\a>9Kk#D2xF"; // Your MySQL database password
+    $password = "f}]^x\a>9Kk#D2xF"; 
     $database = "vaultzsSite";
-    $secretKey = 'password123**1$$23'; // Replace with your secret key
+    $secretKey = 'password123**1$$23'; 
 ?>
