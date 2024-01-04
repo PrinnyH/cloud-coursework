@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+window.onload = function() {
     document.getElementById('navMyFiles').addEventListener('click', function() {
         loadContent('myFiles.php');
         loadDirectoryListing();
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('navMyFiles').click();
-});
+};
 
 function loadContent(page) {
     fetch(page)
