@@ -8,17 +8,18 @@
     use Firebase\JWT\Key;
 
     function list_all_directories() {
-        $storage = new StorageClient();
         $tokenCookie = $_COOKIE['auth_token'] ?? null;
         // Check if the token cookie is set
         if ($tokenCookie) {
             // Decode the token to get user information
             $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
-    
+            
             if ($decodedToken) {
                 $bucket_id = $decodedToken->bucket_id;
             }
         }
+        
+        $storage = new StorageClient();
         $bucket = $storage->bucket($bucket_id);
     
         $allDirectories = [];
