@@ -17,7 +17,6 @@ if ($mysqli->connect_error) {
     exit; // If there is a connection error, exit the script
 }
 
-
 // Prepare the query
 if ($stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?")) {
     
