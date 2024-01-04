@@ -6,6 +6,8 @@ require_once('../vendor/autoload.php');
 use Google\Cloud\Storage\StorageClient;
 
 require_once("credentials.php");
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 // Retrieve the values of the 'auth_token' cookie
 $tokenCookie = $_COOKIE['auth_token'] ?? null;
@@ -13,7 +15,7 @@ $tokenCookie = $_COOKIE['auth_token'] ?? null;
 // Check if the token cookie is set
 if ($tokenCookie) {
     // Decode the token to get user information
-    $decodedToken = JWT::decode($tokenCookie, $secretKey, 'HS256');
+    $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
 
     if ($decodedToken) {
         // Get the email and name from the decoded token
