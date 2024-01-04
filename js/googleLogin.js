@@ -4,7 +4,7 @@ function handleCredentialResponse(response) {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
         if (this.status == 200) {
-            if (this.responseText === 'true') {
+            if (this.responseText.trim() === 'true') {
                 checkUserExists();
             } else {
                 alert('There was a problem');
@@ -25,7 +25,7 @@ function checkUserExists(){
 
     xhr.onload = function() {
         if (this.status == 200) {
-            if (this.responseText === 'true') {
+            if (this.responseText.trim() === 'true') {
                 getAssosiatedBucket();
             } else {
                 createUserAndAssignBucket();
@@ -43,7 +43,7 @@ function createUserAndAssignBucket(){
 
     xhr.onload = function() {
         if (this.status == 200) {
-            if (this.responseText === 'true') {
+            if (this.responseText.trim() === 'true') {
                 getAssosiatedBucket();
             } else {
                 alert("shouldnt be here yet");
@@ -61,7 +61,7 @@ function getAssosiatedBucket(){
 
     xhr.onload = function() {
         if (this.status == 200) {
-            if (this.responseText === 'true') {
+            if (this.responseText.trim() === 'true') {
                 window.location.href = 'storage.php';
             } else {
                 alert("There was a problem.");

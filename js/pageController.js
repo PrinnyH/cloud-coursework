@@ -32,7 +32,7 @@ function submitLoginForm() {
     
     xhr.onload = function() {
         if (this.status == 200) {
-            if (this.responseText === 'true') {
+            if (this.responseText.trim() === 'true') {
                     window.location.href = 'storage.php'; // Redirect on success
                 } else {
                     alert('Incorrect username or password.'); // Show error message

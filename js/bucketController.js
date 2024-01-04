@@ -8,7 +8,7 @@ function handleAddDirectory(button){
     
     xhr.onload = function() {
         if (this.status == 200) {
-            if (this.responseText === 'true') {
+            if (this.responseText.trim() === 'true') {
                 loadDirectoryListing();
             } else {
                 alert('There was a problem');
@@ -36,7 +36,7 @@ function handleDelete(button) {
 
     xhr.onload = function() {
         if (this.status === 200) {
-            if (this.responseText === 'true') {
+            if (this.responseText.trim() === 'true') {
                 loadDirectoryListing();
             } else {
                 alert('There was a problem');
@@ -89,7 +89,7 @@ function handleNameChange(element, fullPath, fileExtension) {
 
     xhr.onload = function() {
         if (this.status == 200) {
-            if (this.responseText === 'true') {
+            if (this.responseText.trim() === 'true') {
                 loadDirectoryListing();
             } else {
                 alert('There was a problem');
@@ -143,7 +143,7 @@ function handleUploadFile(button) {
 
             xhr.onload = function() {
                 if (this.status === 200) {
-                    if (this.responseText === 'true') {
+                    if (this.responseText.trim() === 'true') {
                         loadDirectoryListing();
                     } else {
                         alert('There was a problem');
@@ -181,7 +181,7 @@ function handleUploadFolder(button) {
 
             xhr.onload = function() {
                 if (this.status === 200) {
-                    if (this.responseText === 'true') {
+                    if (this.responseText.trim() === 'true') {
                         loadDirectoryListing();
                     } else {
                         alert('There was a problem');
@@ -240,7 +240,7 @@ function handleMoveDirectory(draggedDir, targetDir) {
 
     xhr.onload = function() {
         if (this.status == 200) {
-            if (this.responseText === 'true') {
+            if (this.responseText.trim() === 'true') {
                 loadDirectoryListing();
             } else {
                 alert('There was a problem');
@@ -264,7 +264,7 @@ function loadDirectoryListing() {
     
     xhr.onload = function() {
         if (this.status == 200) {
-            document.getElementById('directoryListing').innerHTML = this.responseText;
+            document.getElementById('directoryListing').innerHTML = this.responseText.trim();
         } else {
             console.error('Error loading directory listing');
         }
