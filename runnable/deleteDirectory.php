@@ -2,14 +2,14 @@
 require_once '../vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $path = $_POST['dirName']; // Full path of the file or directory
 
     // Initialize Google Cloud Storage client
     $storage = new StorageClient();
-    $bucket = $storage->bucket($_SESSION['user_bucket_id']);
+    $bucket_id = $_COOKIE['bucket_id'];
+    $bucket = $storage->bucket(bucket_id);
 
     try {
         // Check if the path is for a directory (ends with '/')

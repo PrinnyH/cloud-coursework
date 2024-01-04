@@ -6,9 +6,21 @@ require_once('../vendor/autoload.php');
 use Google\Cloud\Storage\StorageClient;
 
 require_once("credentials.php");
-session_start();
-$email = $_SESSION['email'];
-$name = $_SESSION['firstname'];
+
+// Retrieve the values of the 'auth_token' cookie
+$tokenCookie = $_COOKIE['auth_token'] ?? null;
+
+// Check if the token cookie is set
+if ($tokenCookie) {
+    // Decode the token to get user information
+    $decodedToken = jwt_decode($tokenCookie, $secretKey);
+
+    if ($decodedToken) {
+        // Get the email and name from the decoded token
+        $email = $decodedToken->email;
+        $name = $decodedToken->username;
+    }
+}
 
 // Set the connection timeout
 $timeout = 10; // Timeout in seconds

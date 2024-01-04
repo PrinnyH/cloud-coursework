@@ -45,7 +45,6 @@ function submitLoginForm() {
     
 function logout(){
     window.location.href = 'index.html'; // Redirect        
-    //close session here
 }
 
 function hideNav(){

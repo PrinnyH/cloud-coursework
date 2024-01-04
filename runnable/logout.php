@@ -1,11 +1,9 @@
 <?php
-session_start(); // Initialize the session
 
-// Unset all of the session variables
-$_SESSION = array();
-
-// Destroy the session.
-session_destroy();
+// Set cookies with expiration in the past to delete them
+setcookie('username', '', time() - 3600, '/');
+setcookie('email', '', time() - 3600, '/');
+setcookie('bucket_id', '', time() - 3600, '/');
 
 // Redirect to login page or home page
 header("Location: ../index.html");

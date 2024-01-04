@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <?php
-    session_start(); // Start the session
-    if (!isset($_SESSION['email'])) {
-        // If the user is not logged in, redirect them to the login page
+    // Check if the user is not logged in and redirect to the login page
+    if (!isset($_COOKIE['email']) || !isset($_COOKIE['username']) || !isset($_COOKIE['bucket_id'])) {
         header("Location: index.html");
         exit();
     }
-    $name = $_SESSION['firstname'];
-    $email =  $_SESSION['email'];
-    $bucket_id = $_SESSION['user_bucket_id'];
+
+    // Retrieve user information from cookies
+    $name = $_COOKIE['username'];
+    $email = $_COOKIE['email'];
+    $bucket_id = $_COOKIE['bucket_id'];
 ?>
 <html lang="en">
 <head>

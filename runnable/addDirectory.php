@@ -2,14 +2,13 @@
 require_once '../vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dirName = $_POST['dirName'];
     
     $storage = new StorageClient();
-    $bucket = $storage->bucket($_SESSION['user_bucket_id']);
-    
+    $bucket_id = $_COOKIE['bucket_id'];
+    $bucket = $storage->bucket($bucket_id);
     $folderBaseName = 'newfolder'; // Base name for the folder
     $newFolderPath = $dirName . $folderBaseName . '/';
     $counter = 1;

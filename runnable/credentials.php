@@ -4,4 +4,5 @@
     $username = "root";
     $password = "f}]^x\a>9Kk#D2xF"; // Your MySQL database password
     $database = "vaultzsSite";
+    $secretKey = 'password123**1$$23'; // Replace with your secret key
 ?>

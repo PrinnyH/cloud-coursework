@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <?php
-    session_start(); // Start the session
-    $name = $_SESSION['firstname'];
-    $bucket_id = $_SESSION['user_bucket_id'];
+    $name = $_COOKIE['username'];
+    $bucket_id = $_COOKIE['bucket_id'];
 ?>
 <h1>Welcome <?php echo $name;?> + <?php echo $bucket_id;?></h1>
 <div id="directoryListing">

@@ -2,8 +2,9 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
+require_once("credentials.php");
 require_once '../vendor/autoload.php';
-session_start();
+use Firebase\JWT\JWT;
 
 try {
     $clientId = '23146911805-tuefejed4hddunmos49sph1jgvub608o.apps.googleusercontent.com';
@@ -15,23 +16,22 @@ try {
     if ($id_token) {
         $payload = $client->verifyIdToken($id_token);
         if ($payload) {
-            $_SESSION['email'] = $payload['email'];
-            $_SESSION['firstname'] = $payload['given_name'];
-            error_log("no problem");
-            echo 'true';
+
+            $token = JWT::encode(['email' => $payload['email'], 'username' => $payload['given_name']], $secretKey, 'HS256');
+
+            // Send the token to the client as part of the JSON response
+            echo json_encode(['success' => true, 'token' => $token]);
         } else {
             error_log("payload is not verified");
-            echo 'false'; // Token is invalid
+            echo json_encode(['success' => false, 'message' => 'Token is invalid']);
         }
     } else {
         error_log("ID token is null");
-        echo 'false'; // No token provided
+        echo json_encode(['success' => false, 'message' => 'No token provided']);
     }
 } catch (Exception $e) {
     // Handle exception
     error_log($e->getMessage());
-    echo 'false';
+    echo json_encode(['success' => false, 'message' => 'An error occurred']);
 }
 ?>
-
-

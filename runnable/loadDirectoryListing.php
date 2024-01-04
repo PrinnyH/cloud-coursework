@@ -2,11 +2,11 @@
     require_once "../vendor/autoload.php";
 
     use Google\Cloud\Storage\StorageClient;
-    session_start();
 
     function list_all_directories() {
         $storage = new StorageClient();
-        $bucket = $storage->bucket($_SESSION['user_bucket_id']);
+        $bucket_id = $_COOKIE['bucket_id'];
+        $bucket = $storage->bucket(bucket_id);
     
         $allDirectories = [];
         foreach ($bucket->objects() as $object) {
