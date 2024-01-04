@@ -1,6 +1,9 @@
 <?php
 require_once("credentials.php");
 session_start();
+$email = $_SESSION['email']; // Assuming $_SESSION['email'] is already set
+error_log($email);
+error_log($host);
 
 // Initialize the mysqli object
 $mysqli = new mysqli($host, $username, $password, $database);
@@ -16,8 +19,6 @@ if ($mysqli->connect_error) {
     exit; // If there is a connection error, exit the script
 }
 
-$email = $_SESSION['email']; // Assuming $_SESSION['email'] is already set
-error_log($email)
 // Prepare the query
 if ($stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?")) {
     
@@ -31,9 +32,9 @@ if ($stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?")) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        echo "true"; // Email exists in the database
+        echo 'true'; // Email exists in the database
     } else {
-        echo "false"; // Email does not exist
+        echo 'false'; // Email does not exist
     }
 
     // Close statement
