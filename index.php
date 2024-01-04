@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+session_start(); // check session started if not start
+if (!isset($_SESSION['email'])) {
+  // If the user is already logged in, got to storage page
+  header("Location: storage.php");
+  exit();
+}
+?>
 <html>
   <head>
     <title>VAULTZ</title>
