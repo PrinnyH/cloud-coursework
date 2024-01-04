@@ -31,7 +31,7 @@ error_reporting(E_ALL);
         while ($row = $result->fetch_assoc()) {
             $allBucketIds[] = $row['Shared_BucketBucketID'];
         }
-        echo $allBucketIds;
+        var_dump($allBucketIds);
 
         $stmt->close();
     } else {
