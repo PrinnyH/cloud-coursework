@@ -1,4 +1,6 @@
 <?php
+require_once("credentials.php");
+
 // Create a new MySQLi object
 $conn = new mysqli($host, $username, $password, $database, $port);
 

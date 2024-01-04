@@ -4,7 +4,4 @@
     $username = "root";
     $password = "L24<YJDtr+M`2@>`"; // Your MySQL database password
     $database = "vaultzsSite";
-
-
-
 ?>
