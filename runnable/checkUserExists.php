@@ -41,7 +41,8 @@ if ($stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?")) {
     // Close statement
     $stmt->close();
 } else {
-    echo "Error preparing statement: " . $mysqli->error;
+    error_log("Error preparing statement: " . $mysqli->error);
+    echo 'false';
 }
 
 // Close the connection
