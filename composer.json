@@ -3,7 +3,7 @@
         "google/cloud-storage": "^1.35",
         "google/apiclient": "^2.0",
         "firebase/php-jwt": "^6.1",
-        "mongodb/mongodb": "^1.12"
+        "mongodb/mongodb": "^1.17"
     },
     "config": {
         "platform": {
