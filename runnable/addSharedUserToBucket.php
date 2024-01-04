@@ -26,9 +26,11 @@ try {
     $stmtInsertUserSharedBucket->execute();
     $stmtInsertUserSharedBucket->close();
 
+    $mysqli->commit();
     error_log("Entry created successfully in User_Shared_Bucket");
     echo 'true';
 } catch (mysqli_sql_exception $exception) {
+    $mysqli->rollback();
     error_log("Error occurred: " . $exception->getMessage());
     echo 'false';
 }
