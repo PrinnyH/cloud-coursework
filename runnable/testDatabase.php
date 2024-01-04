@@ -23,7 +23,7 @@ error_reporting(E_ALL);
 
 
     $allBucketIds = [];
-    if ($stmt = $mysqli->prepare("SELECT Shared_BucketBucketID FROM User_Shared_Bucket WHERE UserEmail = zionmaster100@gmail.com")) {
+    if ($stmt = $mysqli->prepare("SELECT Shared_BucketBucketID FROM User_Shared_Bucket WHERE UserEmail = 'zionmaster100@gmail.com'")) {
         $stmt->execute();
         $result = $stmt->get_result();
 
