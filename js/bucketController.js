@@ -318,19 +318,21 @@ function populateFolderDropDown(){
 
 function loadSharedDirectoryListing(button) {
     var bucketSelected = button.getAttribute('data-id');
-    console.log(bucketSelected);
 
-    // var xhr = new XMLHttpRequest();
-    // xhr.open('POST', 'runnable/loadDirectoryListing.php', true);
-    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'runnable/loadDirectoryListing.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     
-    // xhr.onload = function() {
-    //     if (this.status == 200) {
-    //         document.getElementById('directoryListing').innerHTML = this.responseText;
-    //     } else {
-    //         console.error('Error loading directory listing');
-    //     }
-    // };
+    xhr.onload = function() {
+        if (this.status == 200) {
+            document.getElementById('directoryListing').innerHTML = this.responseText;
+        } else {
+            console.error('Error loading directory listing');
+        }
+    };
     
-    // xhr.send();
+    var params = new URLSearchParams();
+    params.append('BucketID', bucketSelected);
+    
+    xhr.send(params);
 };
