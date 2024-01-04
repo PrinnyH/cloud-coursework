@@ -7,6 +7,6 @@
     <option href="#">Link 3</option>
   </div>
 </select>
-
+<button class="dropbtn">Dropdown</button>
 <div id="directoryListing">
 </div>
