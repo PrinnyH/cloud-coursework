@@ -1,5 +1,9 @@
 <?php
 
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
     require_once('../vendor/autoload.php');
     use Google\Cloud\Storage\StorageClient;
     
@@ -18,7 +22,7 @@
                 $bucket_id = $decodedToken->bucket_id;
             }
         }
-        
+
         $storage = new StorageClient();
         $bucket = $storage->bucket($bucket_id);
     
