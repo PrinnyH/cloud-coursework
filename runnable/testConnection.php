@@ -9,9 +9,9 @@
     $client = new Client($uri, ['readPreference' => 'secondaryPreferred',]);
     try {
         // Send a ping to confirm a successful connection
-        $client->website->command(['ping' => 1]);
-        //$test = $client->website->Users;
-        echo "Pinged your deployment. You successfully connected to MongoDB!\n";
+        $collection = $client->website->Users;
+        $document = $collection->findOne(['email' => 'zionmaster100@gmail.com']);
+        echo "Pinged your deployment. You successfully connected to MongoDB!\n" . var_dump($document);
     } catch (Exception $e) {
         printf($e->getMessage());
     }
