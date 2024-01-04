@@ -1,9 +1,10 @@
 <?php
 require_once("credentials.php");
 session_start();
+$email = $_SESSION['email']; // Assuming $_SESSION['email'] is already set
 
 // Attempt to connect to the database
-$mysqli = new mysqli($host, $username, $password, $database);
+$mysqli = new mysqli($host, $username, $password, $database, $port);
 
 // Set the connection timeout
 $timeout = 10; // Timeout in seconds
@@ -16,7 +17,6 @@ if ($mysqli->connect_error) {
     exit; // If there is a connection error, exit the script
 }
 
-$email = $_SESSION['email']; // Assuming $_SESSION['email'] is already set
 
 // Prepare the query
 if ($stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?")) {

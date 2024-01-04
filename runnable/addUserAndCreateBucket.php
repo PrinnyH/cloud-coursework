@@ -7,7 +7,7 @@
     $mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, $timeout);
 
     // Attempt to connect to the database
-    $mysqli = new mysqli($host, $username, $password, $database);
+    $mysqli = new new mysqli($host, $username, $password, $database, $port);
 
     //Output any connection error
     if ($mysqli->connect_error) {
