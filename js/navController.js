@@ -6,8 +6,7 @@ window.onload = function() {
 
     document.getElementById('navMySharedFiles').addEventListener('click', function() {
         loadContent('sharedFiles.php');
-        //loadSharedDirectoryListing();
-        //use alt for shared bucket id selected or smth
+        populateFolderDropDown();
     });
 
     document.getElementById('navMyFiles').click();

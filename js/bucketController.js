@@ -273,7 +273,23 @@ function loadDirectoryListing() {
     xhr.send();
 };
 
-function loadSharedDirectoryListing(button) {
+function populateFolderDropDown(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'runnable/loadSharedDirectories.php', true);                   //TODO PHP script to get all the shared buckets sql lookup
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            document.getElementById('sharedFolderSelector').innerHTML = this.responseText;
+        } else {
+            console.error('Error loading directory listing');
+        }
+    };
+    
+    xhr.send();
+}
+
+function loadSharedDirectoryListing(button) {           //TODO when you select one, we populate it
     var bucketSelected = button.getAttribute('data-id');
     console.log(bucketSelected);
 
