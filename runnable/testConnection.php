@@ -1,5 +1,6 @@
 <?php
 
+require_once('../vendor/autoload.php');
 use MongoDB\Client;
 use MongoDB\Driver\ServerApi;
 
