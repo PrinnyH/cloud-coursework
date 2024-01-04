@@ -18,6 +18,7 @@ try {
         if ($payload) {
             $_SESSION['email'] = $payload['email'];
             $_SESSION['firstname'] = $payload['given_name'];
+            error_log("no problem");
             echo "true";
         } else {
             error_log("payload is not verified");
