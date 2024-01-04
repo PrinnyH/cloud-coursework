@@ -1,6 +1,9 @@
 <?php
-    ini_set('display_errors', 'On');
-    error_reporting(E_ALL);
+
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
+
+require_once('../vendor/autoload.php');
 
     // Replace these with your database credentials
     $host = "10.107.112.3";
@@ -32,7 +35,7 @@
         while ($row = $result->fetch_assoc()) {
             $allBucketIds[] = $row['Shared_BucketBucketID'];
         }
-        echo $allBucketIds
+        echo $allBucketIds;
 
         $stmt->close();
     } else {
