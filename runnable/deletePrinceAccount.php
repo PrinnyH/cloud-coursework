@@ -14,6 +14,27 @@ echo "Connected successfully";
 // Primary key value to be deleted
 $primaryKeyToDelete = "zionmaster100@gmail.com";
 
+
+// Prepare the SELECT query
+if ($stmt = $conn->prepare("SELECT * FROM User")) {
+    // Execute the query
+    $stmt->execute();
+
+    // Bind result variables
+    $stmt->bind_result($email, $bucketID);
+
+    // Fetch and echo the results
+    while ($stmt->fetch()) {
+        echo "Email: $email, BucketID: $bucketID<br>";
+    }
+
+    // Close statement
+    $stmt->close();
+} else {
+    echo "Error preparing SELECT statement: " . $conn->error;
+}
+
+
 // Prepare the DELETE query
 if ($stmt = $conn->prepare("DELETE FROM User WHERE Email = ?")) {
     // Bind parameters (s - string)
