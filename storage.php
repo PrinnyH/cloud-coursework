@@ -13,17 +13,18 @@ if ($tokenCookie) {
     // Decode the token to get user information
     $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
     
+    // Check if the user is not logged in and redirect to the login page
+    if (!isset($decodedToken)) {
+        header("Location: index.html");
+        exit();
+    }
+    
     if ($decodedToken) {
         // Get the email and name from the decoded token
         $name = $decodedToken->username;
         $email =  $decodedToken->email;
         $bucket_id = $decodedToken->bucket_id;
     }
-}
-// Check if the user is not logged in and redirect to the login page
-if (!isset($email)) {
-    header("Location: index.html");
-    exit();
 }
 ?>
 <html lang="en">
