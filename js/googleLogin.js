@@ -46,7 +46,7 @@ function createUserAndAssignBucket(){
             if (this.responseText.trim() === 'true') {
                 getAssosiatedBucket();
             } else {
-                alert("shouldnt be here yet");
+                alert("There was a problem creating Vault");
             } 
         }
     };
@@ -64,7 +64,7 @@ function getAssosiatedBucket(){
             if (this.responseText.trim() === 'true') {
                 window.location.href = 'storage.php';
             } else {
-                alert("There was a problem.");
+                alert("There was a getting Vault");
             } 
         }
     };
