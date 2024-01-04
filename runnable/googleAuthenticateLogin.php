@@ -3,8 +3,8 @@ require_once '../vendor/autoload.php';
 session_start();
 
 try {
-    
-    $client = new Google_Client();  // Specify your client ID
+    $clientId = '23146911805-tuefejed4hddunmos49sph1jgvub608o.apps.googleusercontent.com';
+    $client = new Google_Client(['client_id' => $clientId]);  // Specify your client ID
     
     // Validate and sanitize the input
     $id_token = filter_input(INPUT_POST, 'idtoken', FILTER_SANITIZE_STRING);
