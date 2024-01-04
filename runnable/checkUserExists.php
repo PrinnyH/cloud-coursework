@@ -1,12 +1,8 @@
 <?php
- ini_set('display_errors', 'On');
- error_reporting(E_ALL); 
- 
+
 require_once("credentials.php");
 session_start();
 $email = $_SESSION['email']; // Assuming $_SESSION['email'] is already set
-error_log($email);
-error_log($host);
 
 // Initialize the mysqli object
 $mysqli = new mysqli($host, $username, $password, $database);
