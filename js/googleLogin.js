@@ -1,12 +1,19 @@
-// Function to set a cookie
-function setCookie(name, value, days) {
+function setCookie(name, value, days, sameSite = 'None') {
     var expires = '';
     if (days) {
         var date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = '; expires=' + date.toUTCString();
     }
-    document.cookie = name + '=' + value + expires + '; path=/';
+    
+    var cookieString = name + '=' + value + expires + '; path=/; SameSite=' + sameSite;
+
+    // For secure cookies, include 'Secure' attribute
+    if (window.location.protocol === 'https:') {
+        cookieString += '; Secure';
+    }
+
+    document.cookie = cookieString;
 }
 
 function handleCredentialResponse(response) {
