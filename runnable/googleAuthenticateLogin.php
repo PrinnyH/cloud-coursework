@@ -7,7 +7,7 @@ try {
     $client = new Google_Client(['client_id' => $clientId]);  // Specify your client ID
     
     // Validate and sanitize the input
-    $id_token = filter_input(INPUT_POST, 'idtoken', FILTER_SANITIZE_STRING);
+    $id_token = $_POST['idtoken'];
 
     if ($id_token) {
         $payload = $client->verifyIdToken($id_token);
