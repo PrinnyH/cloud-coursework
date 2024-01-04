@@ -4,19 +4,18 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-    function list_all_directories() {
-        require_once('../vendor/autoload.php');
-        use Google\Cloud\Storage\StorageClient;
-        
-        require_once("credentials.php");
-        use Firebase\JWT\JWT;
-        use Firebase\JWT\Key;
+    require_once('../vendor/autoload.php');
+    use Google\Cloud\Storage\StorageClient;
+    
+    use Firebase\JWT\JWT;
+    use Firebase\JWT\Key;
 
+    function list_all_directories() {
         $tokenCookie = $_COOKIE['auth_token'] ?? null;
         // Check if the token cookie is set
         if ($tokenCookie) {
             // Decode the token to get user information
-            $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
+            $decodedToken = JWT::decode($tokenCookie, new key('password123**1$$23', 'HS256'));
             
             if ($decodedToken) {
                 $bucket_id = $decodedToken->bucket_id;
