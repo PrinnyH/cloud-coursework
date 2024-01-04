@@ -2,9 +2,9 @@
 <div class="dropdown" onchange="dropDownChange()">
   <button class="dropbtn">Dropdown</button>
   <div  id="sharedFolderSelector" class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <button href="#">Link 1</button>
+    <button href="#">Link 2</button>
+    <button href="#">Link 3</button>
   </div>
 </div>
 <button class="dropbtn">Dropdown</button>
