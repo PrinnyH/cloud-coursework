@@ -10,7 +10,7 @@ $tokenCookie = $_COOKIE['auth_token'] ?? null;
 // Check if the token cookie is set
 if ($tokenCookie) {
     // Decode the token to get user information
-    $decodedToken = jwt_decode($tokenCookie, $secretKey);
+    $decodedToken = JWT::decode($tokenCookie, $secretKey);
 
     if ($decodedToken) {
         // Get the email from the decoded token
@@ -45,7 +45,7 @@ if ($tokenCookie) {
             // Fetch the value
             if ($stmt->fetch()) {
                 // Add the BucketID to the original token and return the updated token
-                $updatedToken = jwt_encode(['email' => $email, 'username' => $decodedToken->username, 'bucket_id' => $bucketId], $secretKey, 'HS256');
+                $updatedToken = JWT::encode(['email' => $email, 'username' => $decodedToken->username, 'bucket_id' => $bucketId], $secretKey, 'HS256');
                 echo json_encode(["success" => true, "updatedToken" => $updatedToken]);
             } else {
                 echo json_encode(["success" => false, "message" => "Email does not exist in the database"]);

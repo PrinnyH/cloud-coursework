@@ -13,7 +13,7 @@ $tokenCookie = $_COOKIE['auth_token'] ?? null;
 // Check if the token cookie is set
 if ($tokenCookie) {
     // Decode the token to get user information
-    $decodedToken = jwt_decode($tokenCookie, $secretKey);
+    $decodedToken = JWT::decode($tokenCookie, $secretKey);
 
     if ($decodedToken) {
         // Get the email and name from the decoded token
