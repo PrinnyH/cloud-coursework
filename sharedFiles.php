@@ -1,6 +1,6 @@
 <h1>SHARED FOLDERS <?php echo htmlspecialchars($name);?></h1>
 <div class="dropdown">
-  <button onclick="dropDownChange()" class="dropbtn">Folder</button>
+  <button onclick="dropDownChange()" class="dropbtn">▼ Folder</button>
   <div id="sharedFolderSelector" class="dropdown-content">
     <a href="#">Link 1</a>
     <a href="#">Link 2</a>

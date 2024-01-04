@@ -6,7 +6,7 @@ window.onload = function() {
 
     document.getElementById('navMySharedFiles').addEventListener('click', function() {
         loadContent('sharedFiles.php');
-        //loadDirectoryListing();
+        loadSharedDirectoryListing();
         //use alt for shared bucket id selected or smth
     });
 
@@ -38,6 +38,7 @@ function removeUser(){
     console.log("Add to: " + x);
 }
 
+//unclicks the dropdown
 window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
