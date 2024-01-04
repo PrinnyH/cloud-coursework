@@ -15,7 +15,7 @@ echo "Connected successfully";
 $primaryKeyToDelete = "zionmaster100@gmail.com";
 
 // Prepare the DELETE query
-if ($stmt = $conn->prepare("DELETE FROM your_table_name WHERE your_primary_key_column = ?")) {
+if ($stmt = $conn->prepare("DELETE FROM User WHERE your_primary_key_column = ?")) {
     // Bind parameters (s - string)
     $stmt->bind_param("s", $primaryKeyToDelete);
 
