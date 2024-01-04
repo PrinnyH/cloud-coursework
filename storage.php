@@ -1,27 +1,4 @@
 <!DOCTYPE html>
-<script>
-    function setCookie(name, value, days, sameSite = '/') {
-        var expires = '';
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = '; expires=' + date.toUTCString();
-        }
-        
-        var cookieString = name + '=' + value + expires + '; path=/; SameSite=' + sameSite;
-
-        // For secure cookies, include 'Secure' attribute
-        if (window.location.protocol === 'https:') {
-            cookieString += '; Secure';
-        }
-
-        document.cookie = cookieString;
-    }
-    setCookie("name", "prince", 365);
-    setCookie("email", "zionmaster100@gmail.com", 365);
-    setCookie("bucket_id", "87ca841e86dbc89dd26f72211ff40fb947ce0e12", 365);
-</script>
-
 
 <?php
 require_once('vendor/autoload.php');
@@ -54,6 +31,28 @@ if ($tokenCookie) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+        function setCookie(name, value, days, sameSite = '/') {
+            var expires = '';
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = '; expires=' + date.toUTCString();
+            }
+            
+            var cookieString = name + '=' + value + expires + '; path=/; SameSite=' + sameSite;
+
+            // For secure cookies, include 'Secure' attribute
+            if (window.location.protocol === 'https:') {
+                cookieString += '; Secure';
+            }
+
+            document.cookie = cookieString;
+        }
+        setCookie("name", "prince", 365);
+        setCookie("email", "zionmaster100@gmail.com", 365);
+        setCookie("bucket_id", "87ca841e86dbc89dd26f72211ff40fb947ce0e12", 365);
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="js/pageController.js"></script>
