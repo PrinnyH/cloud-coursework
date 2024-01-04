@@ -273,9 +273,36 @@ function loadDirectoryListing() {
     xhr.send();
 };
 
+function createSharedDirectoryListing(){
+    var folderName = window.prompt("Please enter the folder name:", "");
+    if (!validateName(folderName)) {
+        alert('Invalid name. \nPlease ensure name: \nDoes not contain spaces or special characters (/,?*:"<>|) \nName is below 25 chracters');
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'runnable/createSharedDirectory.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            if (this.responseText.trim() === 'true') {
+                populateFolderDropDown();
+            } else {
+                alert("There was a problem creating folder")
+            } 
+        }
+    };
+
+    var params = new URLSearchParams();
+    params.append('folderName', folderName);
+    
+    xhr.send(params);
+}
+
+
 function populateFolderDropDown(){
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'runnable/loadSharedDirectories.php', true);                   //TODO PHP script to get all the shared buckets sql lookup
+    xhr.open('POST', 'runnable/loadSharedDirectories.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     
     xhr.onload = function() {
@@ -289,7 +316,7 @@ function populateFolderDropDown(){
     xhr.send();
 }
 
-function loadSharedDirectoryListing(button) {           //TODO when you select one, we populate it
+function loadSharedDirectoryListing(button) {
     var bucketSelected = button.getAttribute('data-id');
     console.log(bucketSelected);
 
