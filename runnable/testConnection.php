@@ -1,8 +1,6 @@
 <?php
-require_once("credentials.php");
-
-// Attempt to connect to the database
-$conn = new mysqli($host, $username, $password, $database);
+// Create a new MySQLi object
+$conn = new mysqli($host, $username, $password, $database, $port);
 
 // Check the connection
 if ($conn->connect_error) {
@@ -11,6 +9,9 @@ if ($conn->connect_error) {
 
 echo "Connected successfully";
 
+// Perform your database operations here...
+
 // Close the connection
 $conn->close();
+
 ?>
