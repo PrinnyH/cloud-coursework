@@ -1,5 +1,7 @@
 <?php
 require_once("credentials.php");
+
+require_once('vendor/autoload.php');
 use Firebase\JWT\JWT;
 
 // Retrieve the value of the 'auth_token' cookie
