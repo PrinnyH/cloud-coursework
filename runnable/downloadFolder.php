@@ -20,7 +20,7 @@
     $storage = new StorageClient();
     $tokenCookie = $_COOKIE['auth_token'] ?? null;
 
-    if ($tokenCookie) {
+    if (!$tokenCookie) {
         echo 'No token found';
         exit;
     }
