@@ -365,7 +365,29 @@ function addUser(){
     xhr.send(params);
 }
 
+
 function removeUser(){
-    var x = document.getElementById("sharedFolderSelector").value;
-    console.log("Add to: " + x);
+    var selectedBucket = document.getElementById("selectedBucket").getAttribute('selected-bucket');
+    
+    var email = window.prompt("Please enter the email to remove:", "");
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'runnable/removeSharedUserToBucket.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            if (this.responseText.trim() === 'true') {
+                return;
+            } else {
+                alert("There was a problem removing email")
+            }
+        }
+    };
+
+    var params = new URLSearchParams();
+    params.append('given-email', email);
+    params.append('given-bucketID', selectedBucket);
+    
+    xhr.send(params);
 }
