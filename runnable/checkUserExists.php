@@ -34,7 +34,6 @@
         exit; // If there is a connection error, exit the script
     }
 
-    $mysqli->begin_transaction();
     try {
         // Insert into User_Shared_Bucket
         $stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?");
@@ -45,13 +44,10 @@
         } else {
             echo 'false'; // Email does not exist
         }
-        $stmt->close();
 
-        $mysqli->commit();
         error_log("Entry created successfully in BucketID");
         echo 'true';
     } catch (mysqli_sql_exception $exception) {
-        $mysqli->rollback();
         error_log("Error occurred: " . $exception->getMessage());
         echo 'false';
     }
