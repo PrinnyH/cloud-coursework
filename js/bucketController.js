@@ -143,7 +143,7 @@ function handleDownloadFolder(button) {
     // Create a temporary hidden link element
     var tempLink = document.createElement('a');
     tempLink.style.display = 'none';
-    tempLink.href = 'runnable/downloadFile.php?folderPath=' + encodeURIComponent(dirSelected);
+    tempLink.href = 'runnable/downloadFolder.php?folderPath=' + encodeURIComponent(dirSelected);
 
     // Append link to the body and trigger the download
     document.body.appendChild(tempLink);
