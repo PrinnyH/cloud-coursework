@@ -7,44 +7,53 @@ error_reporting(E_ALL);
 require_once('../vendor/autoload.php');
 
 use Google\Cloud\Storage\StorageClient;
-
-require_once("credentials.php");
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $fileDir = $_POST['fileDir']; // Full path of the directory
-    
+require_once("credentials.php");
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $fileDir = $_GET['fileDir']; // Full path of the directory from GET request
+
     // Initialize Google Cloud Storage client
     $storage = new StorageClient();
     $tokenCookie = $_COOKIE['auth_token'] ?? null;
-    // Check if the token cookie is set
+
     if ($tokenCookie) {
         // Decode the token to get user information
-        $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
+        $decodedToken = JWT::decode($tokenCookie, new Key($secretKey, 'HS256'));
 
-        if ($decodedToken) {
+        if (isset($decodedToken->bucket_id)) {
             $bucket_id = $decodedToken->bucket_id;
+            $bucket = $storage->bucket($bucket_id);
+
+            // Get the file object
+            $object = $bucket->object($fileDir);
+            if ($object->exists()) {
+                // Download and serve the file
+                $fileContent = $object->downloadAsString();
+
+                header('Content-Type: ' . mime_content_type($fileDir));
+                header('Content-Disposition: attachment; filename="' . basename($fileDir) . '"');
+                header('Content-Length: ' . strlen($fileContent));
+                echo $fileContent;  // Output the file content
+                exit;
+            } else {
+                error_log('File not found');
+                echo 'File not found';
+                exit;
+            }
+        } else {
+            error_log('Token decoding failed');
+            echo 'Token decoding failed';
+            exit;
         }
-    }
-    $bucket = $storage->bucket($bucket_id);
-
-    // Get the file object
-    $object = $bucket->object($fileDir);
-    if ($object->exists()) {
-        // Download and serve the file
-        $fileContent = $object->downloadAsString();
-
-        header('Content-Type: ' . mime_content_type($fileDir));
-        header('Content-Disposition: attachment; filename="' . basename($fileDir) . '"');
-        header('Content-Length: ' . strlen($fileContent));
-        echo 'true';
     } else {
-        error_log('File not found');
-        echo $fileContent;
+        echo 'No token found';
+        exit;
     }
-
 } else {
-    echo 'false';
+    echo 'Invalid request method';
+    exit;
 }
 ?>
