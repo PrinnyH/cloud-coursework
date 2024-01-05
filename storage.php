@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+
+<?php
+    // Retrieve the values of the 'auth_token' cookie
+    $tokenCookie = $_COOKIE['auth_token'] ?? null;
+
+    //Check if the user is not logged in and redirect to the login page
+    if (!isset($tokenCookie)) {
+        header("Location: index.html");
+        exit();
+    }
+?>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
