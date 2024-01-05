@@ -121,6 +121,51 @@ function validateName(name) {
     return validName;
 }
 
+function handleDowloadFolder(button) {
+    var dirSelected = button.getAttribute('data-dir');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'runnable/downloadFolder.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            if (this.responseText.trim() === 'true') {
+                populateFolderDropDown();
+            } else {
+                alert("There was a problem creating folder")
+            } 
+        }
+    };
+
+    var params = new URLSearchParams();
+    params.append('folderPath', dirSelected);
+    
+    xhr.send(params);
+}
+
+function handleDowloadFile(button) {
+    var dirSelected = button.getAttribute('data-dir');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'runnable/downloadFile.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            if (this.responseText.trim() === 'true') {
+                populateFolderDropDown();
+            } else {
+                alert("There was a problem creating folder")
+            } 
+        }
+    };
+
+    var params = new URLSearchParams();
+    params.append('fileDir', dirSelected);
+    
+    xhr.send(params);
+}
 
 
 function handleUploadFile(button) {
