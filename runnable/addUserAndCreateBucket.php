@@ -23,17 +23,6 @@
         }
     }
 
-    // Set the connection timeout
-    $timeout = 10; // Timeout in seconds
-    $mysqli = new mysqli($host, $username, $password, $database, $port);
-
-    // Output any connection error
-    if ($mysqli->connect_error) {
-        error_log('Error : (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
-        echo("false");
-        exit;
-    }
-
     $stringToHash = $email . $name;
     // we use password hash here but we are just creating a unique name for the bucket we want to create
     $hashedString = sha1($stringToHash);
@@ -41,16 +30,30 @@
     $storage = new StorageClient();
     // Create a new bucket
     $bucket = $storage->createBucket($hashedString);
+    
+    
+    $mysqli = new mysqli($host, $username, $password, $database, $port);
+    // Output any connection error
+    if ($mysqli->connect_error) {
+        error_log('Error : (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+        echo("false");
+        exit;
+    }
 
-    // Insert data into the database
-    if ($stmtInsert = $mysqli->prepare("INSERT INTO User (Email, BucketID) VALUES (?, ?)")) {
+    $mysqli->begin_transaction();
+    try {
+        // Insert into User_Shared_Bucket
+        $stmtInsert = $mysqli->prepare("INSERT INTO User (Email, BucketID) VALUES (?, ?)");
         $stmtInsert->bind_param("ss", $email, $hashedString);
         $stmtInsert->execute();
-        error_log("Bucket and Database entry created successfully");
-        echo 'true';
         $stmtInsert->close();
-    } else {
-        error_log("Error preparing insert statement: " . $mysqli->error);
+
+        $mysqli->commit();
+        error_log("Entry created successfully in User_Shared_Bucket");
+        echo 'true';
+    } catch (mysqli_sql_exception $exception) {
+        $mysqli->rollback();
+        error_log("Error occurred: " . $exception->getMessage());
         echo 'false';
     }
 

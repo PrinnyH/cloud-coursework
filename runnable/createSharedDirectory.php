@@ -23,25 +23,22 @@
         }
     }
 
-    // Set the connection timeout
-    $timeout = 10; // Timeout in seconds
-    $mysqli = new mysqli($host, $username, $password, $database, $port);
+    $stringToHash = $email . $name . $_POST['folderName'];
+    // we use password hash here but we are just creating a unique name for the bucket we want to create
+    $hashedString = sha1($stringToHash);
+    
+    $storage = new StorageClient();
+    // Create a new bucket
+    $bucket = $storage->createBucket($hashedString);
 
+    $mysqli = new mysqli($host, $username, $password, $database, $port);
     // Output any connection error
     if ($mysqli->connect_error) {
         error_log('Error : (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
         echo("false");
         exit;
     }
-
-    $stringToHash = $email . $name . $_POST['folderName'];
-    // we use password hash here but we are just creating a unique name for the bucket we want to create
-    $hashedString = sha1($stringToHash);
-
-    $storage = new StorageClient();
-    // Create a new bucket
-    $bucket = $storage->createBucket($hashedString);
-
+    
     $mysqli->begin_transaction();
     try {
         // Insert into Shared_Bucket

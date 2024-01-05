@@ -21,6 +21,7 @@
         echo("false");
         exit;
     }
+    
     $mysqli->begin_transaction();
     try {
         // Insert into User_Shared_Bucket
