@@ -121,7 +121,7 @@ function validateName(name) {
     return validName;
 }
 
-function handleDowloadFolder(button) {
+function handleDownloadFolder(button) {
     var dirSelected = button.getAttribute('data-dir');
 
     var xhr = new XMLHttpRequest();

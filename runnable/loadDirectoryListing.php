@@ -120,7 +120,7 @@
             if ($isFile) {
                 $html .= "<span>
                     <button class='list-dir-item-button' onclick='handleDelete(this)' data-dir='{$dirSafe}'>🗑</button>
-                    <button class='list-dir-item-button' onclick='handleDowloadFile(this)' data-dir='{$dirSafe}'>↓</button>
+                    <button class='list-dir-item-button' onclick='handleDownloadFile(this)' data-dir='{$dirSafe}'>↓</button>
                 </span>";
             } else {
                 $html .= "<span>
@@ -128,7 +128,7 @@
                     <button class='list-dir-item-button' onclick='handleDelete(this)' data-dir='{$dirSafe}'>🗑</button>
                     <button class='list-dir-item-button' onclick='handleUploadFile(this)' data-dir='{$dirSafe}'>↑🖹</button>
                     <button class='list-dir-item-button' onclick='handleUploadFolder(this)' data-dir='{$dirSafe}'>↑🗀</button>
-                    <button class='list-dir-item-button' onclick='handleDowloadFolder(this)' data-dir='{$dirSafe}'>↓</button>
+                    <button class='list-dir-item-button' onclick='handleDownloadFolder(this)' data-dir='{$dirSafe}'>↓</button>
                 </span>";
             }
     
