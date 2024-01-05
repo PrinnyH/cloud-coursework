@@ -133,7 +133,7 @@ function handleDowloadFolder(button) {
             if (this.responseText.trim() === 'true') {
                 populateFolderDropDown();
             } else {
-                alert("There was a problem creating folder")
+                alert("There was a problem downloading folder")
             } 
         }
     };
@@ -156,7 +156,7 @@ function handleDowloadFile(button) {
             if (this.responseText.trim() === 'true') {
                 populateFolderDropDown();
             } else {
-                alert("There was a problem creating folder")
+                alert("There was a problem downloading file")
             } 
         }
     };

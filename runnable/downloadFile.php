@@ -33,15 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Content-Type: ' . mime_content_type($fileDir));
         header('Content-Disposition: attachment; filename="' . basename($fileDir) . '"');
         header('Content-Length: ' . strlen($fileContent));
-        echo $fileContent;
-        exit;
+        echo 'true';
     } else {
-        echo 'File not found';
-        exit;
+        error_log('File not found');
+        echo "false";
     }
 
-
-    echo 'true';
 } else {
     echo 'false';
 }

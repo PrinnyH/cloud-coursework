@@ -8,7 +8,7 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $fileDir = $_POST['fileDir']; // Full path of the directory
+    $folderPath = $_POST['folderPath']; // Full path of the directory
     
     // Initialize Google Cloud Storage client
     $storage = new StorageClient();
