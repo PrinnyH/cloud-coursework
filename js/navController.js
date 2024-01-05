@@ -3,24 +3,28 @@
  */
 window.onload = function() {
     document.getElementById('navMyFiles').addEventListener('click', function() {
-        loadContent('myFiles.php');
-        loadDirectoryListing();
+      loadContent('myFiles.php').then(() => {
+          loadDirectoryListing();
+      });
     });
 
     document.getElementById('navMySharedFiles').addEventListener('click', function() {
-        loadContent('sharedFiles.php');
-        populateFolderDropDown();
+      loadContent('sharedFiles.php').then(() => {
+          populateFolderDropDown();
+      });
     });
 
     document.getElementById('navMyFiles').click();
 };
 
 /**
- * Loads a specific content page into a designated area of the web page.
+ * Loads a specific content page into a designated area of the web page and returns a promise.
+ * This promise resolves after the content is loaded, allowing for subsequent actions to be chained.
  * @param {string} page - The URL of the page to load.
+ * @returns {Promise} - A promise that resolves when the content is loaded.
  */
 function loadContent(page) {
-    fetch(page)
+  return fetch(page) // Return the fetch promise
       .then(response => response.text())
       .then(data => {
           document.getElementById('contentArea').innerHTML = data;
