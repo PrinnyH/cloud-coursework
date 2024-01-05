@@ -1,34 +1,4 @@
 <!DOCTYPE html>
-
-<?php
-    require_once('vendor/autoload.php');
-    require_once("runnable/credentials.php");
-    use Firebase\JWT\JWT;
-    use Firebase\JWT\Key;
-
-    // Retrieve the values of the 'auth_token' cookie
-    $tokenCookie = $_COOKIE['auth_token'] ?? null;
-
-    // Check if the token cookie is set
-    if ($tokenCookie) {
-        // Decode the token to get user information
-        $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
-        
-        //Check if the user is not logged in and redirect to the login page
-        if (!isset($decodedToken)) {
-            header("Location: index.html");
-            exit();
-        }
-        
-        if ($decodedToken) {
-            // Get the user info from cookie
-            $name = $decodedToken->username;
-            $email =  $decodedToken->email;
-            $bucket_id = $decodedToken->bucket_id;
-        }
-    }
-?>
-
 <html lang="en">
     <head>
         <meta charset="UTF-8">

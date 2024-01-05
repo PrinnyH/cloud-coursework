@@ -13,12 +13,14 @@
         $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
 
         if ($decodedToken) {
-            // Get the email and name from the decoded token
+            // Get the name and bucketId from the decoded token
             $name = $decodedToken->username;
             $bucket_id = $decodedToken->bucket_id;
         }
     }
 ?>
-<h1>Welcome <?php echo $name;?> + <?php echo $bucket_id;?></h1>
+<!-- Page welcome -->
+<h1>Welcome <?php echo $name;?> (<?php echo $bucket_id;?>)</h1>
 <div id="directoryListing">
+    <!-- Directory contents dynamically loaded here -->
 </div>

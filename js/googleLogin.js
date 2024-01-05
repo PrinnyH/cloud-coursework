@@ -110,7 +110,7 @@ function getAssosiatedBucket() {
                     // Store the new cookie values
                     document.cookie = 'auth_token=' + response.updatedToken + '; expires=' + new Date(response.expiry).toUTCString() + '; path=/';
                     // proceed to vaults page
-                    window.location.href = 'storage.php';
+                    window.location.href = 'storage.html';
                 } else {
                     alert("There was an issue getting Vault: " + response.message);
                 }
