@@ -6,7 +6,6 @@
 
     require_once('../vendor/autoload.php');
     use Google\Cloud\Storage\StorageClient;
-    
     use Firebase\JWT\JWT;
     use Firebase\JWT\Key;
 
