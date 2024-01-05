@@ -1,3 +1,10 @@
+/**
+ * Sets a cookie in the browser.
+ * @param {string} name - The name of the cookie.
+ * @param {string} value - The value of the cookie.
+ * @param {number} days - The number of days until the cookie expires.
+ * @param {string} [sameSite='/'] - The SameSite attribute of the cookie.
+ */
 function setCookie(name, value, days, sameSite = '/') {
     var expires = '';
     if (days) {
@@ -16,20 +23,21 @@ function setCookie(name, value, days, sameSite = '/') {
     document.cookie = cookieString;
 }
 
+/**
+ * Handles the response received from the credential service Google Sign-In.
+ * @param {Object} response - The response object received from the authentication service.
+ */
 function handleCredentialResponse(response) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'runnable/googleAuthenticateLogin.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
         if (this.status == 200) {
-            // Assuming the server response is a JSON object
             var responseData = JSON.parse(this.responseText);
 
             if (responseData.success) {
-                // Save the token to a cookie
-                setCookie('auth_token', responseData.token, 365); // Adjust the expiry days as needed
-
-                // Now you can proceed with further actions
+                // Save the token to a cookie and continue logging in/ sign up
+                setCookie('auth_token', responseData.token, 365);
                 checkUserExists();
             } else {
                 alert('There was a problem: ' + responseData.message);
@@ -43,6 +51,9 @@ function handleCredentialResponse(response) {
     xhr.send(params);
 }
 
+/**
+ * Checks if a user exists in the database.
+ */
 function checkUserExists(){
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'runnable/checkUserExists.php', true);
@@ -61,6 +72,9 @@ function checkUserExists(){
     xhr.send();
 }
 
+/**
+ * Creates a new user and assigns a bucket to them.
+ */
 function createUserAndAssignBucket(){
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'runnable/addUserAndCreateBucket.php', true);
@@ -79,6 +93,9 @@ function createUserAndAssignBucket(){
     xhr.send();
 }
 
+/**
+ * Retrieves the associated bucket for the current user.
+ */
 function getAssosiatedBucket() {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'runnable/getPersonalBucketID.php', true);
@@ -90,10 +107,9 @@ function getAssosiatedBucket() {
                 var response = JSON.parse(this.responseText);
 
                 if (response.success) {
-                    // Store the new cookie values in your preferred way
+                    // Store the new cookie values
                     document.cookie = 'auth_token=' + response.updatedToken + '; expires=' + new Date(response.expiry).toUTCString() + '; path=/';
-
-                    // Redirect to 'storage.php' or perform other actions
+                    // proceed to vaults page
                     window.location.href = 'storage.php';
                 } else {
                     alert("There was an issue getting Vault: " + response.message);
@@ -104,34 +120,6 @@ function getAssosiatedBucket() {
         }
     };
 
-    xhr.send();
-}
-
-
-function fakeLogin() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'runnable/fakeLogin.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function () {
-        if (this.status == 200) {
-            try {
-                var response = JSON.parse(this.responseText);
-
-                if (response.success) {
-                    // Store the new cookie values in your preferred way
-                    document.cookie = 'auth_token=' + response.updatedToken + '; expires=' + new Date(response.expiry).toUTCString() + '; path=/';
-
-                    // Redirect to 'storage.php' or perform other actions
-                    window.location.href = 'storage.php';
-                } else {
-                    alert("There was an issue getting Vault: " + response.message);
-                }
-            } catch (error) {
-                console.error('Error parsing JSON response:', error);
-            }
-        }
-    };
     xhr.send();
 }
 

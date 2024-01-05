@@ -1,4 +1,8 @@
 
+/**
+ * Handles the addition of a new directory.
+ * @param {HTMLElement} button - The button element that triggered this function.
+ */
 function handleAddDirectory(button){
     var dirName = button.getAttribute('data-dir');
     
@@ -22,6 +26,10 @@ function handleAddDirectory(button){
     xhr.send(params);
 };
 
+/**
+ * Handles the deletion of a directory.
+ * @param {HTMLElement} button - The button element that triggered this function.
+ */
 function handleDelete(button) {
     var dirName = button.getAttribute('data-dir');
     var confirmation = prompt("Type 'DELETE' to confirm.");
@@ -51,16 +59,28 @@ function handleDelete(button) {
     
 }
 
-
+/**
+ * Replaces the last occurrence of a substring in a string.
+ * @param {string} fullString - The full string to modify.
+ * @param {(string|RegExp)} toReplace - The substring or regex to replace.
+ * @param {string} toReplaceWith - The string to replace with.
+ * @returns {string} - The modified string.
+ */
 const replaceLast = (fullString, toReplace, toReplaceWith) => {
     const match = typeof toReplace === 'string' ? toReplace : (fullString.match(new RegExp(toReplace.source, 'g')) || []).slice(-1)[0];
     if (!match) 
         return fullString;
-    
+
     const last = fullString.lastIndexOf(match);
     return last !== -1 ? `${fullString.slice(0, last)}${toReplaceWith}${fullString.slice(last + match.length)}` : fullString;
-  };
+};
 
+/**
+ * Handles the change of a directory or file name.
+ * @param {HTMLInputElement} element - The input element containing the new name.
+ * @param {string} fullPath - The full path of the item being renamed.
+ * @param {string} fileExtension - The file extension (if applicable).
+ */
 function handleNameChange(element, fullPath, fileExtension) {
     var newName = element.value;
     var isValidName = validateName(newName);
@@ -104,6 +124,11 @@ function handleNameChange(element, fullPath, fileExtension) {
     xhr.send(params);
 }
 
+/**
+ * Validates the provided name for a directory or file.
+ * @param {string} name - The name to validate.
+ * @returns {boolean} - True if the name is valid, false otherwise.
+ */
 function validateName(name) {
     var validName = true;
     validName &= name.trim() !== '';
@@ -121,7 +146,11 @@ function validateName(name) {
     return validName;
 }
 
-function handleDownloadFolder(button) {
+/**
+ * Handles the download of a file.
+ * @param {HTMLElement} button - The button element that triggered this function.
+ */
+function handleDownloadFile(button) {
     var dirSelected = button.getAttribute('data-dir');
 
     // Create a temporary hidden link element
@@ -137,6 +166,10 @@ function handleDownloadFolder(button) {
     document.body.removeChild(tempLink);
 }
 
+/**
+ * Handles the download of a folder.
+ * @param {HTMLElement} button - The button element that triggered this function.
+ */
 function handleDownloadFolder(button) {
     var dirSelected = button.getAttribute('data-dir');
 
@@ -153,7 +186,10 @@ function handleDownloadFolder(button) {
     document.body.removeChild(tempLink);
 }
 
-
+/**
+ * Handles the uploading of a file.
+ * @param {HTMLElement} button - The button element that triggered this function.
+ */
 function handleUploadFile(button) {
     var dirSelected = button.getAttribute('data-dir');
     var input = document.getElementById('fileInput');
@@ -191,6 +227,10 @@ function handleUploadFile(button) {
     input.click();
 }
 
+/**
+ * Handles the uploading of a folder.
+ * @param {HTMLElement} button - The button element that triggered this function.
+ */
 function handleUploadFolder(button) {
     var dirSelected = button.getAttribute('data-dir');
     var input = document.getElementById('folderInput');
@@ -229,14 +269,26 @@ function handleUploadFolder(button) {
     input.click();
 }
 
+/**
+ * Handles the start of a drag operation.
+ * @param {DragEvent} event - The drag event.
+ */
 function dragStart(event) {
     event.dataTransfer.setData('text/plain', event.target.dataset.dir);
 }
 
+/**
+ * Handles the drag over event, allowing for drop.
+ * @param {DragEvent} event - The drag event.
+ */
 function dragOver(event) {
     event.preventDefault(); // Necessary to allow dropping
 }
 
+/**
+ * Handles the drop event for moving directories.
+ * @param {DragEvent} event - The drag event.
+ */
 function drop(event) {
     event.preventDefault();
     var targetDir = event.currentTarget.dataset.dir; // The directory you dropped onto
@@ -246,6 +298,11 @@ function drop(event) {
     handleMoveDirectory(draggedDir, targetDir);
 }
 
+/**
+ * Handles moving a directory to a new location.
+ * @param {string} draggedDir - The directory being moved.
+ * @param {string} targetDir - The target directory where the dragged directory will be moved.
+ */
 function handleMoveDirectory(draggedDir, targetDir) {
     if (draggedDir == "undefined" ){
         return; //no possible root moving
@@ -286,7 +343,9 @@ function handleMoveDirectory(draggedDir, targetDir) {
     xhr.send(params);
 }
 
-
+/**
+ * Loads the directory listing.
+ */
 function loadDirectoryListing() {
     var xhr = new XMLHttpRequest();
     
@@ -304,8 +363,15 @@ function loadDirectoryListing() {
     xhr.send();
 };
 
+/**
+ * Creates a shared directory listing.
+ */
 function createSharedDirectoryListing(){
     var folderName = window.prompt("Please enter the folder name:", "");
+    //cancelled
+    if (folderName === null)
+        return;
+
     if (!validateName(folderName)) {
         alert('Invalid name. \nPlease ensure name: \nDoes not contain spaces or special characters (/,?*:"<>|) \nName is below 25 chracters');
     }
@@ -330,7 +396,9 @@ function createSharedDirectoryListing(){
     xhr.send(params);
 }
 
-
+/**
+ * Populates the dropdown menu with available shared folders.
+ */
 function populateFolderDropDown(){
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'runnable/loadSharedDirectories.php', true);
@@ -347,6 +415,10 @@ function populateFolderDropDown(){
     xhr.send();
 }
 
+/**
+ * Loads the listing of a selected shared directory.
+ * @param {HTMLElement} button - The button element that triggered this function.
+ */
 function loadSharedDirectoryListing(button) {
     var bucketSelected = button.getAttribute('data-id');
     document.getElementById("selectedBucket").setAttribute('selected-bucket', bucketSelected);
@@ -369,7 +441,9 @@ function loadSharedDirectoryListing(button) {
     xhr.send(params);
 };
 
-
+/**
+ * Adds a user to a shared directory.
+ */
 function addUser(){
     var selectedBucket = document.getElementById("selectedBucket").getAttribute('selected-bucket');
     
@@ -396,7 +470,9 @@ function addUser(){
     xhr.send(params);
 }
 
-
+/**
+ * Removes a user from a shared directory.
+ */
 function removeUser(){
     var selectedBucket = document.getElementById("selectedBucket").getAttribute('selected-bucket');
     
