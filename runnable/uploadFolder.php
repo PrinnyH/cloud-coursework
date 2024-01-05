@@ -52,5 +52,4 @@
     }
 
     echo $uploadSuccess ? 'true' : 'false';
-
 ?>
