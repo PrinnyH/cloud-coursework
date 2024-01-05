@@ -32,7 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
             // Create a new ZipArchive object
             $zip = new ZipArchive();
-            $zipFileName = tempnam(sys_get_temp_dir(), 'zip') . '.zip';
+            // Set the name of the zip file
+            $zipFileName = 'folder.zip'; // Set a static name for the zip file
+
             if ($zip->open($zipFileName, ZipArchive::CREATE) !== TRUE) {
                 exit("Cannot open <$zipFileName>\n");
             }
