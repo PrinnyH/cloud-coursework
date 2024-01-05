@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo 'true';
     } else {
         error_log('File not found');
-        echo "false";
+        echo $fileContent;
     }
 
 } else {
