@@ -124,33 +124,26 @@ function validateName(name) {
 function handleDownloadFolder(button) {
     var dirSelected = button.getAttribute('data-dir');
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'runnable/downloadFolder.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    
-    xhr.onload = function() {
-        if (this.status == 200) {
-            if (this.responseText.trim() === 'true') {
-                populateFolderDropDown();
-            } else {
-                alert("There was a problem downloading folder")
-            } 
-        }
-    };
+    // Create a temporary hidden link element
+    var tempLink = document.createElement('a');
+    tempLink.style.display = 'none';
+    tempLink.href = 'runnable/downloadFile.php?fileDir=' + encodeURIComponent(dirSelected);
 
-    var params = new URLSearchParams();
-    params.append('folderPath', dirSelected);
-    
-    xhr.send(params);
+    // Append link to the body and trigger the download
+    document.body.appendChild(tempLink);
+    tempLink.click();
+
+    // Clean up by removing the temporary link
+    document.body.removeChild(tempLink);
 }
 
-function handleDownloadFile(button) {
+function handleDownloadFolder(button) {
     var dirSelected = button.getAttribute('data-dir');
 
     // Create a temporary hidden link element
     var tempLink = document.createElement('a');
     tempLink.style.display = 'none';
-    tempLink.href = 'runnable/downloadFile.php?fileDir=' + encodeURIComponent(dirSelected);
+    tempLink.href = 'runnable/downloadFile.php?folderPath=' + encodeURIComponent(dirSelected);
 
     // Append link to the body and trigger the download
     document.body.appendChild(tempLink);

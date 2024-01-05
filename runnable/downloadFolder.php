@@ -1,4 +1,5 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -6,57 +7,66 @@ error_reporting(E_ALL);
 require_once('../vendor/autoload.php');
 
 use Google\Cloud\Storage\StorageClient;
-
-require_once("credentials.php");
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $folderPath = $_POST['folderPath']; // Full path of the directory
-    
+require_once("credentials.php");
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $folderPath = $_GET['folderPath']; // Full path of the folder in the storage bucket
+
     // Initialize Google Cloud Storage client
     $storage = new StorageClient();
     $tokenCookie = $_COOKIE['auth_token'] ?? null;
-    // Check if the token cookie is set
+
     if ($tokenCookie) {
         // Decode the token to get user information
-        $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
+        $decodedToken = JWT::decode($tokenCookie, new Key($secretKey, 'HS256'));
 
-        if ($decodedToken) {
+        if (isset($decodedToken->bucket_id)) {
             $bucket_id = $decodedToken->bucket_id;
+            $bucket = $storage->bucket($bucket_id);
+
+            // List objects in the specified folder
+            $objects = $bucket->objects(['prefix' => $folderPath]);
+
+            // Create a new ZipArchive object
+            $zip = new ZipArchive();
+            $zipFileName = tempnam(sys_get_temp_dir(), 'zip') . '.zip';
+            if ($zip->open($zipFileName, ZipArchive::CREATE) !== TRUE) {
+                exit("Cannot open <$zipFileName>\n");
+            }
+
+            // Add files to the Zip file
+            foreach ($objects as $object) {
+                if (substr($object->name(), -1) != '/') { // Exclude 'directories'
+                    $objectContent = $object->downloadAsString();
+                    $zip->addFromString(basename($object->name()), $objectContent);
+                }
+            }
+
+            $zip->close();
+
+            // Serve the Zip file for download
+            header('Content-Type: application/zip');
+            header('Content-Disposition: attachment; filename="' . basename($zipFileName) . '"');
+            header('Content-Length: ' . filesize($zipFileName));
+            readfile($zipFileName);
+
+            // Cleanup
+            unlink($zipFileName);
+            exit;
+        } else {
+            error_log('Token decoding failed');
+            echo 'Token decoding failed';
+            exit;
         }
+    } else {
+        echo 'No token found';
+        exit;
     }
-    $bucket = $storage->bucket($bucket_id);
-    // List objects in the specified folder
-    $objects = $bucket->objects(['prefix' => $folderPath]);
-
-    // Prepare a Zip file
-    $zip = new ZipArchive();
-    $zipFileName = 'download.zip';
-    if ($zip->open($zipFileName, ZipArchive::CREATE) !== TRUE) {
-        exit("Cannot open <$zipFileName>\n");
-    }
-
-    // Add files to the Zip file
-    foreach ($objects as $object) {
-        if (substr($object->name(), -1) != '/') { // Exclude 'directories'
-            $objectContent = $object->downloadAsString();
-            $zip->addFromString(basename($object->name()), $objectContent);
-        }
-    }
-
-    $zip->close();
-
-    // Download the Zip file
-    header('Content-Type: application/zip');
-    header('Content-Disposition: attachment; filename="' . basename($zipFileName) . '"');
-    header('Content-Length: ' . filesize($zipFileName));
-    readfile($zipFileName);
-
-    // Cleanup
-    unlink($zipFileName);
-    echo 'true';
 } else {
-    echo 'false';
+    echo 'Invalid request method';
+    exit;
 }
 ?>
