@@ -1,14 +1,12 @@
 <?php
-    ini_set('display_errors', 'On');
-    error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 
-    require_once("credentials.php");
-    require_once('../vendor/autoload.php');
-    use Firebase\JWT\JWT;
-    use Firebase\JWT\Key;
+require_once("credentials.php");
 
-    // Retrieve the value of the 'auth_token' cookie
-    $tokenCookie = $_COOKIE['auth_token'] ?? null;
+require_once('../vendor/autoload.php');
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
     // Check if the token cookie is set
     if (!$tokenCookie) {
@@ -34,21 +32,28 @@
         exit; // If there is a connection error, exit the script
     }
 
-    try {
-        // Insert into User_Shared_Bucket
-        $stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?");
+    // Prepare the query
+    if ($stmt = $mysqli->prepare("SELECT BucketID FROM `User` WHERE Email = ?")) {
+
+        // Bind parameters (s - string)
         $stmt->bind_param("s", $email);
+
+        // Execute the query
         $stmt->execute();
+
+        // Store the result to get properties like num_rows
+        $stmt->store_result();
+
         if ($stmt->num_rows > 0) {
             echo 'true'; // Email exists in the database
         } else {
             echo 'false'; // Email does not exist
         }
 
-        error_log("Entry created successfully in BucketID");
-        echo 'true';
-    } catch (mysqli_sql_exception $exception) {
-        error_log("Error occurred: " . $exception->getMessage());
+        // Close statement
+        $stmt->close();
+    } else {
+        error_log("Error preparing statement: " . $mysqli->error);
         echo 'false';
     }
 
