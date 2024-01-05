@@ -8,14 +8,14 @@
     $tokenCookie = $_COOKIE['auth_token'] ?? null;
 
     // Check if the token cookie is set
-    if ($tokenCookie) {
+    if (!$tokenCookie) {
         echo json_encode(["success" => false, "message" => "Token cookie is not set"]);
     }
 
     // Decode the token to get user information
     $decodedToken = JWT::decode($tokenCookie, new key($secretKey, 'HS256'));
 
-    if ($decodedToken) {
+    if (!$decodedToken) {
         echo json_encode(["success" => false, "message" => "Token is invalid or expired"]);
     }
     // Get the email from the decoded token
